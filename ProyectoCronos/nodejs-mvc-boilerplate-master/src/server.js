@@ -129,18 +129,18 @@ app.post("/databases", async function (req, res) {
 
   //generamos las paginas de las tareas del proyecto ########################################
   var promptNumberOfTasks = "Genera y dime cuantas tareas tiene el proyecto unicamente genera el numero de tareas nada mas, generalo en formato numerico sin otra palabra!";
-  NumberOfTasks = await DBsd((readMessages()), promptNumberOfTasks); //numero de tareas del proyecto
+  var NumberOfTasks = await DBsd((readMessages()), promptNumberOfTasks); //numero de tareas del proyecto
   projectDetails.NumberOfTasks.push(NumberOfTasks);
 
   //generamos la primera tarea del proyecto ########################################
   var promptsPages = "Genera y dime unica y exclusivamente el nombre de la primera tarea sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la primer tarea para llevar a cabo ese proyecto y el numero 1!";
-  response2 = await DBsd((readMessages()), promptsPages); //nombre de la tarea 1
+  var response2 = await DBsd((readMessages()), promptsPages); //nombre de la tarea 1
   projectDetails.Steps.push(response2);
 
   //generamos los pasos de la primera tarea del proyecto ########################################
-  response_T1 = await DBsd((readMessages()), "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: " + name + "!"); 
+  var response_T1 = await DBsd((readMessages()), "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: " + name + "!"); 
   projectDetails.StepsInsideResume.push(response_T1); //pasos de la tarea 1
-  response_dueDate = await DBsd((readMessages()), "Genera y dime la fecha de vencimiento de la tarea numero 1 del proyecto en formato AAAA-MM-DD!");
+  var response_dueDate = await DBsd((readMessages()), "Genera y dime la fecha de vencimiento de la tarea numero 1 del proyecto en formato AAAA-MM-DD!");
   projectDetails.dateOfSteps.push(response_dueDate); //fecha de vencimiento de la tarea 1
   var page1 = pageGenerator(response2, database_id, response_T1, response_dueDate);
   
@@ -151,23 +151,23 @@ app.post("/databases", async function (req, res) {
   //for (let i = 2; i <= NumberOfTasks; i++) {
   for (let i = 2; i <= NumberOfTasks; i++) {
     var promptsPages = "Genera y dime unica y exclusivamente el nombre de la tarea numero " + i + " sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer!";
-    response2 = await DBsd((readMessages()), promptsPages); //nombre de la tarea i
+    var response2 = await DBsd((readMessages()), promptsPages); //nombre de la tarea i
     projectDetails.Steps.push(response2); //metemos el nombre de la tarea i en el arreglo de tareas
-    response_T1 = await DBsd((readMessages()), "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero " + i + " del proyecto: " + name + "!" ); 
+    var response_T1 = await DBsd((readMessages()), "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero " + i + " del proyecto: " + name + "!" ); 
     projectDetails.StepsInsideResume.push(response_T1); //metemos los pasos de la tarea i en el arreglo de pasos
-    response_dueDate = await DBsd((readMessages()), "Genera y dime la fecha de vencimiento de la tarea numero " + i + " del proyecto en formato AAAA-MM-DD!");
+    var response_dueDate = await DBsd((readMessages()), "Genera y dime la fecha de vencimiento de la tarea numero " + i + " del proyecto en formato AAAA-MM-DD!");
     projectDetails.dateOfSteps.push(response_dueDate); //metemos la fecha de vencimiento de la tarea i en el arreglo de fechas
     var page1 = pageGenerator(response2, database_id, response_T1, response_dueDate);
     
     //var cronos1 = cronosShow(response2, database_id, response_T1, response_dueDate);
   } 
   console.log("fin de la creacion de la base de datos y las paginas de las tareas");
-  database_id_whitout_dash = database_id.replace(/-/g, "");
+  var database_id_whitout_dash = database_id.replace(/-/g, "");
   console.log("https://www.notion.so/" + database_id_whitout_dash);
 
-  sortedRows1 = await sortedRows(database_id);
+  var sortedRows1 = await sortedRows(database_id);
 
-  sorts = await sorts1(database_id);
+  var sorts = await sorts1(database_id);
   console.log("this is the data base")
   console.log(responseFromDB);
   //we need to add to responseFromDB a json for show the details of the project task and steps, and the insides of the project
@@ -343,6 +343,7 @@ async function DBsd(response1, prompts) { //funcion para generar el nombre de la
 	await writeMessages(messages); // Guardar los mensajes actualizados en el archivo JSON
 
   console.log(completion.choices[0].message);
+  console.log(completion.choices[0].message.content);
   return completion.choices[0].message.content;
 }
 
