@@ -3,29 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js"
   },
   "dependencies": {
+    "@notionhq/client": "^2.2.7",
     "axios": "^1.7.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
     "express": "^4.19.2",
+    "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.18.0",
+    "fs": "^0.0.1-security",
+    "fullcalendar": "^6.1.13",
+    "luxon": "^3.4.4",
     "mongoose": "^8.4.0",
     "morgan": "^1.10.0",
+    "openai": "^4.42.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pg": "^8.11.5",
-    "@notionhq/client": "^2.2.7",
-    "ejs": "^3.1.10",
-    "fs": "^0.0.1-security",
-    "fullcalendar": "^6.1.11",
-    "luxon": "^3.4.4",
-    "openai": "^4.42.0"
+    "pg": "^8.11.5"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"

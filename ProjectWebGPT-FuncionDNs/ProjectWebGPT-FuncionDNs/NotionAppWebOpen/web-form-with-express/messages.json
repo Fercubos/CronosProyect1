@@ -1,0 +1,46 @@
+[
+  {
+    "role": "system",
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos, actividades, o cualquier cosa, en la agenda el dia de hoy es 24-05-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto de 1 tarea suma 2 + 2lo que no sepas imaginalo o generalo!"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: haz un proyecto de 1 tarea suma 2 + 2"
+  },
+  {
+    "role": "assistant",
+    "content": "Suma básica: 2 + 2"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime cuantas tareas tiene el proyecto unicamente genera el numero de tareas nada mas, generalo en formato numerico sin otra palabra![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la primera tarea sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la primer tarea para llevar a cabo ese proyecto y el numero 1![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Sumar 2 + 2."
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: haz un proyecto de 1 tarea suma 2 + 2![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Identificar los dos números a sumar: 2 y 2.\n2. Realizar la operación matemática: 2 + 2.\n3. Obtener el resultado de la suma."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 1 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-05-24"
+  }
+]

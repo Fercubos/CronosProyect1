@@ -1,0 +1,50 @@
+
+          <!-- The database form response will be appended here after submitting it -->
+        </tr>
+        <tr>
+          <td>
+            <h3>2. Add a page to the database</h3>
+            <form id="pageForm">
+              <label for="newPageDB">Parent DB ID</label>
+              <input type="text" id="newPageDB" />
+              <label for="newPageName">New page name</label>
+              <input type="text" id="newPageName" />
+              <label for="header">Header 1</label>
+              <input type="text" id="header" />
+              <!-- <label for="dueDate">Due date</label>
+              <input type="date" id="dueDate" /> -->
+              <input type="submit" />
+            </form>
+          </td>
+          <!-- The page form response will be appended here after submitting it -->
+          <td id="pageResponse"></td>
+        </tr>
+        <tr>
+          <td>
+            <h3>3. Add content to the page</h3>
+            <form id="blocksForm">
+              <label for="pageID">Page ID</label>
+              <input type="text" id="pageID" />
+              <label for="content">Content</label>
+              <input type="text" id="content" />
+              <input type="submit" />
+            </form>
+          </td>
+          <!-- The page content/blocks form response will be appended here after submitting it -->
+          <td id="blocksResponse"></td>
+        </tr>
+        <tr>
+          <td>
+            <h3>4. Add a comment to the content</h3>
+            <form id="commentForm">
+              <label for="pageIDComment">Page ID</label>
+              <input type="text" id="pageIDComment" />
+              <label for="comment">Comment</label>
+              <input type="text" id="comment" />
+              <input type="submit" />
+            </form>
+          </td>
+          <!-- The comment form response will be appended here after submitting it -->
+          <td id="commentResponse"></td>
+        </tr>
+      </table> 

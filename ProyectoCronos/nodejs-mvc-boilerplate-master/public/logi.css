@@ -1,0 +1,177 @@
+/* */
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(100deg, #e4b871, #e2d4ad );
+    height: 100vh;
+}
+
+
+.formulario{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 10px;
+}
+
+.formulario h1{
+    text-align: center;
+    padding:0 0 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.formulario form{
+    padding: 0 40px;
+    box-sizing: border-box;
+    
+}
+
+form .username{
+    position: relative;
+    margin: 30px 0 ;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 1rem;
+}
+form.password{
+    position: relative;
+    margin: 30px 0 ;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+form.Edad{
+    position: relative;
+    margin: 30px 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+username.input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.form input {
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 0.3rem 0.6rem;
+    border-radius: 2px;
+    border: none;
+    border-bottom: 3px solid #11122b;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+}
+
+.form input:focus {
+    outline: none;
+    border-bottom: 3px solid #cea135;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.form textarea:focus {
+    outline: none;
+    border-bottom: 3px solid #cea135;
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.1);
+    border:  3px solid #cea135;
+}
+.form input::-webkit-input-placeholder, .form textarea::-webkit-input-placeholder {
+    color: #11122b;  
+}
+
+.form input:focus::-webkit-input-placeholder, .form textarea:focus::-webkit-input-placeholder {
+    color: transparent;  
+}
+
+
+.form label{
+    font-size: 1rem;
+    font-weight: 1rem;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+    color: #cea135; 
+    visibility: hidden;
+    opacity: 0;
+}
+
+.form input:focus + label, .form textarea:focus + label{
+    transform: translateY(rem);
+    visibility: visible;
+    opacity: 1;
+    color: #cea135;
+}
+
+.Ol{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.Login{
+    margin-bottom: 2rem;
+}
+
+a.google {
+	background: #4787ed;
+}
+
+
+input[type = "submit"]{
+    background: linear-gradient(126deg, #e4b871, #e0ddd6 ) ;
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.Login:active {
+    box-shadow: 0.6rem 0.6rem 0.6rem rgba(0, 0, 0, 0.4);
+}
+
+.Registrarse{
+    font-size: 1rem;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.Log{
+    font-size: 1rem;
+    margin: 30px 0;
+    text-align: center;
+}
+
+ /* Estilo del botón */
+form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #e4b871;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+  /* Efecto hover para el botón */
+form button[type="submit"]:hover {
+    background-color: #6b5734;
+}
