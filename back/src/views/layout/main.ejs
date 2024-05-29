@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/logi.css">
+    <title>registro</title>
+</head>
+<body>
+
+    <%if (signinMessage) {%>
+        <p><%= signinMessage %></p>
+    <% } %>
+    <%if (signupMessage) {%>
+        <p><%= signupMessage %></p>
+    <% } %>
+
+    <%- body%>
+
+</body>
+</html>
