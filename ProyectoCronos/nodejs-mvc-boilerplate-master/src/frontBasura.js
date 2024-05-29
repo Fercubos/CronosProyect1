@@ -37,7 +37,7 @@ app.use (express.static(__dirname + '/public'));
 //Routes
    //http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) { //ruta principal
-	response.render(__dirname + "/src/views/layout/index1.ejs");
+	response.render(__dirname + "/views/layout/index1.ejs");
 });
 
 app.post("/databases", async (req, res) => { //ruta para obtener las bases de datos de notion
