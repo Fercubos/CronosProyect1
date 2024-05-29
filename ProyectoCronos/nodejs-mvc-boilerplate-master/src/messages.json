@@ -9,7 +9,7 @@
   },
   {
     "role": "assistant",
-    "content": "Operación Matemática Simple"
+    "content": "Operación Matemática\tSimple"
   },
   {
     "role": "user",
@@ -25,7 +25,7 @@
   },
   {
     "role": "assistant",
-    "content": "Realizar la suma 2 + 2"
+    "content": "Suma 2 + 2"
   },
   {
     "role": "user",
@@ -33,7 +33,7 @@
   },
   {
     "role": "assistant",
-    "content": "1. Reunir los números a sumar: 2 y 2.\n2. Escribir los números en una hoja de papel o en un documento.\n3. Realizar la suma de 2 + 2.\n4. Verificar el resultado obtenido.\n5. Confirmar que el resultado de la suma es 4.\n6. Marcar la tarea como completada."
+    "content": "1. Identificar los dos números a sumar: 2 y 2.\n2. Realizar la operación matemática: 2 + 2.\n3. Calcular el resultado.\n4. Verificar que la suma sea correcta (4)."
   },
   {
     "role": "user",

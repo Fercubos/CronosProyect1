@@ -41,7 +41,7 @@ html::before {
   line-height: 1.1;
   flex-direction: row;
   justify-content: center;
-  margin-top: -2rem;
+  /* margin-top: -2rem; */
 }
 
 .sedan-sc-regular {
@@ -54,6 +54,7 @@ html::before {
 #dedlogo{
   width: 200px;
   height: 200px;
+  margin-top: -2.4rem;
 }
 
 .main1{
@@ -66,6 +67,7 @@ html::before {
 
 body {
   color: #a48249;
+  background-color: #fefaf2;
   font-family: "Sedan SC", serif;
   font-weight: 400;
   font-style: normal;  margin: 3em 1em;
