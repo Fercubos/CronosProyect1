@@ -42,8 +42,49 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 app.use(express.static("public")); //para que se pueda acceder a los archivos de la carpeta public
 app.use(express.json()); // for parsing application/json
 
+// http://expressjs.com/en/starter/basic-routing.html
+// app.get("/", function (request, response) {
+// 	response.sendFile(__dirname + "/src/views/index.html");
+// });
 
+//OpenAI API
+// app.post("/fd", async (req, res) => {
+// 	const name = req.body.name;
+// 	const response1 = await main(name);
+// 	res.json(response1);
+// });
 
+// async function main(response1) {
+// 	let userResponse = response1;
+// 	let messages = await readMessages(); // Leer mensajes del archivo JSON
+// 	messages.push({ role: "user", content: userResponse }); // Agregar la nueva pregunta del usuario
+// 	const completion = await openai.chat.completions.create({
+// 		model: "gpt-3.5-turbo",
+// 		messages: messages,
+// 	});
+
+// 	messages.push({
+// 		role: "assistant",
+// 		content: completion.choices[0].message.content,
+// 	}); // Agregar la respuesta del asistente
+// 	//await writeMessages(messages); // Guardar los mensajes actualizados en el archivo JSON
+
+// 	console.log(completion.choices[0].message);
+// 	return completion.choices[0];
+// }
+
+// async function readMessages() {
+// 	const data = await fs.readFile("messages.json", "utf8");
+// 	return JSON.parse(data);
+// }
+
+// async function writeMessages(messages) {
+// 	await fs.writeFile(
+// 		"messages.json",
+// 		JSON.stringify(messages, null, 2),
+// 		"utf8"
+// 	);
+// }
 //esto es para generar una interfaz de usuario para poder visualizar lo que va mandar a notion
 var projectDetails = {
   DatabaseName: [],
@@ -79,6 +120,12 @@ app.post("/databases", async function (req, res) {
   var database_id = responseFromDB.data.id;
   //hasta aqui se genera la base de datos ########################################
 
+  //formato para generar paginas en la base de datos con las tareas del proyecto respectivas
+  //var promptsPages = "Genera y dime unica y exclusivamente el nombre de la primera tarea sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la primer tarea para llevar a cabo ese proyecto!";
+  //const response2 = await DBsd(name, promptsPages);
+  //console.log(response2);
+  //const ded2 = await pageGenerator(response2, database_id);
+  //res.json(ded2);
 
   //generamos las paginas de las tareas del proyecto ########################################
   var promptNumberOfTasks = "Genera y dime cuantas tareas tiene el proyecto unicamente genera el numero de tareas nada mas, generalo en formato numerico sin otra palabra!";
@@ -348,6 +395,58 @@ app.post("/pages", async function (request, response) {
 	}
 });
 
+// // Create new block (page content). The page ID is provided in the web form.
+// app.post("/blocks", async function (request, response) {
+// 	const { pageID, content } = request.body;
+
+// 	try {
+// 		const newBlock = await notion.blocks.children.append({
+// 			block_id: pageID, // a block ID can be a page ID
+// 			children: [
+// 				{
+// 					// Use a paragraph as a default but the form or request can be updated to allow for other block types: https://developers.notion.com/reference/block#keys
+// 					paragraph: {
+// 						rich_text: [
+// 							{
+// 								text: {
+// 									content: content,
+// 								},
+// 							},
+// 						],
+// 					},
+// 				},
+// 			],
+// 		});
+// 		response.json({ message: "success!", data: newBlock });
+// 	} catch (error) {
+// 		response.json({ message: "error", error });
+// 	}
+// });
+
+// // Create new page comments. The page ID is provided in the web form.
+// app.post("/comments", async function (request, response) {
+// 	const { pageID, comment } = request.body;
+
+// 	try {
+// 		const newComment = await notion.comments.create({
+// 			parent: {
+// 				page_id: pageID,
+// 			},
+// 			rich_text: [
+// 				{
+// 					text: {
+// 						content: comment,
+// 					},
+// 				},
+// 			],
+// 		});
+// 		response.json({ message: "success!", data: newComment });
+// 	} catch (error) {
+// 		response.json({ message: "error", error });
+// 	}
+// });
+
+// listen for requests :)
 const listener = app.listen(port, function () {
 	console.log("Your app is listening on port " + listener.address().port);
 });

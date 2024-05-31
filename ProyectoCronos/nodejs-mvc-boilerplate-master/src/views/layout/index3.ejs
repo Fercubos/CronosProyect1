@@ -1,64 +1,9 @@
-<!-- served from your routes in server.js -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Proyecto Cronos" />
-
-    <!-- Favicon -->
-    <link href="Bou.png" rel="icon" />
-		<link href="Bou.png" rel="apple-touch-icon" />
-
-    <!-- FullCalendar -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
 
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet"/>
-
-    <!-- Bootstrap CSS -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"/>
-		<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
-		<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
-		<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
-
-    <title>Cronos Demo</title>
-
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/css/style1.css" />
-    <link rel="stylesheet" href="/style.css" />
-    
-    <!-- import the webpage's client-side javascript file -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="/client.js" defer></script>
-  </head>
-  <!-- <div class="loader" id="loader"></div> -->
-  <body>
-    <body id="body-pd">
-      <header class="header" id="header">
-          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-          <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-      </header>
-      <div class="l-navbar" id="nav-bar">
-          <nav class="nav">
-              <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Proyecto Cronos</span> </a>
-                  <div class="nav_list"> <a href="/" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Ask to Cronos! </span> </a> 
-                   <!-- <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span>   </a>-->
-                  <!-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>  -->
-                   <!-- <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>  -->
-                  <a href="/Proyects" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Proyectos</span> </a> 
-                  <a href="/" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Status</span> </a> </div>
-              </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
-          </nav>
-      </div>
+      <%- include('_partials/_head.ejs') %>
       <!--Container Main start-->
       <div class="height-100 bg-light">
-        
+    <% if (proyects === "desactive"){ %>
     <div class = "upperPart" id = "especialMenu">
       <div style="margin-left: 5.5rem; margin-top: 0rem;">
         <div class="Titles1s ">
@@ -114,6 +59,7 @@
       </div>
       </div>
       </div>
+      <% } %>
       <!--Container Main end-->
             <!--Container Main end-->
        <!-- /#wrapper -->

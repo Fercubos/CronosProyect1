@@ -9,7 +9,7 @@
   },
   {
     "role": "assistant",
-    "content": "Título del Proyecto: \"Suma de 2 + 2\""
+    "content": "Proyecto: Operación Suma Simple"
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "2"
+    "content": "1"
   },
   {
     "role": "user",
@@ -25,7 +25,7 @@
   },
   {
     "role": "assistant",
-    "content": "Sumar 2 + 2"
+    "content": "Tarea 1: Sumar 2 + 2"
   },
   {
     "role": "user",
@@ -33,35 +33,11 @@
   },
   {
     "role": "assistant",
-    "content": "1. Reunir los números a sumar: 2 y 2.\n2. Realizar la operación aritmética: sumar 2 + 2.\n3. Obtener el resultado correcto de la suma de 2 + 2."
+    "content": "1. Abrir una calculadora o utilizar una aplicación de calculadora en el dispositivo.\n2. Ingresar el primer número \"2\".\n3. Presionar el botón de suma \"+\".\n4. Ingresar el segundo número \"2\".\n5. Presionar el botón de igual \"=\" para obtener el resultado de la suma \"4\".\n6. Verificar que el resultado sea \"4\" y confirmar la operación realizada correctamente.\n7. ¡Tarea completada!"
   },
   {
     "role": "user",
     "content": "Genera y dime la fecha de vencimiento de la tarea numero 1 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-07"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 2 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Resultado"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: haz un proyecto de 1 tarea suma 2 + 2![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Verificar el resultado obtenido en la tarea anterior.\n2. Confirmar que el resultado de la suma de 2 + 2 es el correcto.\n3. Registrar el resultado."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 2 del proyecto en formato AAAA-MM-DD![object Promise]"
   },
   {
     "role": "assistant",
