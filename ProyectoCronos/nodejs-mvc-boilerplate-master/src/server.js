@@ -13,10 +13,22 @@ import axios from 'axios';
 import path from 'path';
 import ejsLayouts from 'express-ejs-layouts';
 import OpenAI from "openai";
+import pg from "pg";
+
+
 
 const port = process.env.PORT || 4120;
 const app = express();
 const model1 = "gpt-3.5-turbo"; //modelo de openai a utilizar
+
+
+const db = new pg.Client({
+	user: "postgres",
+	host: "localhost",
+	database: "world",
+	password: "3312",
+	port: 5432,
+});
 
 
 //manejo de la hora y fecha

@@ -9,7 +9,7 @@
   },
   {
     "role": "assistant",
-    "content": "Proyecto: Operación Suma Simple"
+    "content": "\"Operación Matemática Básica\""
   },
   {
     "role": "user",
@@ -25,7 +25,7 @@
   },
   {
     "role": "assistant",
-    "content": "Tarea 1: Sumar 2 + 2"
+    "content": "Sumar 2 + 2"
   },
   {
     "role": "user",
@@ -33,7 +33,7 @@
   },
   {
     "role": "assistant",
-    "content": "1. Abrir una calculadora o utilizar una aplicación de calculadora en el dispositivo.\n2. Ingresar el primer número \"2\".\n3. Presionar el botón de suma \"+\".\n4. Ingresar el segundo número \"2\".\n5. Presionar el botón de igual \"=\" para obtener el resultado de la suma \"4\".\n6. Verificar que el resultado sea \"4\" y confirmar la operación realizada correctamente.\n7. ¡Tarea completada!"
+    "content": "1. Abrir una calculadora o utilizar papel y lápiz.\n2. Escribir el número 2.\n3. Sumar el número 2 al número 2.\n4. Obtener el resultado de la suma (4)."
   },
   {
     "role": "user",
@@ -41,6 +41,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-07"
+    "content": "2024-06-06"
   }
 ]

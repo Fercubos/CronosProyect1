@@ -104,11 +104,21 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 */
 
+.tableForProyects{
+  display: flex;
+  width: 30%;
+  min-height: 20%;
+  border: 1px solid #a48249;
+  border-radius: 2rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  box-shadow: 0 0 40px #a48249;
+}
+
 .calendar-container {
 width: 50%;
-border: 1px solid #ccc;
+border: 0px solid #ccc;
 border-radius: 10px;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .main-container {
