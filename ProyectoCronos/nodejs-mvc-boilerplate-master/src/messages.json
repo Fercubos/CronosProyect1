@@ -9,7 +9,7 @@
   },
   {
     "role": "assistant",
-    "content": "Operación Matemática\tSimple"
+    "content": "Suma básica"
   },
   {
     "role": "user",
@@ -25,7 +25,7 @@
   },
   {
     "role": "assistant",
-    "content": "Suma 2 + 2"
+    "content": "Sumar 2 + 2"
   },
   {
     "role": "user",
@@ -33,7 +33,7 @@
   },
   {
     "role": "assistant",
-    "content": "1. Identificar los dos números a sumar: 2 y 2.\n2. Realizar la operación matemática: 2 + 2.\n3. Calcular el resultado.\n4. Verificar que la suma sea correcta (4)."
+    "content": "1. Reunir los números a sumar: 2 y 2.\n2. Escribir los números en vertical, uno debajo del otro.\n3. Comenzar sumando las unidades, en este caso 2 + 2 = 4.\n4. Escribir el resultado, que en este caso es 4."
   },
   {
     "role": "user",
@@ -41,6 +41,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-05-29"
+    "content": "2024-06-05"
   }
 ]

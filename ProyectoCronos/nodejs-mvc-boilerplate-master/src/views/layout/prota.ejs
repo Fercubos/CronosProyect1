@@ -1,0 +1,56 @@
+<div class = "upperPart" id = "especialMenu">
+    <div style="margin-left: 5.5rem; margin-top: -3rem;">
+      <div class="Titles1s ">
+        <img id="dedlogo" src="/buosinback.png" alt="logo"/>
+      </div>
+      <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
+        <p>Cronos</p>
+      </div>
+    </div>
+  
+  <!-- explicacion general de que es y porque -->
+    <main class="main1 main">
+      <h2 style="margin-top: -1rem;">¿Qué es Cronos?</h2>
+      <p style="margin-top: 0rem;">
+      Cronos es una plataforma web que automatiza la creación y gestión de
+      bases de datos para estudios y proyectos, utilizando las APIs de Notion
+      y OpenAI.
+      </p>
+      <p style="margin-top: -1rem;">
+      Facilita la organización de información y la planificación de tareas con
+      fechas de entrega, optimizando la preparación académica y la eficiencia
+      en el manejo de datos.
+      </p>
+  </div>
+    <button class="menuhide">Esconder Menu</button>
+    <!-- definiendo la tabla que sigue al proceso de arriba -->
+    <table>
+      <tr>
+        <th style="font-size: 1.4rem; margin-right: 1rem;">Consulta o peticion a la IA</th>
+
+        <th style="font-size: 1.4rem;">Response</th>
+      </tr>
+      <tr>
+        <td>
+          <form id="databaseForm" style=" margin-bottom: -2rem; margin-right: 1rem; ">
+            <label for="dbName">Ingresa los detalles de tu proyecto aqui, puedes poner una fecha limite: </label>
+            <input type="text" id="dbName" />
+            <!-- <button class="btn btn-outline-light" id="resetButton" style="width: 10rem; margin-bottom: -4rem; background-color: rgb(249, 212, 101);" type="reset" >Reset Conversation</button> -->
+            <input type="submit" id = "dbSubmit"/>
+
+
+          </forms>
+
+          
+        <td id="dbResponse"></td>
+      </tr>
+    </table>
+    <!-- marcar esto como importante -->
+    <div id="main-container" class="main-container" style="margin-top: 4rem">
+      <div id="content-container" class="content-container" ></div>
+      <div id="calendar-container" class="calendar-container" >
+        <div id="calendar"></div>
+    </div>
+    </div>
+<!-- aqui va la parte que retire y puse en el med2.txt -->
+  </main>
