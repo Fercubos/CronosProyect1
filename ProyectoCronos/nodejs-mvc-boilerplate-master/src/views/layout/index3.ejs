@@ -39,55 +39,86 @@
   </head>
   <!-- <div class="loader" id="loader"></div> -->
   <body>
+    <body id="body-pd">
+      <header class="header" id="header">
+          <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+          <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+      </header>
+      <div class="l-navbar" id="nav-bar">
+          <nav class="nav">
+              <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Proyecto Cronos</span> </a>
+                  <div class="nav_list"> <a href="/" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Ask to Cronos! </span> </a> 
+                   <!-- <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span>   </a>-->
+                  <!-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>  -->
+                   <!-- <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>  -->
+                  <a href="/Proyects" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Proyectos</span> </a> 
+                  <a href="/" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Status</span> </a> </div>
+              </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+          </nav>
+      </div>
+      <!--Container Main start-->
+      <div class="height-100 bg-light">
+        
+    <div class = "upperPart" id = "especialMenu">
+      <div style="margin-left: 5.5rem; margin-top: 0rem;">
+        <div class="Titles1s ">
+          <img id="dedlogo" src="/buosinback.png" alt="logo"/>
+        </div>
+        <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
+          <p>Cronos</p>
+        </div>
+      </div>
+    
+    <!-- explicacion general de que es y porque -->
+      <main class="main1 main">
+        <h2 style="margin-top: -1rem;">¿Qué es Cronos?</h2>
+        <p style="margin-top: 0rem;">
+        Cronos es una plataforma web que automatiza la creación y gestión de
+        bases de datos para estudios y proyectos, utilizando las APIs de Notion
+        y OpenAI.
+        </p>
+        <p style="margin-top: -1rem;">
+        Facilita la organización de información y la planificación de tareas con
+        fechas de entrega, optimizando la preparación académica y la eficiencia
+        en el manejo de datos.
+        </p>
+    </div>
+      <button class="menuhide">Esconder Menu</button>
+      <!-- definiendo la tabla que sigue al proceso de arriba -->
+      <table>
+        <tr>
+          <th style="font-size: 1.4rem; margin-right: 1rem;">Consulta o peticion a la IA</th>
 
-           <!-- Sidebar -->
-       <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
-        <ul class="nav sidebar-nav">
-          <div class="sidebar-header">
-          <div class="sidebar-brand">
-            <a href="#">Brand</a></div></div>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="dropdown">
-          <a href="#works" class="dropdown-toggle"  data-toggle="dropdown">Works <span class="caret"></span></a>
-        <ul class="dropdown-menu animated fadeInLeft" role="menu">
-         <div class="dropdown-header">Dropdown heading</div>
-         <li><a href="#pictures">Pictures</a></li>
-         <li><a href="#videos">Videeos</a></li>
-         <li><a href="#books">Books</a></li>
-         <li><a href="#art">Art</a></li>
-         <li><a href="#awards">Awards</a></li>
-         </ul>
-         </li>
-         <li><a href="#services">Services</a></li>
-         <li><a href="#contact">Contact</a></li>
-         <li><a href="#followme">Follow me</a></li>
-         </ul>
-     </nav>
-           <!-- /#sidebar-wrapper -->
+          <th style="font-size: 1.4rem;">Response</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="databaseForm" style=" margin-bottom: -2rem; margin-right: 1rem; ">
+              <label for="dbName">Ingresa los detalles de tu proyecto aqui, puedes poner una fecha limite: </label>
+              <input type="text" id="dbName" />
+              <!-- <button class="btn btn-outline-light" id="resetButton" style="width: 10rem; margin-bottom: -4rem; background-color: rgb(249, 212, 101);" type="reset" >Reset Conversation</button> -->
+              <input type="submit" id = "dbSubmit"/>
 
-           <!-- Page Content -->
-           <div id="page-content-wrapper">
-               <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
-                   <span class="hamb-top"></span>
-             <span class="hamb-middle"></span>
-           <span class="hamb-bottom"></span>
-               </button>
-               <div class="container">
-                   <div class="row">
-                       <div class="col-lg-8 col-lg-offset-2">
-                           <h1>Fancy Toggle Sidebar Navigation</h1>
 
-                   </div>
-               </div>
-           </div>
-           <!-- /#page-content-wrapper -->
-   
-       </div>
+            </forms>
+
+            
+          <td id="dbResponse"></td>
+        </tr>
+      </table>
+      <!-- marcar esto como importante -->
+      <div id="main-container" class="main-container" style="margin-top: 4rem">
+        <div id="content-container" class="content-container" ></div>
+        <div id="calendar-container" class="calendar-container" >
+          <div id="calendar"></div>
+      </div>
+      </div>
+      </div>
+      <!--Container Main end-->
+            <!--Container Main end-->
        <!-- /#wrapper -->
     <!-- Inicia el contenido de la pagina Cronos -->
+
 
 
 

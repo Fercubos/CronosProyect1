@@ -139,6 +139,7 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
   cursor: pointer;           /* Cursor en forma de mano */
   transition: background-color 0.3s, transform 0.3s;  /* Transición suave de color y transformación */
   margin-left: 4rem;
+  margin-top: 1rem ;
 }
 
 
