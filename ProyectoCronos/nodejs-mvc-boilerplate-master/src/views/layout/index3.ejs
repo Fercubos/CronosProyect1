@@ -1,0 +1,138 @@
+
+
+      <%- include('_partials/_head.ejs') %>
+      <!--Container Main start-->
+      <div class="height-100 bg-light">
+    <% if (proyects === "desactive"){ %>
+    <div class = "upperPart" id = "especialMenu">
+      <div style="margin-left: 5.5rem; margin-top: 0rem;">
+        <div class="Titles1s ">
+          <img id="dedlogo" src="/buosinback.png" alt="logo"/>
+        </div>
+        <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
+          <p>Cronos</p>
+        </div>
+      </div>
+    
+    <!-- explicacion general de que es y porque -->
+      <main class="main1 main">
+        <h2 style="margin-top: -1rem;">¿Qué es Cronos?</h2>
+        <p style="margin-top: 0rem;">
+        Cronos es una plataforma web que automatiza la creación y gestión de
+        bases de datos para estudios y proyectos, utilizando las APIs de Notion
+        y OpenAI.
+        </p>
+        <p style="margin-top: -1rem;">
+        Facilita la organización de información y la planificación de tareas con
+        fechas de entrega, optimizando la preparación académica y la eficiencia
+        en el manejo de datos.
+        </p>
+    </div>
+      <button class="menuhide">Esconder Menu</button>
+      <!-- definiendo la tabla que sigue al proceso de arriba -->
+      <table>
+        <tr>
+          <th style="font-size: 1.4rem; margin-right: 1rem;">Consulta o peticion a la IA</th>
+
+          <th style="font-size: 1.4rem;">Response</th>
+        </tr>
+        <tr>
+          <td>
+            <form id="databaseForm" style=" margin-bottom: -2rem; margin-right: 1rem; ">
+              <label for="dbName">Ingresa los detalles de tu proyecto aqui, puedes poner una fecha limite: </label>
+              <input type="text" id="dbName" />
+              <!-- <button class="btn btn-outline-light" id="resetButton" style="width: 10rem; margin-bottom: -4rem; background-color: rgb(249, 212, 101);" type="reset" >Reset Conversation</button> -->
+              <input type="submit" id = "dbSubmit"/>
+
+            </form>
+
+            
+          <td id="dbResponse"></td>
+        </tr>
+      </table>
+      <!-- marcar esto como importante -->
+      <div id="main-container" class="main-container" style="margin-top: 4rem">
+        <div id="content-container" class="content-container" ></div>
+        <div id="calendar-container" class="calendar-container" >
+          <div id="calendar"></div>
+      </div>
+      </div>
+      
+      <% } %>
+      <% if (proyects === "active"){ %>
+        <div class = "upperPart" id = "especialMenu">
+          <div style="margin-left: 0.5rem; margin-top: 0rem;">
+            <div class="Titles1s ">
+              <img id="dedlogo" src="/buosinback.png" alt="logo"/>
+            </div>
+            <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
+              <p>Proyectos de Cronos</p>
+            </div>
+          </div>
+        </div>
+        
+      <% if (true) { %>
+          <div class="main1 main">
+            <h2 style="margin-top: -1rem;">No hay proyectos en Cronos</h2>
+            <p style="margin-top: 0rem;">
+              No hay proyectos en Cronos, por favor crea uno.
+            </p>
+          </div>
+        <% }else{ %>
+        
+          <% if (numP != "") { %>
+            <% if (!proyectosCronos == "") { %>
+        <div class= "tableContainer">
+        <div class="tableForProyects">
+          <h1 class= "titlesForTables"> Proyectos <%=numP%>  </h1>
+          <% for (let i = 0; i < proyectosCronos.proyectos.length; i++) { %>
+            <button class="brown-buttonforproyectsname" id = "proyectf<%=i%>"><%= proyectosCronos.proyectos[i].nombre %></button>
+          <% } %>
+        
+        </div>
+        <div class="tableForTasks" >
+          <h1 class= "titlesForTables" style="margin-left: 32%;"> Tareas <%= proyectosCronos.proyectos[proyectSelected].tareas.length %></h1>
+          <% for (let i = 0; i <= proyectosCronos.proyectos[proyectSelected].tareas.length - 1; i++) { %>
+            <button class="brown-buttonforTasks" id ="taskf<%=i%>"> <%= proyectosCronos.proyectos[proyectSelected].tareas[i].pasos[0].descripcion%></button>
+          <% } %>
+        </div>
+
+          <% var textoCompleto = proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].steps_inside_resume; 
+             let pasos = textoCompleto.split(/\s(?=\d+\.)/);
+             console.log(pasos);
+             %>
+        <div class="tableForSteps"> <!-- esto es pa los steps -->
+          <!-- convertimos taskSelected a numero para que se vea bonito -->
+          <% var tasknum = parseInt(taskSelected); %>
+          <h1 class= "titlesForTables" style="margin-left: 10%; margin-bottom: 1rem;"> Pasos a seguir para tarea <%=tasknum + 1 %></h1>
+          <% for (let i = 0; i <= pasos.length - 1; i++) { %>
+            <p class="brown-buttonforSteps" style="margin-top: -1rem;"><%= pasos[i] %></p>
+            
+          <% } %>
+       
+        </div>
+
+        <% } %>
+        <% } %>
+        <% } %>
+      <% } %>
+
+
+
+
+    
+    <!-- scripts para el uso general de la pagina -->
+    <script src="assets/inicia.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+		<script src="assets/vendor/aos/aos.js"></script>
+		<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+		<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+		<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+		<script src="assets/vendor/typed.js/typed.umd.js"></script>
+		<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+    <!-- FullCalendar -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+  </body>
+</html>

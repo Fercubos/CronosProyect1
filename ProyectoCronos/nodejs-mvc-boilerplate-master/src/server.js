@@ -13,10 +13,21 @@ import axios from 'axios';
 import path from 'path';
 import ejsLayouts from 'express-ejs-layouts';
 import OpenAI from "openai";
+import pg from "pg";
+
 
 const port = process.env.PORT || 4120;
 const app = express();
 const model1 = "gpt-3.5-turbo"; //modelo de openai a utilizar
+
+
+const pool = new pg.Pool({
+	user: "postgres",
+	host: "localhost",
+	database: "Proyecto_Cronos1",
+	password: "3312",
+	port: 5432,
+});
 
 
 //manejo de la hora y fecha
@@ -42,49 +53,8 @@ const notion = new Client({ auth: process.env.NOTION_KEY });
 app.use(express.static("public")); //para que se pueda acceder a los archivos de la carpeta public
 app.use(express.json()); // for parsing application/json
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-	response.sendFile(__dirname + "/src/views/index.html");
-});
 
-//OpenAI API
-app.post("/fd", async (req, res) => {
-	const name = req.body.name;
-	const response1 = await main(name);
-	res.json(response1);
-});
 
-// async function main(response1) {
-// 	let userResponse = response1;
-// 	let messages = await readMessages(); // Leer mensajes del archivo JSON
-// 	messages.push({ role: "user", content: userResponse }); // Agregar la nueva pregunta del usuario
-// 	const completion = await openai.chat.completions.create({
-// 		model: "gpt-3.5-turbo",
-// 		messages: messages,
-// 	});
-
-// 	messages.push({
-// 		role: "assistant",
-// 		content: completion.choices[0].message.content,
-// 	}); // Agregar la respuesta del asistente
-// 	//await writeMessages(messages); // Guardar los mensajes actualizados en el archivo JSON
-
-// 	console.log(completion.choices[0].message);
-// 	return completion.choices[0];
-// }
-
-// async function readMessages() {
-// 	const data = await fs.readFile("messages.json", "utf8");
-// 	return JSON.parse(data);
-// }
-
-// async function writeMessages(messages) {
-// 	await fs.writeFile(
-// 		"messages.json",
-// 		JSON.stringify(messages, null, 2),
-// 		"utf8"
-// 	);
-// }
 //esto es para generar una interfaz de usuario para poder visualizar lo que va mandar a notion
 var projectDetails = {
   DatabaseName: [],
@@ -94,6 +64,92 @@ var projectDetails = {
   completionOfSteps: [],
   StepsInsideResume: []
 };
+
+app.get("/giveProyects", async function (req, res) {
+  //ruta para obtener los proyectos
+  console.log("Entregando Proyectos");
+  try {
+    const proyectos = await getProjectsDetails();
+    console.log(proyectos);
+    if (proyectos[0] === "No hay proyectos registrados.") {
+      res.status(200).json({ proyects: "No hay proyectos registrados."});
+    } 
+    else {
+    res.status(200).json({ proyectos });
+    }
+  } catch (error) {
+    console.error("Error al obtener proyectos:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+});
+
+async function getProjectsDetails() {
+  
+    const query = `
+    SELECT p.proyecto_id, p.nombre, t.tarea_id, t.numero_de_tareas, t.fecha_de_los_pasos, t.completitud, ps.paso_id, ps.descripcion, ps.steps_inside_resume
+    FROM proyectos p
+    JOIN tareas t ON p.proyecto_id = t.proyecto_id
+    JOIN pasos ps ON t.tarea_id = ps.tarea_id
+    ORDER BY p.proyecto_id, t.tarea_id, ps.paso_id;
+    `;
+  
+  const client = await pool.connect();
+  try {
+    const result = await client.query(query);
+    if (result.rows.length === 0) {
+      return ["No hay proyectos registrados."];
+    }else {
+    return formatProjectDetails(result.rows);
+    }
+  } finally {
+    client.release();
+  }
+}
+
+function formatProjectDetails(rows) {
+  const projects = {};
+
+  rows.forEach(row => {
+    if (!projects[row.proyecto_id]) {
+      projects[row.proyecto_id] = {
+        id: row.proyecto_id,
+        nombre: row.nombre,
+        tareas: []
+      };
+    }
+
+    const task = projects[row.proyecto_id].tareas.find(t => t.id === row.tarea_id);
+    if (!task) {
+      projects[row.proyecto_id].tareas.push({
+        id: row.tarea_id,
+        numero_de_tareas: row.numero_de_tareas,
+        fecha_de_los_pasos: row.fecha_de_los_pasos,
+        completitud: row.completitud,
+        pasos: []
+      });
+    }
+
+    const currentTask = projects[row.proyecto_id].tareas.find(t => t.id === row.tarea_id);
+    currentTask.pasos.push({
+      id: row.paso_id,
+      descripcion: row.descripcion,
+      steps_inside_resume: row.steps_inside_resume
+    });
+  });
+
+  return Object.values(projects);
+}
+
+async function executeQuery(query, params) {
+  const client = await pool.connect();
+  try {
+    const result = await client.query(query, params);
+    return result;
+  } finally {
+    client.release();
+  }
+}
+
 
 // Create new database. The page ID is set in the environment variables.
 app.post("/databases", async function (req, res) {
@@ -120,12 +176,6 @@ app.post("/databases", async function (req, res) {
   var database_id = responseFromDB.data.id;
   //hasta aqui se genera la base de datos ########################################
 
-  //formato para generar paginas en la base de datos con las tareas del proyecto respectivas
-  //var promptsPages = "Genera y dime unica y exclusivamente el nombre de la primera tarea sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la primer tarea para llevar a cabo ese proyecto!";
-  //const response2 = await DBsd(name, promptsPages);
-  //console.log(response2);
-  //const ded2 = await pageGenerator(response2, database_id);
-  //res.json(ded2);
 
   //generamos las paginas de las tareas del proyecto ########################################
   var promptNumberOfTasks = "Genera y dime cuantas tareas tiene el proyecto unicamente genera el numero de tareas nada mas, generalo en formato numerico sin otra palabra!";
@@ -161,6 +211,31 @@ app.post("/databases", async function (req, res) {
     
     //var cronos1 = cronosShow(response2, database_id, response_T1, response_dueDate);
   } 
+  //mandamos las cosas a la base de datos postgresSQL
+  //to create the database we need to create a table with the name of the project and the tasks
+  /* CREATE TABLE project_details (
+    id SERIAL PRIMARY KEY,
+    database_name TEXT,
+    number_of_tasks INT,
+    steps TEXT[],
+    date_of_steps DATE[],
+    completion_of_steps BOOLEAN[],
+    steps_inside_resume TEXT[]
+  );*/
+
+  /*
+  var projectDetails = {
+  DatabaseName: [],
+  NumberOfTasks: [],
+  Steps: [],
+  dateOfSteps: [],
+  completionOfSteps: [],
+  StepsInsideResume: []
+  };*/
+
+
+
+
   console.log("fin de la creacion de la base de datos y las paginas de las tareas");
   var database_id_whitout_dash = database_id.replace(/-/g, "");
   console.log("https://www.notion.so/" + database_id_whitout_dash);
@@ -171,18 +246,49 @@ app.post("/databases", async function (req, res) {
   console.log("this is the data base")
   console.log(responseFromDB);
   //we need to add to responseFromDB a json for show the details of the project task and steps, and the insides of the project
-
-
-
+  insertProjectAndTasks(projectDetails);
+  
   // Add project details to the responseFromDB JSON
   responseFromDB.projectDetails = projectDetails;
-
+  //console.log(projectDetails);
+  
   // Add the modified responseFromDB to the response
   res.json(responseFromDB);
 
-
-    
 });
+
+
+
+
+async function insertProjectAndTasks(projectDetails) {
+  try {
+    const projectInsertResult = await executeQuery(
+      "INSERT INTO proyectos (nombre) VALUES ($1) RETURNING proyecto_id;",
+      [projectDetails.DatabaseName[0]]
+    );
+    const projectId = projectInsertResult.rows[0].proyecto_id;
+
+    for (const [index, step] of projectDetails.Steps.entries()) {
+      const taskInsertResult = await executeQuery(
+        "INSERT INTO tareas (proyecto_id, numero_de_tareas, fecha_de_los_pasos, completitud) VALUES ($1, $2, $3, $4) RETURNING tarea_id;",
+        [projectId, projectDetails.NumberOfTasks[index], projectDetails.dateOfSteps[index], false]
+      );
+      const taskId = taskInsertResult.rows[0].tarea_id;
+
+      await executeQuery(
+        "INSERT INTO pasos (tarea_id, descripcion, steps_inside_resume) VALUES ($1, $2, $3);",
+        [taskId, step, projectDetails.StepsInsideResume[index]]
+      );
+    }
+
+    console.log('Proyecto y tareas insertadas correctamente.');
+  } catch (err) {
+    console.error('Error al insertar proyecto y tareas:', err);
+  }
+}
+
+
+
 
 const resetProjectDetails = () => {
   projectDetails = {
@@ -395,58 +501,6 @@ app.post("/pages", async function (request, response) {
 	}
 });
 
-// Create new block (page content). The page ID is provided in the web form.
-app.post("/blocks", async function (request, response) {
-	const { pageID, content } = request.body;
-
-	try {
-		const newBlock = await notion.blocks.children.append({
-			block_id: pageID, // a block ID can be a page ID
-			children: [
-				{
-					// Use a paragraph as a default but the form or request can be updated to allow for other block types: https://developers.notion.com/reference/block#keys
-					paragraph: {
-						rich_text: [
-							{
-								text: {
-									content: content,
-								},
-							},
-						],
-					},
-				},
-			],
-		});
-		response.json({ message: "success!", data: newBlock });
-	} catch (error) {
-		response.json({ message: "error", error });
-	}
-});
-
-// Create new page comments. The page ID is provided in the web form.
-app.post("/comments", async function (request, response) {
-	const { pageID, comment } = request.body;
-
-	try {
-		const newComment = await notion.comments.create({
-			parent: {
-				page_id: pageID,
-			},
-			rich_text: [
-				{
-					text: {
-						content: comment,
-					},
-				},
-			],
-		});
-		response.json({ message: "success!", data: newComment });
-	} catch (error) {
-		response.json({ message: "error", error });
-	}
-});
-
-// listen for requests :)
 const listener = app.listen(port, function () {
 	console.log("Your app is listening on port " + listener.address().port);
 });

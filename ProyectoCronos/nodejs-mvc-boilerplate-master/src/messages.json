@@ -1,7 +1,7 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 29-05-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto de 1 tarea suma 2 + 2lo que no sepas imaginalo o generalo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto de 1 tarea suma 2 + 2lo que no sepas imaginalo o generalo!"
   },
   {
     "role": "user",
@@ -9,7 +9,7 @@
   },
   {
     "role": "assistant",
-    "content": "Operación Matemática Simple"
+    "content": "Título del Proyecto: \"Suma 2 + 2\""
   },
   {
     "role": "user",
@@ -25,7 +25,7 @@
   },
   {
     "role": "assistant",
-    "content": "Realizar la suma 2 + 2"
+    "content": "Sumar 2 + 2"
   },
   {
     "role": "user",
@@ -33,7 +33,7 @@
   },
   {
     "role": "assistant",
-    "content": "1. Reunir los números a sumar: 2 y 2.\n2. Escribir los números en una hoja de papel o en un documento.\n3. Realizar la suma de 2 + 2.\n4. Verificar el resultado obtenido.\n5. Confirmar que el resultado de la suma es 4.\n6. Marcar la tarea como completada."
+    "content": "1. Identificar los dos números a sumar: 2 y 2.\n2. Realizar la operación matemática de suma: 2 + 2.\n3. Obtener el resultado de la suma."
   },
   {
     "role": "user",
@@ -41,6 +41,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-05-29"
+    "content": "2024-06-04"
   }
 ]
