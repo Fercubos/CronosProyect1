@@ -194,6 +194,7 @@ dbForm.onsubmit = async function (event) {
 	event.preventDefault();
 	const name = event.target.dbName.value;
 	const body = JSON.stringify({ dbName });
+	const NameUser = "alejandro1213";
 	console.log("que carajo?");
 	const newAnchorTag1 = document.createElement("a");
 
@@ -221,7 +222,7 @@ dbForm.onsubmit = async function (event) {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ name: name }),
+		body: JSON.stringify({ name: name , NameUser: NameUser}),
 	});
 	const newDBData = await newDBResponse.json();
 

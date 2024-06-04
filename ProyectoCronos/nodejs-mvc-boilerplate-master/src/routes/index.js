@@ -7,15 +7,15 @@ import { pool } from '../database.js'; // Asegúrate de que la extensión del ar
 const router = express.Router();
 var user = "alejandro1";
 // Ruta principal de la aplicación AAronRespondeporElla
-router.get("/cronos1", function (request, response) {
+router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
 	response.render("layout/index3.ejs", {
-		usuario1: user,
+		usuario1: request.user.name,
 		proyects: "desactive",
 	});
 });
 
-router.get("/Proyects", async function (request, response) {
+router.get("/Proyects", checkNotAuthenticated , async function (request, response) {
 	//ruta para los proyectos
 	console.log("Proyectos");
 	console.log(request.body);
@@ -37,7 +37,7 @@ router.get("/Proyects", async function (request, response) {
 		response.render("layout/index3.ejs", {
 			usuario1: "1",
 			proyects: "active",
-			usuario1: "proyectaso",
+			usuario1: request.user.name,
 			proyectosCronos: "",
 			numP: "",
 			proyectSelected : "",
@@ -108,7 +108,7 @@ router.get('/signup', checkAuthenticated, (req, res) => {
     res.render('signup');
 });
 
-router.get("/", function (req, res) {
+router.get("/",checkAuthenticated ,function (req, res) {
 	//ruta principal
      res.render('signup');
 });
@@ -176,7 +176,7 @@ router.post('/signin', (req, res, next) => {
         email
     });
     passport.authenticate("local", {
-        successRedirect: '/dashboard',
+        successRedirect: '/cronos1',
         failureRedirect: '/signin',
         failureFlash: true
     })(req, res, next);
@@ -197,7 +197,7 @@ router.get("/logout", (req, res, next) => {
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/dashboard');
+        return res.redirect('/cronos1');
     }
     next();
 }

@@ -3,6 +3,7 @@ const { pool } = require('../database');
 const bcrypt = require('bcryptjs');
 
 
+
 //pattern matchin es una forma de buscar una cadena de texto dentro de otra cadena de texto
 function initialize(passport) {
     console.log("Passport initialized");
