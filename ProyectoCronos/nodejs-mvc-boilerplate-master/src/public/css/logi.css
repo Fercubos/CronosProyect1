@@ -2,16 +2,36 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(100deg, #b99254, #e2d4ad);
+    background: linear-gradient(100deg, #a48249, #fefaf2);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.Titles1s{
+    --body-font: 'Nunito', sans-serif;
+    display: flex;
+    font-size: 6rem;
+    color: #a48249;
+    max-width: calc(100% - 5rem);
+    line-height: 1.1;
+    margin-top: -14rem;
+    margin-left: 1rem;
+    /* margin-top: -2rem; */
+  }
+  
+  .sedan-sc-regular {
+    font-family: "Sedan SC", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
 .formulario {
+    margin-left: -6.5rem;
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     background: white;
     border-radius: 10px;
     padding: 20px;
