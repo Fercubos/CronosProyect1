@@ -1,10 +1,11 @@
-const LocalStrategy = require('passport-local').Strategy;
-const { pool } = require('../database');
-const bcrypt = require('bcryptjs');
+import { Strategy as LocalStrategy } from 'passport-local';
+import { pool } from '../database.js'; // Asegúrate de incluir la extensión del archivo
+import bcrypt from 'bcryptjs';
+
 
 
 //pattern matchin es una forma de buscar una cadena de texto dentro de otra cadena de texto
-function initialize(passport) {
+function initializePassport(passport) {
     console.log("Passport initialized");
 
     const authenticateUser = (email, password, done) => {
@@ -67,6 +68,7 @@ function initialize(passport) {
             done(null, results.rows[0]);
         });
     });
+
 }
 
-module.exports = initialize;
+export default initializePassport;

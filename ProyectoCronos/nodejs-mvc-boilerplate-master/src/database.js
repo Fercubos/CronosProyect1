@@ -1,9 +1,9 @@
 //credenciales
-require("dotenv").config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-
-const {Pool} = require("pg");
-
+import pkg from 'pg';
+const { Pool } = pkg;
 //
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -30,4 +30,4 @@ pool.connect()
     .catch(err => console.error("Connection error", err.stack));
 
 // Exportar el pool para poder usarlo en otros archivos
-module.exports = {pool};
+export { pool };
