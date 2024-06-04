@@ -65,13 +65,20 @@
             <div class="Titles1s ">
               <img id="dedlogo" src="/buosinback.png" alt="logo"/>
             </div>
-            <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
-              <p>Proyectos de Cronos</p>
+            <div class="Titles1s sedan-sc-regular " style="margin-top: -4rem; min-width: 90rem;">
+              <% if (noExistenProyectos != "true") { %>
+              <p style="margin-left: -4rem; ">Proyectos de Cronos</p>
+              <img style= " margin-top: 1rem;" src= "/notion.png" class="NotionImg" alt="Notion"/>
+              <!-- <p style="margin-top: 1rem; font-size: 1rem;">Click aqui para que te lleve al Notion</p>
+              <p style="margin-top: 1rem; font-size: 1rem;"> del selecionado</p> -->
+              <% }else{ %>
+              <p style="margin-top: 1rem;">Proyectos de Cronos</p>
+              <% } %>
             </div>
           </div>
         </div>
         
-      <% if (true) { %>
+      <% if (noExistenProyectos == "true") { %>
           <div class="main1 main">
             <h2 style="margin-top: -1rem;">No hay proyectos en Cronos</h2>
             <p style="margin-top: 0rem;">

@@ -1,15 +1,15 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto para aprender c++ en 2 semanaslo que no sepas imaginalo o generalo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto de 1 tarea suma 2 + 2lo que no sepas imaginalo o generalo!"
   },
   {
     "role": "user",
-    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: haz un proyecto para aprender c++ en 2 semanas"
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: haz un proyecto de 1 tarea suma 2 + 2"
   },
   {
     "role": "assistant",
-    "content": "Curso Intensivo de C++ en 2 Semanas"
+    "content": "Suma simple: 2 + 2"
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "10"
+    "content": "1"
   },
   {
     "role": "user",
@@ -25,15 +25,15 @@
   },
   {
     "role": "assistant",
-    "content": "Instalación del entorno de desarrollo C++"
+    "content": "Sumar 2 + 2"
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: haz un proyecto de 1 tarea suma 2 + 2![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Descargar e instalar un compilador C++ como MinGW para Windows, g++ para Linux o Xcode para macOS.\n2. Verificar la instalación del compilador y configurar las variables de entorno necesarias.\n3. Crear un primer programa \"Hola Mundo\" en C++ para probar que el entorno de desarrollo está correctamente configurado.\n4. Compilar el programa utilizando el compilador instalado.\n5. Ejecutar el programa para asegurarse de que funcione correctamente e imprimir el mensaje \"Hola Mundo\" en la consola."
+    "content": "1. Abrir una calculadora o aplicación de sumas.\n2. Ingresar el número 2.\n3. Presionar el símbolo de suma (+).\n4. Ingresar nuevamente el número 2.\n5. Presionar el botón de igual (=).\n6. Verificar que el resultado sea 4."
   },
   {
     "role": "user",
@@ -41,222 +41,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-05"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 2 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Configuración del editor de código"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Seleccionar un editor de código como Visual Studio Code, Code::Blocks, o cualquier otro de preferencia.\n2. Configurar el editor según las preferencias personales y las necesidades del desarrollo en C++.\n3. Instalar extensiones o plugins para el editor que faciliten la escritura, depuración y compilación de código en C++.\n4. Configurar atajos de teclado y personalizar la interfaz del editor para una experiencia de programación más eficiente y cómoda."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 2 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-06"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 3 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Estudio de la sintaxis básica de C++"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 3 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Investigar y comprender los conceptos fundamentales de la sintaxis de C++, como variables, tipos de datos, operadores, estructuras de control y funciones.\n2. Practicar escribiendo ejemplos simples de código que involucren la utilización de variables, operadores y estructuras básicas en C++.\n3. Realizar ejercicios de programación que requieran el uso de funciones para consolidar el entendimiento de cómo se definen y utilizan en C++.\n4. Revisar la documentación oficial de C++ para aclarar dudas y profundizar en la comprensión de la sintaxis y estructuras del lenguaje."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 3 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-07"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 4 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Ejercicios de Programación"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 4 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Plantear una serie de problemas o ejercicios de programación que requieran el uso de los conceptos básicos aprendidos en C++.\n2. Definir claramente los objetivos y requisitos de cada ejercicio para tener una guía clara de lo que se espera lograr.\n3. Resolver cada ejercicio utilizando la sintaxis y estructuras de C++ adecuadas.\n4. Probar y depurar los programas escritos para corregir posibles errores y garantizar su correcto funcionamiento.\n5. Revisar y analizar la solución de cada ejercicio para identificar áreas de mejora y reforzar el aprendizaje."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 4 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-08"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 5 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Proyectos Prácticos"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 5 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Seleccionar un proyecto práctico que involucre la aplicación de los conceptos aprendidos en C++.\n2. Diseñar la estructura y la lógica del proyecto, definiendo los requisitos y funcionalidades que debe incluir.\n3. Implementar el proyecto utilizando C++ y asegurarse de seguir buenas prácticas de programación.\n4. Realizar pruebas exhaustivas para verificar que el proyecto funciona según lo esperado y corregir posibles errores.\n5. Documentar el código y el funcionamiento del proyecto para facilitar su comprensión y futuras modificaciones."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 5 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-09"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 6 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Debugging y Optimización"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 6 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Identificar y comprender los errores o fallos en el código fuente del proyecto mediante herramientas de debugging.\n2. Utilizar técnicas de depuración para corregir los errores encontrados, como la revisión de variables, el seguimiento de la ejecución del programa y la identificación de posibles causas de los fallos.\n3. Realizar pruebas exhaustivas para verificar que los errores han sido solucionados de forma efectiva.\n4. Optimizar el código del proyecto, revisando y mejorando su eficiencia en términos de tiempo de ejecución y uso de recursos.\n5. Aplicar técnicas de optimización de código en C++ para mejorar su rendimiento y calidad."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 6 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-10"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 7 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Revisión y Mejora"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 7 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Realizar una revisión exhaustiva del código del proyecto para identificar posibles áreas de mejora, como la claridad, legibilidad y eficiencia del código.\n2. Analizar la estructura del proyecto y la organización del código, asegurando que sigue buenas prácticas de programación en C++.\n3. Implementar mejoras en el código según las recomendaciones de la revisión, como la simplificación de algoritmos, la eliminación de código redundante o la optimización de procesos.\n4. Verificar que las modificaciones realizadas no introducen nuevos errores y que el proyecto sigue funcionando correctamente después de las mejoras.\n5. Documentar los cambios efectuados en el proyecto y las razones detrás de las mejoras realizadas para futuras referencias."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 7 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-11"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 8 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Documentación del Proyecto"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 8 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Crear un documento que incluya una introducción al proyecto, especificando su propósito y alcance.\n2. Detallar la estructura del proyecto, incluyendo los diferentes componentes, módulos y funciones desarrolladas en C++.\n3. Documentar el proceso de diseño y desarrollo del proyecto, explicando la toma de decisiones y los retos encontrados durante la implementación.\n4. Incluir ejemplos de código relevante dentro de la documentación para ilustrar conceptos clave o características específicas del proyecto.\n5. Agregar instrucciones para la compilación, ejecución y uso del proyecto, así como cualquier configuración adicional necesaria."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 8 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-12"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 9 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Preparación de Presentación"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 9 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Organizar la información relevante del proyecto, destacando los objetivos, el proceso de desarrollo, las funciones clave y los resultados obtenidos.\n2. Diseñar diapositivas claras y concisas que presenten la información de forma visual y atractiva.\n3. Practicar la presentación para asegurar una comunicación efectiva y fluidez al exponer los detalles del proyecto.\n4. Preparar material adicional, como demostraciones en vivo, ejemplos de código o gráficos, para enriquecer la presentación.\n5. Revisar y ajustar la presentación según el tiempo asignado y el público al que se va a dirigir."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 9 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-13"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 10 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Entrega Final"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 10 del proyecto: haz un proyecto para aprender c++ en 2 semanas![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Revisar y asegurar que todos los componentes del proyecto estén completos y funcionando correctamente.\n2. Empaquetar o comprimir el proyecto en un archivo que contenga todo el código fuente, la documentación y cualquier otro material relevante.\n3. Preparar una descripción breve del proyecto que incluya sus características principales y su propósito.\n4. Enviar el proyecto final a la persona o plataforma designada para la evaluación o revisión.\n5. Confirmar la recepción del proyecto y estar disponible para responder cualquier pregunta o comentario adicional."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 10 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-14"
+    "content": "2024-06-04"
   }
 ]

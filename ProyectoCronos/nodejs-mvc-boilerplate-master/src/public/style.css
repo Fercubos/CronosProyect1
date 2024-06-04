@@ -109,6 +109,13 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
 }
 
+.NotionImg{
+  width: 100px;
+  height: 100px;
+  margin-top: -1rem;
+  margin-left: 4rem;
+}
+
 .tableForProyects{
   display: flex;
   flex-direction: column;

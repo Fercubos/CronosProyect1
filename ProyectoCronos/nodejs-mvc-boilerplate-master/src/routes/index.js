@@ -12,18 +12,23 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	response.render("layout/index3.ejs", {
 		usuario1: request.user.name,
 		proyects: "desactive",
+		user_id1: request.user.id,
 	});
 });
 
 router.get("/Proyects", checkNotAuthenticated , async function (request, response) {
 	//ruta para los proyectos
 	console.log("Proyectos");
-	console.log(request.body);
+	console.log(request.query);
+	const NameUser = request.query.usuario1; 
+	console.log(NameUser);
+	//anadimos nameUser para que se sepa cuales proyectos solicitamos
 	var proyectosCronos = await fetch("http://localhost:4120/giveProyects", {
-		method: "GET",
+		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
+		body: JSON.stringify({ NameUser }),
 	});
 	console.log("fetching");
 	
@@ -35,9 +40,9 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
 		console.log("No hay proyectos registrados. en el if");
 		response.render("layout/index3.ejs", {
-			usuario1: "1",
 			proyects: "active",
 			usuario1: request.user.name,
+			user_id1: request.user.id,
 			proyectosCronos: "",
 			numP: "",
 			proyectSelected : "",
@@ -51,8 +56,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		console.log("PRUEBA: " + proyectosCronos.proyectos.length);
 		var numPer = proyectosCronos.proyectos.length;
 			
-		console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
-		console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
+		//console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
+		//console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
 		var proyectSelected = 0;
 		if(request.query.projectId != undefined){
 			proyectSelected = request.query.projectId;
@@ -69,8 +74,10 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 
 		response.render("layout/index3.ejs", {
 			proyects: "active",
-			usuario1: "proyectaso",
 			proyectosCronos: proyectosCronos,
+			usuario1: request.user.name,
+			user_id1: request.user.id,
+			noExistenProyectos : "false",
 			numP: numPer,
 			proyectSelected : proyectSelected,
 			taskSelected : taskSelected,
@@ -87,6 +94,9 @@ router.post("/databases", async (req, res) => {
 		//ruta para obtener las bases de datos de notion
 		console.log(req.body);
 		var response = JSON.stringify(req.body);
+		console.log("heydwadwadwadwa");
+		console.log(response);
+		
 		try {
 			var databases = await fetch("http://localhost:4120/databases", {
 				method: "POST",
