@@ -1,5 +1,5 @@
 {
-  "name": "login",
+  "name": "Cronos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -22,6 +22,7 @@
     "express-session": "^1.18.0",
     "fs": "^0.0.1-security",
     "fullcalendar": "^6.1.13",
+    "jquery": "^3.7.1",
     "luxon": "^3.4.4",
     "mongoose": "^8.4.0",
     "morgan": "^1.10.0",

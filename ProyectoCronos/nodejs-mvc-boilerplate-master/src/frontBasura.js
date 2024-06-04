@@ -10,6 +10,7 @@ import fetch from "node-fetch";
 import path from "path";
 import engine from "ejs-mate";
 import morgan from "morgan";
+import jquery from "jquery";
 
 //Initializations
 //manejo de la hora y fecha
@@ -34,7 +35,8 @@ const __dirname = path.resolve(path.dirname(""));
 app.use(express.static(__dirname + "/public"));
 
 var user = "alejandro1";
-
+var proyectosCronos = "1";
+var numP = "";
 //Routes
 //http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
@@ -45,33 +47,93 @@ app.get("/", function (request, response) {
 	});
 });
 
-app.post("/Proyects", function (request, response) {
+app.get("/Proyects", async function (request, response) {
 	//ruta para los proyectos
-	response.render(__dirname + "/views/layout/index3.ejs", {
-		proyects: "active",
-		usuario1: "proyectaso",
+	console.log("Proyectos");
+	console.log(request.body);
+	var proyectosCronos = await fetch("http://localhost:4120/giveProyects", {
+		method: "GET",
+		headers: {
+			"Content-Type": "application/json",
+		},
 	});
-});
+	console.log("fetching");
+	
+	proyectosCronos = await proyectosCronos.json();
 
-app.post("/databases", async (req, res) => {
-	//ruta para obtener las bases de datos de notion
-	console.log(req.body);
-	var response = JSON.stringify(req.body);
-	try {
-		var databases = await fetch("http://localhost:4120/databases", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: response,
+	console.log(proyectosCronos.proyects);
+
+	//si la respuesta es un res status 204 no hay proyectos
+	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
+		console.log("No hay proyectos registrados. en el if");
+		response.render(__dirname + "/views/layout/index3.ejs", {
+			usuario1: "1",
+			proyects: "active",
+			usuario1: "proyectaso",
+			proyectosCronos: "",
+			numP: "",
+			proyectSelected : "",
+			taskSelected : "",
+			noExistenProyectos : "true",
+
 		});
-		databases = await databases.json();
-		res.json(databases);
-	} catch (error) {
-		console.error(error);
-		res.status(500).send("Error fetching databases");
-	}
-});
+	} else {
+		console.log("NOMBRE: " + proyectosCronos.proyectos[0].nombre);
+
+		console.log("PRUEBA: " + proyectosCronos.proyectos.length);
+		var numPer = proyectosCronos.proyectos.length;
+			
+		console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
+		console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
+		var proyectSelected = 0;
+		if(request.query.projectId != undefined){
+			proyectSelected = request.query.projectId;
+		}
+		var taskSelected = 0;
+		if(request.query.taskId != undefined){
+			taskSelected = request.query.taskId;
+		}
+
+		console.log(request.query.projectId);
+		console.log(request.query.taskId);
+		//como hago para que imprima las tareas de cada proyecto sin imprimir object object
+		console.log(proyectosCronos)
+
+		response.render(__dirname + "/views/layout/index3.ejs", {
+			proyects: "active",
+			usuario1: "proyectaso",
+			proyectosCronos: proyectosCronos,
+			numP: numPer,
+			proyectSelected : proyectSelected,
+			taskSelected : taskSelected,
+		});
+		}
+	});
+
+
+
+
+
+
+	app.post("/databases", async (req, res) => {
+		//ruta para obtener las bases de datos de notion
+		console.log(req.body);
+		var response = JSON.stringify(req.body);
+		try {
+			var databases = await fetch("http://localhost:4120/databases", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: response,
+			});
+			databases = await databases.json();
+			res.json(databases);
+		} catch (error) {
+			console.error(error);
+			res.status(500).send("Error fetching databases");
+		}
+	});
 
 //Empezando server
 

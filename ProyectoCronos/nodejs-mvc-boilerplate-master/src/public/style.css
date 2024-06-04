@@ -104,16 +104,102 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 */
 
+.tableContainer{
+  display: flex;
+
+}
+
 .tableForProyects{
   display: flex;
-  width: 30%;
-  min-height: 20%;
+  flex-direction: column;
+  width: 25%;
   border: 1px solid #a48249;
   border-radius: 2rem;
   margin-top: 3rem;
   padding: 1rem;
   box-shadow: 0 0 40px #a48249;
 }
+
+.brown-buttonforproyectsname {
+  background-color: #95743b; /* saddle brown */
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.tableForTasks{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  border: 1px solid #a48249;
+  border-radius: 2rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 40px #a48249;
+}
+
+.titlesForTables{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-self: center;
+  margin-top: 0.5rem;
+  margin-left: 20%;
+  color: #a48249;
+  
+
+
+}
+.tableForSteps{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  border: 1px solid #a48249;
+  border-radius: 2rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  padding: 1rem;
+  box-shadow: 0 0 40px #a48249;
+}
+
+.brown-buttonforTasks {
+  background-color: #95743b; /* saddle brown */
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+
+.brown-buttonforSteps {
+  background-color: #f8f9fa; /* saddle brown */
+  color: #a48249;
+  border: none;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 8px;
+}
+
 
 .calendar-container {
 width: 50%;
@@ -254,7 +340,57 @@ footer {
   .div2{
     flex-direction: column;
   }
+  .tableContainer{
+    flex-direction: column;
+  }
   
+.tableForProyects{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid #a48249;
+  border-radius: 2rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  box-shadow: 0 0 40px #a48249;
+}
+
+.tableForTasks{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 0rem;
+  margin-top: 1rem;
+
+}
+.tableForSteps{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 0rem;
+  margin-top: 1rem;
+}
+
+.brown-buttonforTasks {
+  background-color: #95743b; /* saddle brown */
+  color: white;
+  border: none;
+  width: 100%;
+}
+
+
+.brown-buttonforSteps {
+  background-color: #f8f9fa; /* saddle brown */
+  color: #a48249;
+  border: none;
+  width: 100%;
+}
+
+.Titles1s{
+  font-size: 3rem;
+}
+
+
 }
 
 /* Animación que cambia la escala y la opacidad para dar un efecto pulsante */

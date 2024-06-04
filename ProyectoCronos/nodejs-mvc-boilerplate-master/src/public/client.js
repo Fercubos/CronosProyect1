@@ -4,6 +4,40 @@
  * Define variables that reference elements included in /views/index.html:
  */
 
+// $("#proyectf0").click(function () {
+// 	alert("hola");
+// 	proyectSelected = 0;
+
+// });
+
+$(document).ready(function() {
+	
+    $("[id^='proyectf']").click(function() {
+        var projectId = parseInt(this.id.replace('proyectf', ''));
+		localStorage.setItem('projectId', projectId);  // Guarda en localStorage
+
+        // Construye una nueva URL con el projectId como parámetro de consulta
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId;
+        // Redirige a la nueva URL
+        window.location.href = newUrl;
+    });
+	
+	
+	$("[id^='taskf']").click(function() {
+		var taskId = parseInt(this.id.replace('taskf', ''));
+        var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
+
+		var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId;
+		window.location.href = newUrl2;
+	});
+
+});
+
+
+
+
+
+
 // SIDEBAR TOGGLE ############################################
 document.addEventListener("DOMContentLoaded", function(event) {
    
@@ -206,6 +240,13 @@ dbForm.onsubmit = async function (event) {
 	dbResponseEl.removeChild(newAnchorTag1);
 };
 
+//hacer que mande un fetch a la front basura para que me de los proyectos con jquery en el boton de proyectos
+//este es el boton de tareas             <button class="brown-buttonforTasks" id ="task<%=i%>"> <%= proyectosCronos.proyectos[3].tareas[i].pasos[0].descripcion%></button>
+
+
+
+
+
 //############################################################################################################
 //hacemos una funcion para agregar la respuesta de la api a la interfaz de usuario de Cronos
 appendApiResponseToCronosUI = function (data) {
@@ -334,67 +375,3 @@ appendApiResponseToCronosUI = function (data) {
 	calendar.render();
 };
 
-// Agregar el contenedor principal al cuerpo del documento
-
-// Llamar a la función con los datos de ejemplo
-
-//############################################################################################################
-// pageForm.onsubmit = async function (event) {
-// 	event.preventDefault();
-
-// 	const dbID = event.target.newPageDB.value;
-// 	const pageName = event.target.newPageName.value;
-// 	const header = event.target.header.value;
-// 	const body = JSON.stringify({ dbID, pageName, header });
-// 	//  const dueDate = event.target.dueDate.value
-
-// 	const newPageResponse = await fetch("/pages", {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body,
-// 	});
-
-// 	const newPageData = await newPageResponse.json();
-// 	appendApiResponse(newPageData, pageResponseEl);
-// };
-
-// blocksForm.onsubmit = async function (event) {
-// 	event.preventDefault();
-
-// 	const pageID = event.target.pageID.value;
-// 	const content = event.target.content.value;
-// 	const body = JSON.stringify({ pageID, content });
-
-// 	const newBlockResponse = await fetch("/blocks", {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body,
-// 	});
-
-// 	const newBlockData = await newBlockResponse.json();
-// 	appendBlocksResponse(newBlockData, blocksResponseEl);
-// };
-
-// commentForm.onsubmit = async function (event) {
-// 	event.preventDefault();
-
-// 	const pageID = event.target.pageIDComment.value;
-// 	const comment = event.target.comment.value;
-// 	const body = JSON.stringify({ pageID, comment });
-// 	// Selecciona el elemento main y aplica la clase de transformación
-
-// 	const newCommentResponse = await fetch("/comments", {
-// 		method: "POST",
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body,
-// 	});
-
-// 	const newCommentData = await newCommentResponse.json();
-// 	appendApiResponse(newCommentData, commentResponseEl);
-// };

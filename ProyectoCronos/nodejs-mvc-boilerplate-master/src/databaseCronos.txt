@@ -1,0 +1,33 @@
+CREATE TABLE users (
+id BIGSERIAL PRIMARY KEY NOT NULL, 
+name VARCHAR(200) NOT NULL,
+email VARCHAR(200) NOT NULL, 
+password VARCHAR(200) NOT NULL, 
+UNIQUE (email)
+);
+
+CREATE TABLE proyectos (
+    proyecto_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE tareas (
+    tarea_id SERIAL PRIMARY KEY,
+    proyecto_id INT NOT NULL,
+    numero_de_tareas INT,
+    fecha_de_los_pasos DATE,
+    completitud BOOLEAN,
+    FOREIGN KEY (proyecto_id) REFERENCES proyectos(proyecto_id)
+);
+
+
+CREATE TABLE pasos (
+    paso_id SERIAL PRIMARY KEY,
+    tarea_id INT NOT NULL,
+    descripcion VARCHAR(1024),
+    steps_inside_resume TEXT,
+    FOREIGN KEY (tarea_id) REFERENCES tareas(tarea_id)
+);
+
