@@ -81,7 +81,7 @@ app.post("/giveProyects", async function (req, res) {
 
 async function getProjectsDetails(userId) {
   const query = `
-    SELECT p.proyecto_id, p.nombre, t.tarea_id, t.numero_de_tareas, t.fecha_de_los_pasos, t.completitud, ps.paso_id, ps.descripcion, ps.steps_inside_resume
+    SELECT p.proyecto_id, p.nombre, p.proyect_notion_url, t.tarea_id, t.numero_de_tareas, t.fecha_de_los_pasos, t.completitud, ps.paso_id, ps.descripcion, ps.steps_inside_resume
     FROM proyectos p
     JOIN tareas t ON p.proyecto_id = t.proyecto_id
     JOIN pasos ps ON t.tarea_id = ps.tarea_id
@@ -110,6 +110,7 @@ function formatProjectDetails(rows) {
       projects[row.proyecto_id] = {
         id: row.proyecto_id,
         nombre: row.nombre,
+        proyect_notion_url: row.proyect_notion_url, // Añadimos la URL de Notion aquí
         tareas: [],
       };
     }
@@ -139,6 +140,7 @@ function formatProjectDetails(rows) {
 
   return Object.values(projects);
 }
+
 
 async function executeQuery(query, params) {
   const client = await pool.connect();

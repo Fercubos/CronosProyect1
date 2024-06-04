@@ -48,6 +48,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			proyectSelected : "",
 			taskSelected : "",
 			noExistenProyectos : "true",
+			notion_url : "",
 
 		});
 	} else {
@@ -55,7 +56,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 
 		console.log("PRUEBA: " + proyectosCronos.proyectos.length);
 		var numPer = proyectosCronos.proyectos.length;
-			
+
 		//console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
 		//console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
 		var proyectSelected = 0;
@@ -71,7 +72,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		console.log(request.query.taskId);
 		//como hago para que imprima las tareas de cada proyecto sin imprimir object object
 		console.log(proyectosCronos)
-
+		console.log(proyectosCronos.proyectos[proyectSelected].proyect_notion_url)
+		var notion_url = proyectosCronos.proyectos[proyectSelected].proyect_notion_url;
 		response.render("layout/index3.ejs", {
 			proyects: "active",
 			proyectosCronos: proyectosCronos,
@@ -81,6 +83,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			numP: numPer,
 			proyectSelected : proyectSelected,
 			taskSelected : taskSelected,
+			notion_url : notion_url,
+			
 		});
 		}
 	});

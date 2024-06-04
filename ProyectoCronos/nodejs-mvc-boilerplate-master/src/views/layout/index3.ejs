@@ -68,11 +68,13 @@
             <div class="Titles1s sedan-sc-regular " style="margin-top: -4rem; min-width: 90rem;">
               <% if (noExistenProyectos != "true") { %>
               <p style="margin-left: -4rem; ">Proyectos de Cronos</p>
-              <img style= " margin-top: 1rem;" src= "/notion.png" class="NotionImg" alt="Notion"/>
+              <a href="<%= notion_url %>" target = "_blank">
+              <img  style= " margin-top: 1rem;" src= "/notion.png" class="NotionImg" alt="Notion"/>
+            </a>
               <!-- <p style="margin-top: 1rem; font-size: 1rem;">Click aqui para que te lleve al Notion</p>
               <p style="margin-top: 1rem; font-size: 1rem;"> del selecionado</p> -->
               <% }else{ %>
-              <p style="margin-top: 1rem;">Proyectos de Cronos</p>
+              <p style="margin-top: 1rem; margin-left: -10rem;">Proyectos de Cronos</p>
               <% } %>
             </div>
           </div>
@@ -80,8 +82,8 @@
         
       <% if (noExistenProyectos == "true") { %>
           <div class="main1 main">
-            <h2 style="margin-top: -1rem;">No hay proyectos en Cronos</h2>
-            <p style="margin-top: 0rem;">
+            <h2 style="margin-top: -1rem; margin-left: -2rem;">No hay proyectos en Cronos</h2>
+            <p style="margin-top: 0rem; margin-left: -2rem;">
               No hay proyectos en Cronos, por favor crea uno.
             </p>
           </div>
