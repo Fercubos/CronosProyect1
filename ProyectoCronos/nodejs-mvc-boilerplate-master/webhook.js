@@ -1,5 +1,6 @@
-const express = require('express');
-const { exec } = require('child_process');
+import express from 'express';
+import { exec } from 'child_process';
+
 const app = express();
 const port = 80;
 
@@ -9,7 +10,7 @@ app.post('/webhook', (req, res) => {
   console.log('Webhook received!');
   const { ref } = req.body;
   if (ref === 'refs/heads/main') {  // Cambia 'main' por tu rama principal si es diferente
-    exec('git pull && npm install && pm2 restart all', (err, stdout, stderr) => {
+    exec('cd /home/aypierre225/ProyectoCronos05/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master && git pull && npm install && pm2 restart all', (err, stdout, stderr) => {
       if (err) {
         console.error(`exec error: ${err}`);
         return res.sendStatus(500);
