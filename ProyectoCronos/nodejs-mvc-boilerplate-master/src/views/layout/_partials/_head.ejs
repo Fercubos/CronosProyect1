@@ -33,6 +33,11 @@
     <link rel="stylesheet" href="/css/style1.css" />
     <link rel="stylesheet" href="/style.css" />
     
+    <script>
+      window.user_id1 = "<%= user_id1 %>";
+    </script>
+
+
     <!-- import the webpage's client-side javascript file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="/client.js" defer></script>
@@ -54,9 +59,9 @@
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span>   </a>-->
                   <!-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>  -->
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>  -->
-                  <a href="/Proyects" <% if (proyects === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>><i class='bx bx-folder nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Proyectos</span> </a> 
+                  <a href="/Proyects?usuario1=<%= user_id1 %>" <% if (proyects === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>><i class='bx bx-folder nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Proyectos</span> </a> 
                   <!-- <a href="/" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Status</span> </a>  -->
                 </div>
-              </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+              </div> <a href="/logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
           </nav>
       </div>

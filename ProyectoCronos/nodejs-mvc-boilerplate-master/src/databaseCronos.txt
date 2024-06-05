@@ -31,3 +31,5 @@ CREATE TABLE pasos (
     FOREIGN KEY (tarea_id) REFERENCES tareas(tarea_id)
 );
 
+ALTER TABLE proyectos
+ADD COLUMN proyect_notion_url VARCHAR(255);

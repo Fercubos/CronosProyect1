@@ -7,23 +7,28 @@ import { pool } from '../database.js'; // Asegúrate de que la extensión del ar
 const router = express.Router();
 var user = "alejandro1";
 // Ruta principal de la aplicación AAronRespondeporElla
-router.get("/cronos1", function (request, response) {
+router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
 	response.render("layout/index3.ejs", {
-		usuario1: user,
+		usuario1: request.user.name,
 		proyects: "desactive",
+		user_id1: request.user.id,
 	});
 });
 
-router.get("/Proyects", async function (request, response) {
+router.get("/Proyects", checkNotAuthenticated , async function (request, response) {
 	//ruta para los proyectos
 	console.log("Proyectos");
-	console.log(request.body);
+	console.log(request.query);
+	const NameUser = request.query.usuario1; 
+	console.log(NameUser);
+	//anadimos nameUser para que se sepa cuales proyectos solicitamos
 	var proyectosCronos = await fetch("http://localhost:4120/giveProyects", {
-		method: "GET",
+		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
+		body: JSON.stringify({ NameUser }),
 	});
 	console.log("fetching");
 	
@@ -35,14 +40,15 @@ router.get("/Proyects", async function (request, response) {
 	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
 		console.log("No hay proyectos registrados. en el if");
 		response.render("layout/index3.ejs", {
-			usuario1: "1",
 			proyects: "active",
-			usuario1: "proyectaso",
+			usuario1: request.user.name,
+			user_id1: request.user.id,
 			proyectosCronos: "",
 			numP: "",
 			proyectSelected : "",
 			taskSelected : "",
 			noExistenProyectos : "true",
+			notion_url : "",
 
 		});
 	} else {
@@ -50,11 +56,11 @@ router.get("/Proyects", async function (request, response) {
 
 		console.log("PRUEBA: " + proyectosCronos.proyectos.length);
 		var numPer = proyectosCronos.proyectos.length;
-			
-		console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
-		console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
+
+		//console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
+		//console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
 		var proyectSelected = 0;
-		if(request.query.projectId != undefined){
+		if(request.query.projectId != undefined && request.query.projectId != null){
 			proyectSelected = request.query.projectId;
 		}
 		var taskSelected = 0;
@@ -66,14 +72,30 @@ router.get("/Proyects", async function (request, response) {
 		console.log(request.query.taskId);
 		//como hago para que imprima las tareas de cada proyecto sin imprimir object object
 		console.log(proyectosCronos)
+		console.log(proyectSelected);
+		console.log(taskSelected);
+		try{
+			
+			if (proyectosCronos.proyectos[proyectSelected].proyect_notion_url != null){
+				var notion_url = proyectosCronos.proyectos[proyectSelected].proyect_notion_url || "";
+				console.log(notion_url);		
+			}
+		}catch(e){
+			console.log("No hay url de notion");
+		}
+		
 
 		response.render("layout/index3.ejs", {
 			proyects: "active",
-			usuario1: "proyectaso",
 			proyectosCronos: proyectosCronos,
+			usuario1: request.user.name,
+			user_id1: request.user.id,
+			noExistenProyectos : "false",
 			numP: numPer,
 			proyectSelected : proyectSelected,
 			taskSelected : taskSelected,
+			notion_url : notion_url || "",
+			
 		});
 		}
 	});
@@ -87,6 +109,9 @@ router.post("/databases", async (req, res) => {
 		//ruta para obtener las bases de datos de notion
 		console.log(req.body);
 		var response = JSON.stringify(req.body);
+		console.log("heydwadwadwadwa");
+		console.log(response);
+		
 		try {
 			var databases = await fetch("http://localhost:4120/databases", {
 				method: "POST",
@@ -108,7 +133,7 @@ router.get('/signup', checkAuthenticated, (req, res) => {
     res.render('signup');
 });
 
-router.get("/", function (req, res) {
+router.get("/",checkAuthenticated ,function (req, res) {
 	//ruta principal
      res.render('signup');
 });
@@ -176,7 +201,7 @@ router.post('/signin', (req, res, next) => {
         email
     });
     passport.authenticate("local", {
-        successRedirect: '/dashboard',
+        successRedirect: '/cronos1',
         failureRedirect: '/signin',
         failureFlash: true
     })(req, res, next);
@@ -197,7 +222,7 @@ router.get("/logout", (req, res, next) => {
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect('/dashboard');
+        return res.redirect('/cronos1');
     }
     next();
 }

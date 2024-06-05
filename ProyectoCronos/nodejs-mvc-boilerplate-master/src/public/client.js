@@ -14,10 +14,11 @@ $(document).ready(function() {
 	
     $("[id^='proyectf']").click(function() {
         var projectId = parseInt(this.id.replace('proyectf', ''));
+
 		localStorage.setItem('projectId', projectId);  // Guarda en localStorage
 
         // Construye una nueva URL con el projectId como parámetro de consulta
-        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId;
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&usuario1=' + user_id1; 
         // Redirige a la nueva URL
         window.location.href = newUrl;
     });
@@ -26,8 +27,7 @@ $(document).ready(function() {
 	$("[id^='taskf']").click(function() {
 		var taskId = parseInt(this.id.replace('taskf', ''));
         var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
-
-		var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId;
+		var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId + '&usuario1=' + user_id1;
 		window.location.href = newUrl2;
 	});
 
@@ -194,6 +194,7 @@ dbForm.onsubmit = async function (event) {
 	event.preventDefault();
 	const name = event.target.dbName.value;
 	const body = JSON.stringify({ dbName });
+	const NameUser = user_id1;
 	console.log("que carajo?");
 	const newAnchorTag1 = document.createElement("a");
 
@@ -221,7 +222,7 @@ dbForm.onsubmit = async function (event) {
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({ name: name }),
+		body: JSON.stringify({ name: name , NameUser: NameUser}),
 	});
 	const newDBData = await newDBResponse.json();
 
