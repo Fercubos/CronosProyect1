@@ -1,0 +1,4 @@
+Homepage: Welcome to our bakery! Explore our delicious range of freshly baked goods.
+About Us: Learn about our story and passion for baking.
+Menu: Discover our mouth-watering selection of cakes, pastries, and bread.
+Contact: Get in touch with us for orders and inquiries.
