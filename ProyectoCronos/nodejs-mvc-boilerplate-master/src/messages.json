@@ -1,15 +1,15 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?lo que no sepas imaginalo o generalo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: hazme un proyecto de 2 tareas para sumar 23 +23lo que no sepas imaginalo o generalo!"
   },
   {
     "role": "user",
-    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?"
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: hazme un proyecto de 2 tareas para sumar 23 +23"
   },
   {
     "role": "assistant",
-    "content": "\"Curso intensivo de C++ en 2 semanas\""
+    "content": "\"Suma de 23 + 23\""
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "10"
+    "content": "2"
   },
   {
     "role": "user",
@@ -25,15 +25,15 @@
   },
   {
     "role": "assistant",
-    "content": "Instalación del entorno de desarrollo"
+    "content": "Sumar primer número (23)"
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: hazme un proyecto de 2 tareas para sumar 23 +23![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Descargar e instalar un compilador de C++ en el equipo.\n2. Configurar el compilador para que pueda compilar programas en C++.\n3. Crear y guardar un archivo de prueba con extensión \".cpp\".\n4. Escribir un programa sencillo en C++ que muestre por pantalla un mensaje básico, como \"¡Hola, mundo!\".\n5. Compilar el programa utilizando el compilador instalado.\n6. Ejecutar el programa compilado y verificar que la salida sea la esperada.\n7. Familiarizarse con el proceso de compilación y ejecución de programas en C++.\n8. Explorar la estructura básica de un programa en C++ (incluyendo librerías, funciones principales, etc.).\n9. Realizar pruebas adicionales con diferentes mensajes de salida.\n10. Documentar el proceso seguido y los resultados obtenidos para futuras referencias."
+    "content": "1. Reunir los dos números a sumar: 23 + 23.\n2. Colocar el primer número (23) en la parte superior y el segundo número (23) debajo.\n3. Sumar verticalmente empezando por la unidad (3+3), llevando uno a la siguiente cifra si es necesario.\n4. Escribir el resultado final de la suma: 46."
   },
   {
     "role": "user",
@@ -41,7 +41,7 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-05"
+    "content": "2024-06-04"
   },
   {
     "role": "user",
@@ -49,15 +49,15 @@
   },
   {
     "role": "assistant",
-    "content": "Configuración del IDE"
+    "content": "Verificar resultado"
   },
   {
     "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
+    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: hazme un proyecto de 2 tareas para sumar 23 +23![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Abrir el IDE de desarrollo para C++.\n2. Crear un nuevo proyecto C++ en el IDE.\n3. Configurar las preferencias del proyecto según las necesidades.\n4. Establecer las opciones de compilación y ejecución.\n5. Configurar el manejo de archivos y directorios del proyecto.\n6. Definir los ajustes de depuración y seguimiento de errores.\n7. Establecer el formato de código y las reglas de estilo a seguir.\n8. Configurar los atajos de teclado y las herramientas adicionales a utilizar.\n9. Guardar la configuración del proyecto para futuras sesiones.\n10. Explorar las funcionalidades avanzadas del IDE para optimizar el flujo de trabajo."
+    "content": "1. Revisar la suma realizada en la tarea anterior.\n2. Verificar que el resultado sea 46."
   },
   {
     "role": "user",
@@ -65,198 +65,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-06"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 3 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Estructurar programa principal"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 3 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Definir las funciones básicas que compondrán el programa principal en C++.\n2. Identificar las variables necesarias para el funcionamiento del programa.\n3. Declarar las librerías y cabeceras requeridas para el programa.\n4. Establecer la estructura general del programa y su flujo de ejecución.\n5. Crear un esquema de organización del código para facilitar su lectura y mantenimiento.\n6. Diseñar la interacción entre las diferentes funciones del programa.\n7. Implementar la lógica principal del programa de manera modular.\n8. Verificar que la estructura del programa cumple con los estándares de buenas prácticas.\n9. Realizar pruebas de integración de las funciones en el programa principal.\n10. Documentar el diseño y la estructura del programa para futuras referencias."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 3 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-07"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 4 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Implementar funciones auxiliares"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 4 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Identificar las funciones secundarias necesarias para complementar el programa principal.\n2. Definir los parámetros de entrada y salida de cada función auxiliar.\n3. Crear la estructura básica de las funciones auxiliares en C++.\n4. Establecer la lógica de cada función para cumplir con su propósito específico.\n5. Verificar la coherencia y consistencia de las funciones con el programa principal.\n6. Testear cada función de forma individual para garantizar su correcto funcionamiento.\n7. Integrar las funciones auxiliares en el programa principal.\n8. Realizar pruebas de integración para asegurar la interacción adecuada entre las funciones.\n9. Depurar y corregir posibles errores identificados durante las pruebas.\n10. Documentar el uso y la funcionalidad de cada función auxiliar para futuras referencias."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 4 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-08"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 5 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Optimizar el rendimiento del programa"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 5 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Analizar las partes del programa que podrían ser optimizadas.\n2. Identificar posibles cuellos de botella en el rendimiento del programa.\n3. Revisar el uso de recursos como memoria y procesamiento.\n4. Implementar algoritmos más eficientes en las secciones críticas del código.\n5. Utilizar estructuras de datos más adecuadas para mejorar el rendimiento.\n6. Reducir la complejidad de los algoritmos cuando sea posible.\n7. Realizar pruebas de rendimiento para evaluar el impacto de las optimizaciones.\n8. Medir métricas como el tiempo de ejecución y el uso de memoria antes y después de las mejoras.\n9. Ajustar las optimizaciones según los resultados de las pruebas.\n10. Documentar las técnicas de optimización aplicadas y sus efectos en el programa."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 5 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-09"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 6 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Manejo de punteros"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 6 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Estudiar la teoría detrás del uso de punteros en C++.\n2. Practicar la declaración y asignación de punteros en diferentes contextos.\n3. Entender la aritmética de punteros y su relación con los tipos de datos.\n4. Familiarizarse con el concepto de punteros nulos y su manipulación.\n5. Practicar el paso de punteros como argumentos a funciones.\n6. Implementar estructuras de datos básicas utilizando punteros.\n7. Realizar ejercicios de referencia y desreferencia de punteros.\n8. Utilizar punteros para la gestión dinámica de memoria.\n9. Resolver problemas de programación que requieran el uso avanzado de punteros.\n10. Practicar la depuración de errores comunes relacionados con punteros."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 6 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-10"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 7 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Gestión dinámica de memoria"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 7 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Comprender el concepto de gestión dinámica de memoria en C++.\n2. Estudiar el uso de operadores new y delete para asignar y liberar memoria.\n3. Practicar la creación de objetos y arrays dinámicos.\n4. Evitar fugas de memoria mediante la liberación adecuada de los recursos asignados.\n5. Familiarizarse con el uso de punteros inteligentes como std::unique_ptr y std::shared_ptr.\n6. Implementar estructuras de datos dinámicas como listas enlazadas o árboles binarios.\n7. Realizar pruebas para validar la correcta asignación y liberación de memoria.\n8. Optimizar el uso de la memoria dinámica para evitar fragmentación.\n9. Manejar excepciones relacionadas con la gestión dinámica de memoria.\n10. Documentar las decisiones de diseño y las prácticas recomendadas para la gestión de memoria en el proyecto."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 7 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-11"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 8 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Tratamiento de excepciones"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 8 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Estudiar el manejo de excepciones en C++ y su sintaxis.\n2. Identificar las situaciones que pueden generar excepciones en un programa.\n3. Implementar bloques try-catch para capturar y manejar excepciones.\n4. Definir clases de excepción personalizadas cuando sea necesario.\n5. Utilizar las cláusulas throw para lanzar excepciones explícitamente.\n6. Practicar el uso de bloques try-catch-finally para limpiar recursos.\n7. Asegurarse de capturar todas las excepciones posibles en el código.\n8. Manejar excepciones de bibliotecas externas de manera adecuada.\n9. Realizar pruebas de los bloques de manejo de excepciones para verificar su funcionamiento.\n10. Documentar las excepciones manejadas y las estrategias utilizadas en el proyecto."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 8 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-12"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 9 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Optimización de código"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 9 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Revisar el código existente en busca de áreas que puedan ser optimizadas.\n2. Identificar redundancias o ineficiencias en el código.\n3. Simplificar estructuras y algoritmos para mejorar la legibilidad y eficiencia.\n4. Eliminar llamadas innecesarias o cálculos repetitivos.\n5. Utilizar operadores y funciones estándar de STL para simplificar el código.\n6. Mejorar la coherencia y consistencia del código mediante refactorización.\n7. Aplicar técnicas de programación eficiente para reducir el tiempo de ejecución.\n8. Realizar pruebas de rendimiento antes y después de las optimizaciones.\n9. Verificar que las optimizaciones no afecten la funcionalidad del programa.\n10. Documentar los cambios realizados y sus efectos en el rendimiento del proyecto."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 9 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-13"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 10 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Depuración de errores"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 10 del proyecto: haz un proyecto para aprender c++ en 2 semanas, con unas 10 tareas?![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Utilizar herramientas de depuración del IDE para identificar errores en el código.\n2. Establecer puntos de interrupción en áreas críticas del programa.\n3. Ejecutar el programa en modo depuración y seguir su flujo de ejecución.\n4. Analizar los valores de las variables en tiempo de ejecución para detectar posibles anomalías.\n5. Utilizar las funciones de paso a paso para entender el comportamiento del programa.\n6. Inspeccionar los mensajes de error y advertencias para corregir fallos.\n7. Reproducir los errores manualmente para entender su causa raíz.\n8. Corregir los errores encontrados y verificar su solución mediante pruebas.\n9. Realizar pruebas exhaustivas para garantizar que los errores han sido resueltos.\n10. Documentar los errores encontrados, las soluciones aplicadas y las lecciones aprendidas durante el proceso de depuración."
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 10 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-14"
+    "content": "2024-06-05"
   }
 ]

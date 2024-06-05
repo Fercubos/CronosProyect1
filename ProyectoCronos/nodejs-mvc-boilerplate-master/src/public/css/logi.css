@@ -161,3 +161,30 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #6b5734;
 }
+.buologaso{
+    width: 100%; 
+    margin-left: 40%; 
+    margin-top: -5rem; 
+}
+.buoLogo3{
+    width: 20rem;
+}
+.ggg4buo{
+    margin-bottom: -6rem;
+}
+
+
+@media (max-width: 800px) {
+    .buologaso{
+        width: 100%; 
+        margin-left: 40%; 
+        margin-top: -5rem; 
+    }
+    .buoLogo3{
+        width: 20rem;
+        margin-left: -35%;
+    }
+    .ggg4buo{
+        margin-left: -5rem;
+    }
+}

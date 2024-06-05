@@ -60,7 +60,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		//console.log("tareas [] " + proyectosCronos.proyectos[0].tareas[0]);
 		//console.log("tareas [] " + proyectosCronos.proyectos[3].tareas[0]);
 		var proyectSelected = 0;
-		if(request.query.projectId != undefined){
+		if(request.query.projectId != undefined && request.query.projectId != null){
 			proyectSelected = request.query.projectId;
 		}
 		var taskSelected = 0;
@@ -72,8 +72,19 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		console.log(request.query.taskId);
 		//como hago para que imprima las tareas de cada proyecto sin imprimir object object
 		console.log(proyectosCronos)
-		console.log(proyectosCronos.proyectos[proyectSelected].proyect_notion_url)
-		var notion_url = proyectosCronos.proyectos[proyectSelected].proyect_notion_url;
+		console.log(proyectSelected);
+		console.log(taskSelected);
+		try{
+			
+			if (proyectosCronos.proyectos[proyectSelected].proyect_notion_url != null){
+				var notion_url = proyectosCronos.proyectos[proyectSelected].proyect_notion_url || "";
+				console.log(notion_url);		
+			}
+		}catch(e){
+			console.log("No hay url de notion");
+		}
+		
+
 		response.render("layout/index3.ejs", {
 			proyects: "active",
 			proyectosCronos: proyectosCronos,
@@ -83,7 +94,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			numP: numPer,
 			proyectSelected : proyectSelected,
 			taskSelected : taskSelected,
-			notion_url : notion_url,
+			notion_url : notion_url || "",
 			
 		});
 		}

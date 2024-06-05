@@ -300,7 +300,9 @@ footer {
   padding-top: 1.5em;
   border-top: 1px solid lightgrey;
 }
-
+.proyectosDeCronos{
+  margin-left: -4rem;
+}
 
 .loading-text {
   font-size: 24px;                     /* Tamaño de la fuente */
@@ -317,6 +319,11 @@ footer {
 }
 /* hacemos el texto mas pequeño si la pantalla es menor de 800 px   */
 @media (max-width: 800px) {
+  .proyectosDeCronos1{
+    margin-left: -60rem;
+    max-width: 10rem;
+    
+  }
   .menuhide {
     margin-left: 1rem;
   }
