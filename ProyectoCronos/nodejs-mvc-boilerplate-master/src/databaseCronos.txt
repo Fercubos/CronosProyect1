@@ -33,3 +33,44 @@ CREATE TABLE pasos (
 
 ALTER TABLE proyectos
 ADD COLUMN proyect_notion_url VARCHAR(255);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+    users.id AS user_id, 
+    users.name AS user_name, 
+    users.email AS user_email, 
+    users.password AS user_password,
+    proyectos.proyecto_id AS proyecto_id, 
+    proyectos.nombre AS proyecto_nombre, 
+    proyectos.user_id AS proyecto_user_id, 
+    proyectos.proyect_notion_url AS proyecto_notion_url,
+    tareas.tarea_id AS tarea_id, 
+    tareas.proyecto_id AS tarea_proyecto_id, 
+    tareas.numero_de_tareas AS tarea_numero_de_tareas, 
+    tareas.fecha_de_los_pasos AS tarea_fecha_de_los_pasos, 
+    tareas.completitud AS tarea_completitud,
+    pasos.paso_id AS paso_id, 
+    pasos.tarea_id AS paso_tarea_id, 
+    pasos.descripcion AS paso_descripcion, 
+    pasos.steps_inside_resume AS paso_steps_inside_resume
+FROM 
+    users
+LEFT JOIN 
+    proyectos ON users.id = proyectos.user_id
+LEFT JOIN 
+    tareas ON proyectos.proyecto_id = tareas.proyecto_id
+LEFT JOIN 
+    pasos ON tareas.tarea_id = pasos.tarea_id;

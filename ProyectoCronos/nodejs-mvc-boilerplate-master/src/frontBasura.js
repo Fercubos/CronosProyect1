@@ -16,9 +16,12 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import bcrypt from 'bcryptjs';
 
 
+
+
+
 //Initializations
 //manejo de la hora y fecha
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 3000;
 const app = express();
 
 //__dirname lo localizamos en

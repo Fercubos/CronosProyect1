@@ -3,14 +3,17 @@
       <%- include('_partials/_head.ejs') %>
       <!--Container Main start-->
       <div class="height-100 bg-light">
+    <% if (calendar === "active"){ %>
+      <%- include('_partials/_calendar.ejs') %>
+    <% } else { %>
     <% if (proyects === "desactive"){ %>
     <div class = "upperPart" id = "especialMenu">
       <div style="margin-left: 5.5rem; margin-top: 0rem;">
-        <div class="Titles1s ">
+        <div class="Titles1s titulosNecesarios">
           <img id="dedlogo" src="/buosinback.png" alt="logo"/>
         </div>
-        <div class="Titles1s sedan-sc-regular " style="margin-top: -5rem">
-          <p>Cronos</p>
+        <div class="Titles1s sedan-sc-regular titulosNecesarios" style="margin-top: -5rem">
+          <p class="TituloCronosAsk">Cronos</p>
         </div>
       </div>
     
@@ -30,25 +33,20 @@
     </div>
       <button class="menuhide">Esconder Menu</button>
       <!-- definiendo la tabla que sigue al proceso de arriba -->
-      <table>
+      <table class="responsive-table">
         <tr>
-          <th style="font-size: 1.4rem; margin-right: 1rem;">Consulta o peticion a la IA</th>
-
-          <th style="font-size: 1.4rem;">Response</th>
+          <th class="column-header">Consulta o peticion a la IA</th>
+          <th class="column-header">Response</th>
         </tr>
         <tr>
-          <td>
-            <form id="databaseForm" style=" margin-bottom: -2rem; margin-right: 1rem; ">
+          <td data-label="Consulta o peticion a la IA" class="column-content">
+            <form id="databaseForm"  class = "dfs312">
               <label for="dbName">Ingresa los detalles de tu proyecto aqui, puedes poner una fecha limite: </label>
-              <input type="text" id="dbName" placeholder="Ingresa el texto de tu proyecto aquí!" />
-
-              <!-- <button class="btn btn-outline-light" id="resetButton" style="width: 10rem; margin-bottom: -4rem; background-color: rgb(249, 212, 101);" type="reset" >Reset Conversation</button> -->
-              <input type="submit" id = "dbSubmit"/>
-
+              <textarea id="dbName" placeholder="Ingresa el texto de tu proyecto aquí!" rows="4" style="width: 100%;"></textarea>
+              <input type="submit" id="dbSubmit"/>
             </form>
-
-            
-          <td id="dbResponse"></td>
+          </td>
+          <td data-label="Response" id="dbResponse" class="column-content dfs312"></td>
         </tr>
       </table>
       <!-- marcar esto como importante -->
@@ -64,13 +62,16 @@
         <div class = "upperPart" id = "especialMenu">
           <div style="margin-left: 0.5rem; margin-top: 0rem;">
             <div class="Titles1s ">
-              <img id="dedlogo" src="/buosinback.png" alt="logo"/>
+              <img class="proyectsLogo" id="dedlogo" src="/buosinback.png" alt="logo"/>
             </div>
-            <div class="Titles1s sedan-sc-regular proyectosDeCronos" style="margin-top: -4rem; min-width: 90rem;">
+            <div class="Titles1s sedan-sc-regular proyectosDeCronos">
               <% if (noExistenProyectos != "true") { %>
               <p class= "proyectosDeCronos1">Proyectos de Cronos</p>
               <a href="<%= notion_url %>" target = "_blank">
-              <img  style= " margin-top: 1rem;" src= "/notion.png" class="NotionImg" alt="Notion"/>
+              <div class="containerForLogoProyects">
+                <img src= "/notion.png" class="NotionImg" alt="Notion"/>
+                <p class="lettersNotion">Click aqui para que te lleve al Notion</p>
+              </div>
             </a>
               <!-- <p style="margin-top: 1rem; font-size: 1rem;">Click aqui para que te lleve al Notion</p>
               <p style="margin-top: 1rem; font-size: 1rem;"> del selecionado</p> -->
@@ -114,7 +115,7 @@
         <div class="tableForSteps"> <!-- esto es pa los steps -->
           <!-- convertimos taskSelected a numero para que se vea bonito -->
           <% var tasknum = parseInt(taskSelected); %>
-          <h1 class= "titlesForTables" style="margin-left: 10%; margin-bottom: 1rem;"> Pasos a seguir para tarea <%=tasknum + 1 %></h1>
+          <h1 class= "titlesForTables" style="margin-left: 3%; max-width: 100%; justify-content: center; margin-bottom: 1rem; font-size: 2rem;"> <%=proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].descripcion %></h1>
           <% for (let i = 0; i <= pasos.length - 1; i++) { %>
             <p class="brown-buttonforSteps" style="margin-top: -1rem;"><%= pasos[i] %></p>
             
@@ -126,8 +127,8 @@
         <% } %>
         <% } %>
       <% } %>
-
-
+      <% } %>
+      
 
 
     

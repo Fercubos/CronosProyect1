@@ -1,15 +1,15 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 04-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: hazme un proyecto de 2 tareas para sumar 23 +23lo que no sepas imaginalo o generalo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 06-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: generame un proyecto sobre Sistema de Monitoreo de Salud en 3 tareas\nlo que no sepas imaginalo o generalo!"
   },
   {
     "role": "user",
-    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: hazme un proyecto de 2 tareas para sumar 23 +23"
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: generame un proyecto sobre Sistema de Monitoreo de Salud en 3 tareas\n"
   },
   {
     "role": "assistant",
-    "content": "\"Suma de 23 + 23\""
+    "content": "Proyecto: Sistema de Monitoreo de Salud"
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "2"
+    "content": "3"
   },
   {
     "role": "user",
@@ -25,15 +25,15 @@
   },
   {
     "role": "assistant",
-    "content": "Sumar primer número (23)"
+    "content": "Diseño del sistema de monitoreo"
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: hazme un proyecto de 2 tareas para sumar 23 +23![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: generame un proyecto sobre Sistema de Monitoreo de Salud en 3 tareas\n![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Reunir los dos números a sumar: 23 + 23.\n2. Colocar el primer número (23) en la parte superior y el segundo número (23) debajo.\n3. Sumar verticalmente empezando por la unidad (3+3), llevando uno a la siguiente cifra si es necesario.\n4. Escribir el resultado final de la suma: 46."
+    "content": "1. Definir los requisitos y objetivos del sistema de monitoreo de salud.\n2. Realizar un análisis de las tecnologías disponibles para la implementación del sistema.\n3. Diseñar la arquitectura del sistema, definiendo los componentes necesarios y la interacción entre ellos.\n4. Desarrollar prototipos o mockups para visualizar la interfaz y funcionalidades del sistema.\n5. Validar el diseño con posibles usuarios o stakeholders para obtener retroalimentación.\n6. Refinar y ajustar el diseño en base a los comentarios recibidos.\n7. Preparar la documentación técnica del sistema de monitoreo de salud."
   },
   {
     "role": "user",
@@ -41,7 +41,7 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-04"
+    "content": "2024-06-13"
   },
   {
     "role": "user",
@@ -49,15 +49,15 @@
   },
   {
     "role": "assistant",
-    "content": "Verificar resultado"
+    "content": "Investigación de tecnologías"
   },
   {
     "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: hazme un proyecto de 2 tareas para sumar 23 +23![object Promise]"
+    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: generame un proyecto sobre Sistema de Monitoreo de Salud en 3 tareas\n![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Revisar la suma realizada en la tarea anterior.\n2. Verificar que el resultado sea 46."
+    "content": "1. Realizar una investigación exhaustiva sobre las diferentes tecnologías disponibles para el monitoreo de salud, incluyendo dispositivos wearables, sensores biométricos, aplicaciones móviles y plataformas en la nube.\n2. Analizar las características, ventajas y desventajas de cada tecnología en términos de precisión, costo, facilidad de uso y compatibilidad con el sistema propuesto.\n3. Evaluar la escalabilidad y la integración de las tecnologías con el sistema de monitoreo de salud, considerando la posibilidad de futuras actualizaciones y expansiones.\n4. Seleccionar las tecnologías más adecuadas en función de los requisitos del proyecto y los objetivos del sistema de monitoreo de salud.\n5. Documentar los hallazgos de la investigación y la justificación de la elección de tecnologías para su posterior implementación."
   },
   {
     "role": "user",
@@ -65,6 +65,30 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-05"
+    "content": "2024-06-14"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 3 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Implementación del sistema"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 3 del proyecto: generame un proyecto sobre Sistema de Monitoreo de Salud en 3 tareas\n![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Desarrollar el sistema de monitoreo de salud basado en los requisitos y la arquitectura previamente definidos.\n2. Integrar las tecnologías seleccionadas en la etapa de investigación en el sistema, asegurando su funcionamiento correcto y sincronización.\n3. Realizar pruebas exhaustivas para verificar la precisión de los datos recopilados, la estabilidad del sistema y la facilidad de uso para los usuarios finales.\n4. Implementar medidas de seguridad para proteger la privacidad y confidencialidad de la información de salud generada por el sistema.\n5. Capacitar al personal encargado del mantenimiento y uso del sistema de monitoreo de salud.\n6. Realizar ajustes y mejoras según sea necesario, en base a las pruebas y retroalimentación recibidas durante la fase de implementación.\n7. Documentar detalladamente el proceso de implementación y las especificaciones técnicas del sistema."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 3 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-06-17"
   }
 ]
