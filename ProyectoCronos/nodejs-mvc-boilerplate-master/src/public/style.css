@@ -41,6 +41,7 @@ html::before {
   line-height: 1.1;
   flex-direction: row;
   justify-content: center;
+  
   /* margin-top: -2rem; */
 }
 
@@ -431,6 +432,7 @@ footer {
   max-width: calc(100% - 5rem);
   line-height: 1.1;
   justify-content: center;
+  align-items: center;
   /* margin-top: -2rem; */
 }
 
@@ -451,6 +453,9 @@ footer {
   max-width: 19%;
 
   margin-left: 5%;
+}
+.TituloCronosAsk{
+  margin-top: 1rem;
 }
 
 }
