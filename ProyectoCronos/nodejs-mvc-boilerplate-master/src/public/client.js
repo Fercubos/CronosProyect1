@@ -11,33 +11,70 @@
 // });
 
 $(document).ready(function() {
+	// Aplicar resaltado basado en localStorage al cargar la página
+	var projectId = localStorage.getItem('projectId');
+	var taskId = localStorage.getItem('taskId');
 	
-    $("[id^='proyectf']").click(function() {
-        var projectId = parseInt(this.id.replace('proyectf', ''));
+	if (projectId !== null) {
+		$("#proyectf" + projectId).addClass('highlight');
+	}
+	
+	if (taskId !== null) {
+		$("#taskf" + taskId).addClass('highlight');
+	}
+
+	$("[id^='proyectf']").click(function() {
+		var projectId = parseInt(this.id.replace('proyectf', ''));
 
 		localStorage.setItem('projectId', projectId);  // Guarda en localStorage
 
-        // Construye una nueva URL con el projectId como parámetro de consulta
-        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&usuario1=' + user_id1; 
-        // Redirige a la nueva URL
-        window.location.href = newUrl;
-    });
-	
+		// Construye una nueva URL con el projectId como parámetro de consulta
+		var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&usuario1=' + user_id1; 
+		// Redirige a la nueva URL
+		window.location.href = newUrl;
+	});
 	
 	$("[id^='taskf']").click(function() {
 		var taskId = parseInt(this.id.replace('taskf', ''));
-        var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
+		var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
+
+		localStorage.setItem('taskId', taskId);  // Guarda en localStorage
+
 		var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId + '&usuario1=' + user_id1;
 		window.location.href = newUrl2;
 	});
-
 });
 
 
+document.addEventListener('DOMContentLoaded', function() {
+const projectButtons = document.querySelectorAll('.brown-buttonforproyectsname');
+const taskButtons = document.querySelectorAll('.brown-buttonforTasks');
 
+projectButtons.forEach(button => {
+  button.addEventListener('click', function() {
+	removeHighlightClass(projectButtons);
+	this.classList.add('highlight');
+  });
+});
 
+taskButtons.forEach(button => {
+  button.addEventListener('click', function() {
+	removeHighlightClass(taskButtons);
+	this.classList.add('highlight');
+  });
+});
 
+function removeHighlightClass(buttons) {
+  buttons.forEach(button => {
+	button.classList.remove('highlight');
+  });
+}
 
+    // Initial selection of the first task if there is any project selected by default
+    if (projectButtons.length > 0 && projectButtons[0].classList.contains('highlight')) {
+		selectFirstTask();
+	  }
+});
 // SIDEBAR TOGGLE ############################################
 document.addEventListener("DOMContentLoaded", function(event) {
    

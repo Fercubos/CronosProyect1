@@ -44,6 +44,11 @@ html::before {
   /* margin-top: -2rem; */
 }
 
+.highlight {
+  background-color: rgb(31, 128, 254) !important;/* Cambia el color según tus necesidades */
+}
+
+
 .sedan-sc-regular {
   font-family: "Sedan SC", serif;
   font-weight: 400;
