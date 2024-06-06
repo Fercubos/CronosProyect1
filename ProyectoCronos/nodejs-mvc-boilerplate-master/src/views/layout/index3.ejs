@@ -30,25 +30,20 @@
     </div>
       <button class="menuhide">Esconder Menu</button>
       <!-- definiendo la tabla que sigue al proceso de arriba -->
-      <table>
+      <table class="responsive-table">
         <tr>
-          <th style="font-size: 1.4rem; margin-right: 1rem;">Consulta o peticion a la IA</th>
-
-          <th style="font-size: 1.4rem;">Response</th>
+          <th class="column-header">Consulta o peticion a la IA</th>
+          <th class="column-header">Response</th>
         </tr>
         <tr>
-          <td>
-            <form id="databaseForm" style=" margin-bottom: -2rem; margin-right: 1rem; ">
+          <td data-label="Consulta o peticion a la IA" class="column-content">
+            <form id="databaseForm"  class = "dfs312">
               <label for="dbName">Ingresa los detalles de tu proyecto aqui, puedes poner una fecha limite: </label>
-              <input type="text" id="dbName" placeholder="Ingresa el texto de tu proyecto aquí!" />
-
-              <!-- <button class="btn btn-outline-light" id="resetButton" style="width: 10rem; margin-bottom: -4rem; background-color: rgb(249, 212, 101);" type="reset" >Reset Conversation</button> -->
-              <input type="submit" id = "dbSubmit"/>
-
+              <textarea id="dbName" placeholder="Ingresa el texto de tu proyecto aquí!" rows="4" style="width: 100%;"></textarea>
+              <input type="submit" id="dbSubmit"/>
             </form>
-
-            
-          <td id="dbResponse"></td>
+          </td>
+          <td data-label="Response" id="dbResponse" class="column-content dfs312"></td>
         </tr>
       </table>
       <!-- marcar esto como importante -->

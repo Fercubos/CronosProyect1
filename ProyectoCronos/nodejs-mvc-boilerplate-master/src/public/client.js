@@ -189,6 +189,7 @@ const appendApiResponse = function (apiResponse, el) {
 
 	// Add success message to UI
 	const newParagraphSuccessMsg = document.createElement("p");
+	newParagraphSuccessMsg.style.marginTop = "2rem";
 	newParagraphSuccessMsg.textContent = "Result: " + apiResponse.message;
 	el.appendChild(newParagraphSuccessMsg);
 	// See browser console for more information

@@ -98,7 +98,7 @@ h1 {
 
 table {
   width: 100%;
-  margin-left: 4rem;
+  margin-left: 0rem;
 }
 
 
@@ -270,7 +270,7 @@ td {
 }
 
 form {
-  background-color: #e3cdaa;
+  /* background-color: #e3cdaa; */
   display: grid;
   grid-gap: 1em;
   padding: 1em;
@@ -297,6 +297,11 @@ form input[type="submit"] {
   max-width: 20ch;
   cursor: pointer;
   margin-left: auto;
+}
+
+#databaseForm {
+  margin-bottom: -2rem;
+  margin-right: 1rem;
 }
 
 form input[type="submit"]:hover {
@@ -340,8 +345,83 @@ footer {
   box-shadow: 0 8px 16px rgba(81, 47, 3, 0.717); /* Sombra para resaltar */
   animation: pulse 1.5s infinite;      /* Animación definida a continuación */
 }
+
+
+.fc-view-harness {
+  margin-left: 4rem;
+}
+
+
+
+.responsive-table {
+  width: 90%;
+  border-collapse: collapse;
+  background-color: #e9dbc5;
+  margin-left: 3%;
+}
+
+.responsive-table th,
+.responsive-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 1.4rem;
+}
+
+.responsive-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+
+
 /* hacemos el texto mas pequeño si la pantalla es menor de 800 px   */
 @media (max-width: 800px) {
+
+  .responsive-table thead {
+    display: none; /* Ocultar los encabezados en dispositivos móviles */
+  }
+
+  .responsive-table thead,
+  .responsive-table tbody,
+  .responsive-table th,
+  .responsive-table td,
+  .responsive-table tr {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .responsive-table tr {
+    margin-bottom: 40px;
+  }
+
+  .responsive-table td,
+  .responsive-table th {
+    text-align: left;
+    position: relative;
+  }
+
+  .responsive-table td:before,
+  .responsive-table th:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .column-header,
+  .column-content {
+    text-align: left;
+    padding-left: 15px;
+    font-size: 1.2rem;
+  }
+  .dfs312{
+    margin-bottom: 2rem;
+  }
+
   .proyectosDeCronos1{
     margin-left: -60rem;
     max-width: 10rem;
@@ -422,6 +502,8 @@ footer {
   border: none;
   width: 100%;
 }
+
+
 
 .Titles1s{
   font-size: 3rem;
