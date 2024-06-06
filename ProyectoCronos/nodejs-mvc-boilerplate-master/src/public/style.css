@@ -205,7 +205,7 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
 
 .brown-buttonforSteps {
-  background-color: #f8f9fa; /* saddle brown */
+  background-color: #fefaf2; /* saddle brown */
   color: #a48249;
   border: none;
   width: 100%;
@@ -244,7 +244,7 @@ border-radius: 10px;
   margin-top: 4rem;
 }
 .menuhide{
-  background-color: #e3cdaa;  /* Color azul */
+  background-color: #fefaf2;  /* Color azul */
   color: white;              /* Texto blanco */
   border: none;              /* Sin bordes */
   padding: 10px 20px;        /* Espaciado interno */
@@ -446,6 +446,11 @@ footer {
 
 .proyectsLogo{
   margin-left: -10%;
+}
+.lettersNotion{
+  max-width: 19%;
+
+  margin-left: 5%;
 }
 
 }
