@@ -64,15 +64,15 @@
         <div class = "upperPart" id = "especialMenu">
           <div style="margin-left: 0.5rem; margin-top: 0rem;">
             <div class="Titles1s ">
-              <img style= "margin-left: -29%;" id="dedlogo" src="/buosinback.png" alt="logo"/>
+              <img class="proyectsLogo" id="dedlogo" src="/buosinback.png" alt="logo"/>
             </div>
-            <div class="Titles1s sedan-sc-regular proyectosDeCronos" style="margin-top: -4rem; min-width: 90rem;">
+            <div class="Titles1s sedan-sc-regular proyectosDeCronos">
               <% if (noExistenProyectos != "true") { %>
               <p class= "proyectosDeCronos1">Proyectos de Cronos</p>
               <a href="<%= notion_url %>" target = "_blank">
-              <div style="display: flex;  flex-direction: column;">
-                <img  style= " margin-top: -3rem; margin-left: 40%; flex-direction: column;" src= "/notion.png" class="NotionImg" alt="Notion"/>
-                <p style="margin-top: 1rem; font-size: 1.5rem;  flex-direction: column; margin-left: 2rem; color: #a48147;">Click aqui para que te lleve al Notion</p>
+              <div class="containerForLogoProyects">
+                <img src= "/notion.png" class="NotionImg" alt="Notion"/>
+                <p class="lettersNotion">Click aqui para que te lleve al Notion</p>
               </div>
             </a>
               <!-- <p style="margin-top: 1rem; font-size: 1rem;">Click aqui para que te lleve al Notion</p>
