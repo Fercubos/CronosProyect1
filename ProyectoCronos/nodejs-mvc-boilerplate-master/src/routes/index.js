@@ -13,8 +13,45 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 		usuario1: request.user.name,
 		proyects: "desactive",
 		user_id1: request.user.id,
+		calendar: "desactive",
 	});
 });
+
+router.get("/calendar", checkNotAuthenticated, async function (request, response) {
+	//ruta principal
+	var NameUser = request.user.name;
+	try {
+	  var calendarCronos = await fetch("http://localhost:4120/calendar", {
+		method: "POST",
+		headers: {
+		  "Content-Type": "application/json",
+		},
+		body: JSON.stringify({ NameUser }),
+	  });
+	  
+	  // Convertir la respuesta a JSON
+	  var calendarData = await calendarCronos.json();
+	  console.log("fetching");
+	  response.render("layout/index3.ejs", {
+		usuario1: request.user.name,
+		calendar: "active",
+		user_id1: request.user.id,
+		proyects: "desactive",
+		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON
+	  });
+	} catch (error) {
+	  console.error("Error fetching calendar data:", error);
+	  response.status(500).render("layout/index3.ejs", {
+		usuario1: request.user.name,
+		calendar: "desactive",
+		user_id1: request.user.id,
+		proyects: "desactive",
+		calendarCronos: "Error fetching calendar data.",
+	  });
+	}
+  });
+  
+
 
 router.get("/Proyects", checkNotAuthenticated , async function (request, response) {
 	//ruta para los proyectos
@@ -49,7 +86,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			taskSelected : "",
 			noExistenProyectos : "true",
 			notion_url : "",
-
+			calendar: "desactive",
 		});
 	} else {
 		console.log("NOMBRE: " + proyectosCronos.proyectos[0].nombre);
@@ -95,6 +132,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			proyectSelected : proyectSelected,
 			taskSelected : taskSelected,
 			notion_url : notion_url || "",
+			calendar: "desactive",
 			
 		});
 		}

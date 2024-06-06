@@ -27,20 +27,35 @@
 		<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
 		<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
+    <link href="node_modules/@fullcalendar/core/main.css" rel="stylesheet">
+    <link href="node_modules/@fullcalendar/daygrid/main.css" rel="stylesheet">
+
     <title>Cronos Demo</title>
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/css/style1.css" />
     <link rel="stylesheet" href="/style.css" />
-    
+
+          <% if (calendar === "active"){ %>
+    <script>
+    const dataArray = unescape('<%- JSON.stringify(calendarCronos) %>');
+
+      window.user_id1 = "<%= user_id1 %>";
+    </script>
+    <% }else{ %>
     <script>
       window.user_id1 = "<%= user_id1 %>";
     </script>
+    <% } %>
 
 
     <!-- import the webpage's client-side javascript file -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <% if (calendar === "active"){ %>
+    <script src="/calendar.js" defer></script>
+    <% } else { %>
     <script src="/client.js" defer></script>
+    <% } %>
   </head>
   <!-- <div class="loader" id="loader"></div> -->
   <body>
@@ -55,12 +70,13 @@
       <div class="l-navbar" id="nav-bar">
           <nav class="nav">
               <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name" style="font-family: 'Courier New', Courier, monospace;">Proyecto Cronos</span> </a>
-                  <div class="nav_list"> <a href="/" <%if (proyects == "desactive"){%> class="nav_link active" <% } else {%> class="nav_link" <% } %> > <i class='bx bx-grid-alt nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Ask to Cronos! </span> </a> 
+                  <div class="nav_list"> <a href="/" <%if (proyects == "desactive" && calendar === "desactive"){%> class="nav_link active" <% } else {%> class="nav_link" <% } %> > <i class='bx bx-grid-alt nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Ask to Cronos! </span> </a> 
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span>   </a>-->
-                  <!-- <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span class="nav_name">Messages</span> </a>  -->
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>  -->
-                  <a href="/Proyects?usuario1=<%= user_id1 %>" <% if (proyects === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>><i class='bx bx-folder nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Proyectos</span> </a> 
+                  <a href="/Proyects?usuario1=<%= user_id1 %>" <% if (proyects === "active" && calendar === "desactive"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>><i class='bx bx-folder nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Proyectos</span> </a> 
                   <!-- <a href="/" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Status</span> </a>  -->
+                  <a href="/calendar" <% if (proyects === "desactive" && calendar === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>> <i class='bx bx-calendar nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Calendar</span> </a>  
+                
                 </div>
               </div> <a href="/logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">LogOut</span> </a>
           </nav>

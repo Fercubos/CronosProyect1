@@ -1,14 +1,4 @@
-// This file is run by the browser each time your view template is loaded
 
-/**
- * Define variables that reference elements included in /views/index.html:
- */
-
-// $("#proyectf0").click(function () {
-// 	alert("hola");
-// 	proyectSelected = 0;
-
-// });
 
 $(document).ready(function() {
     // Aplicar resaltado basado en localStorage al cargar la página
@@ -60,6 +50,10 @@ $(document).ready(function() {
         window.location.href = newUrl2;
     });
 });
+
+
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const projectButtons = document.querySelectorAll('.brown-buttonforproyectsname');
@@ -453,4 +447,5 @@ appendApiResponseToCronosUI = function (data) {
 
 	calendar.render();
 };
+
 

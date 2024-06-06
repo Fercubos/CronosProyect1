@@ -3,6 +3,9 @@
       <%- include('_partials/_head.ejs') %>
       <!--Container Main start-->
       <div class="height-100 bg-light">
+    <% if (calendar === "active"){ %>
+      <%- include('_partials/_calendar.ejs') %>
+    <% } else { %>
     <% if (proyects === "desactive"){ %>
     <div class = "upperPart" id = "especialMenu">
       <div style="margin-left: 5.5rem; margin-top: 0rem;">
@@ -124,8 +127,8 @@
         <% } %>
         <% } %>
       <% } %>
-
-
+      <% } %>
+      
 
 
     

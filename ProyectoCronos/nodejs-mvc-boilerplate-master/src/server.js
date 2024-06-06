@@ -15,6 +15,7 @@ import ejsLayouts from "express-ejs-layouts";
 import OpenAI from "openai";
 import pg from "pg";
 
+
 const port = process.env.PORT || 4120;
 const app = express();
 const model1 = "gpt-3.5-turbo"; //modelo de openai a utilizar
@@ -59,6 +60,49 @@ var projectDetails = {
 	completionOfSteps: [],
 	StepsInsideResume: [],
 };
+
+app.post("/calendar", async function (req, res) {
+	console.log("Calendario");
+	var NameUser = req.body.NameUser;
+	console.log(NameUser);
+  
+	try {
+	  const userId = await getUserIdByName(NameUser);
+	  const steps = await getUserSteps(userId);
+	  console.log(steps);
+	  res.status(200).json({ message: "success!", steps: steps });
+	} catch (error) {
+	  console.error(error);
+	  res.status(500).json({ message: "Error retrieving user steps." });
+	}
+  });
+  
+async function getUserIdByName(name) {
+	const query = `
+	  SELECT id 
+	  FROM users 
+	  WHERE name = $1;
+	`;
+	const result = await executeQuery(query, [name]);
+	if (result.rows.length === 0) {
+	  throw new Error('User not found');
+	}
+	return result.rows[0].id;
+  }
+  async function getUserSteps(userId) {
+	const query = `
+	  SELECT t.fecha_de_los_pasos, ps.descripcion
+	  FROM pasos ps
+	  JOIN tareas t ON ps.tarea_id = t.tarea_id
+	  JOIN proyectos p ON t.proyecto_id = p.proyecto_id
+	  WHERE p.user_id = $1
+	  ORDER BY t.fecha_de_los_pasos, ps.paso_id;
+	`;
+	const result = await executeQuery(query, [userId]);
+	return result.rows;
+  }
+  
+
 
 app.post("/giveProyects", async function (req, res) {
 	//ruta para obtener los proyectos
