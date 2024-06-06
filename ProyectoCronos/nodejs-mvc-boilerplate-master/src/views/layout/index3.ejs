@@ -114,7 +114,7 @@
         <div class="tableForSteps"> <!-- esto es pa los steps -->
           <!-- convertimos taskSelected a numero para que se vea bonito -->
           <% var tasknum = parseInt(taskSelected); %>
-          <h1 class= "titlesForTables" style="margin-left: 10%; margin-bottom: 1rem;"> Pasos a seguir para tarea <%=tasknum + 1 %></h1>
+          <h1 class= "titlesForTables" style="margin-left: 3%; max-width: 100%; justify-content: center; margin-bottom: 1rem; font-size: 2rem;"> <%=proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].descripcion %></h1>
           <% for (let i = 0; i <= pasos.length - 1; i++) { %>
             <p class="brown-buttonforSteps" style="margin-top: -1rem;"><%= pasos[i] %></p>
             
