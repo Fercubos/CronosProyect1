@@ -2,7 +2,7 @@ import express from 'express';
 import { exec } from 'child_process';
 
 const app = express();
-const port = 80;
+const port = 4000;
 
 app.use(express.json());
 
