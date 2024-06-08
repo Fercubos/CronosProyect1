@@ -37,13 +37,16 @@
     <link rel="stylesheet" href="/style.css" />
 
           <% if (calendar === "active"){ %>
+          <% console.log(userIds23) %>
     <script>
-    const dataArray = unescape('<%- JSON.stringify(calendarCronos) %>');
-
+      const dataArray = unescape('<%- JSON.stringify(calendarCronos) %>');
+      const userIds = unescape('<%- JSON.stringify(userIds23) %>');
       window.user_id1 = "<%= user_id1 %>";
     </script>
     <% }else{ %>
     <script>
+        var projectId = projectId;
+        var taskId = taskId;
       window.user_id1 = "<%= user_id1 %>";
     </script>
     <% } %>

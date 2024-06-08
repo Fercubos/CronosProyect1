@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskButtonsContainer = document.querySelector('.tableForTasks');
     let taskButtons = document.querySelectorAll('.brown-buttonforTasks');
     let selectedProjectIndex = localStorage.getItem('projectId') || 0;
-    let selectedTaskIndex = localStorage.getItem('taskId');
+    let selectedTaskIndex = localStorage.getItem('taskId') || 0;
 
     function highlightButton(buttons, index) {
       buttons.forEach((button, i) => {

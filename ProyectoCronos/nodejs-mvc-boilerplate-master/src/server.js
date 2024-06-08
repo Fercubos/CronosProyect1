@@ -61,6 +61,19 @@ var projectDetails = {
 	StepsInsideResume: [],
 };
 
+app.post("/getUserIdbyName", async function (req, res) {
+	const NameUser = req.body.NameUser;
+	console.log(NameUser);
+	try {
+		const userId = await getUserIdByName(NameUser);
+		console.log(userId);
+		res.status(200).json({ message: "success!", userId: userId });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Error retrieving user id." });
+	}
+});
+
 app.post("/calendar", async function (req, res) {
 	console.log("Calendario");
 	var NameUser = req.body.NameUser;
@@ -70,7 +83,7 @@ app.post("/calendar", async function (req, res) {
 	  const userId = await getUserIdByName(NameUser);
 	  const steps = await getUserSteps(userId);
 	  console.log(steps);
-	  res.status(200).json({ message: "success!", steps: steps });
+	  res.status(200).json({ message: "success!", steps: steps , userId: userId});
 	} catch (error) {
 	  console.error(error);
 	  res.status(500).json({ message: "Error retrieving user steps." });
@@ -89,19 +102,21 @@ async function getUserIdByName(name) {
 	}
 	return result.rows[0].id;
   }
-  async function getUserSteps(userId) {
-	const query = `
-	  SELECT t.fecha_de_los_pasos, ps.descripcion
-	  FROM pasos ps
-	  JOIN tareas t ON ps.tarea_id = t.tarea_id
-	  JOIN proyectos p ON t.proyecto_id = p.proyecto_id
-	  WHERE p.user_id = $1
-	  ORDER BY t.fecha_de_los_pasos, ps.paso_id;
-	`;
-	const result = await executeQuery(query, [userId]);
-	return result.rows;
-  }
-  
+
+
+async function getUserSteps(userId) {
+    const query = `
+        SELECT t.tarea_id, p.proyecto_id, t.fecha_de_los_pasos, ps.descripcion
+        FROM pasos ps
+        JOIN tareas t ON ps.tarea_id = t.tarea_id
+        JOIN proyectos p ON t.proyecto_id = p.proyecto_id
+        WHERE p.user_id = $1
+        ORDER BY t.fecha_de_los_pasos, ps.paso_id;
+    `;
+    const result = await executeQuery(query, [userId]);
+    return result.rows;
+}
+
 
 
 app.post("/giveProyects", async function (req, res) {
