@@ -1,6 +1,5 @@
 import express from 'express';
 import { exec } from 'child_process';
-import pm2 from 'pm2';
 
 
 const app = express();
