@@ -7,13 +7,13 @@ Cronos es una plataforma web que automatiza la creación y gestión de proyectos
 ## Características Principales
 
 - **Automatización de Proyectos:** Ingrese un prompt descriptivo y Cronos generará automáticamente un conjunto de tareas detalladas, facilitando la gestión de proyectos complejos.
-![Cronos Interface 1](/images/Cronos1.png)
+![Cronos Interface 1](/doc/Cronos4.png)
 - **Gestión Visual:** Visualiza tus proyectos en un calendario interactivo, lo que facilita el seguimiento de las fechas de entrega y el progreso general.
-![Cronos Interface 2](/images/Cronos2.png)
+![Cronos Interface 2](/doc/Cronos3.png)
 - **Integración con Notion:** Duplica tus proyectos directamente en Notion para una gestión más fluida y un acceso más amplio a herramientas de productividad.
-![Cronos Interface 3](/images/Cronos3.png)
+![Cronos Interface 3](/doc/Cronos2.png)
 - **Almacenamiento Seguro:** Cada proyecto y tarea se guarda en una base de datos relacionada a tu usuario, permitiendo un acceso fácil y seguro a tu información.
-![Cronos Interface 4](/images/Cronos4.png)
+![Cronos Interface 4](/doc/Cronos1.png)
 
 
 ## Beneficios de Cronos
