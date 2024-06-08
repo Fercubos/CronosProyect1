@@ -44,14 +44,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // SIDEBAR TOGGLE ############################################
 
 function convertToEvents(calendarCronos, userId, projectId = null) {
-
   if (!Array.isArray(calendarCronos)) {
       throw new TypeError('calendarCronos debe ser un arreglo');
   }
   const projectTaskCount = {};
+  const lastEventEndTime = {}; // Almacenar la última hora de finalización por fecha
 
-  // Ordenar pasos por proyecto_id para garantizar que se procesan secuencialmente por proyecto
-  calendarCronos.sort((a, b) => a.proyecto_id - b.proyecto_id);
+  // Ordenar pasos por proyecto_id y fecha_de_los_pasos para garantizar que se procesan secuencialmente por proyecto y fecha
+  calendarCronos.sort((a, b) => a.proyecto_id - b.proyecto_id || new Date(a.fecha_de_los_pasos) - new Date(b.fecha_de_los_pasos));
 
   return calendarCronos.map(step => {
       if (!projectTaskCount[userId]) {
@@ -60,30 +60,38 @@ function convertToEvents(calendarCronos, userId, projectId = null) {
 
       // Verificar si el proyecto_id es nuevo
       if (projectTaskCount[userId].projectIds[step.proyecto_id] === undefined) {
-          // Asignar el índice actual del proyecto a este proyecto_id
           projectTaskCount[userId].projectIds[step.proyecto_id] = projectTaskCount[userId].projectIdCounter;
           projectTaskCount[userId].taskIdCounter[step.proyecto_id] = 0; // Iniciar el contador de tareas para este proyecto
           projectTaskCount[userId].projectIdCounter++;
       } else {
-          // Incrementar el contador de tareas para proyectos existentes
           projectTaskCount[userId].taskIdCounter[step.proyecto_id]++;
       }
 
-      // Usar el índice de proyecto guardado para este proyecto_id
       const projectIdIndex = projectTaskCount[userId].projectIds[step.proyecto_id];
       const taskIdIndex = projectTaskCount[userId].taskIdCounter[step.proyecto_id];
 
+      // Formato de fecha sin tiempo para usar como clave en lastEventEndTime
+      const dateKey = new Date(step.fecha_de_los_pasos).toDateString();
+      if (!lastEventEndTime[dateKey]) {
+          // Establecer la hora inicial de los eventos de ese día a las 12 PM
+          const noon = new Date(step.fecha_de_los_pasos);
+          noon.setHours(12, 0, 0, 0); // Ajustar a las 12 PM
+          lastEventEndTime[dateKey] = noon;
+      } else {
+          // Asegurarse de que el nuevo evento comience una hora después del último evento de ese día
+          lastEventEndTime[dateKey] = new Date(lastEventEndTime[dateKey].getTime() + 60 * 60 * 1000);
+      }
 
-      
       return {
           title: step.descripcion,
-          start: new Date(step.fecha_de_los_pasos).toISOString(),
-          end:   new Date(step.fecha_de_los_pasos).toISOString(),
+          start: lastEventEndTime[dateKey].toISOString(),
+          end: new Date(lastEventEndTime[dateKey].getTime() + 60 * 60 * 1000).toISOString(),
           url: `/Proyects?projectId=${projectIdIndex}&taskId=${taskIdIndex}&usuario1=${userId}`
-          
       };
   });
 }
+
+
 
 
 
