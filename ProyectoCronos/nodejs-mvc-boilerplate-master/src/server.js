@@ -14,7 +14,7 @@ import path from "path";
 import ejsLayouts from "express-ejs-layouts";
 import OpenAI from "openai";
 import pg from "pg";
-
+///home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master/postgres-cronos-image.tar
 
 const port = process.env.PORT || 4120;
 const app = express();
