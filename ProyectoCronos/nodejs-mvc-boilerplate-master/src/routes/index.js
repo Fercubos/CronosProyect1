@@ -82,7 +82,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 	proyectosCronos = await proyectosCronos.json();
 
 	console.log(proyectosCronos.proyects);
-
+	const projectId = request.query.projectId || 0; // Asegúrate de convertir a número si es necesario
+    const taskId = request.query.taskId || 0;
 	//si la respuesta es un res status 204 no hay proyectos
 	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
 		console.log("No hay proyectos registrados. en el if");
@@ -97,6 +98,9 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			noExistenProyectos : "true",
 			notion_url : "",
 			calendar: "desactive",
+			taskId: taskId,
+			projectId: projectId,
+			
 		});
 	} else {
 		console.log("NOMBRE: " + proyectosCronos.proyectos[0].nombre);
@@ -143,6 +147,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			taskSelected : taskSelected,
 			notion_url : notion_url || "",
 			calendar: "desactive",
+			taskId: taskId,
+			projectId: projectId,
 			
 		});
 		}

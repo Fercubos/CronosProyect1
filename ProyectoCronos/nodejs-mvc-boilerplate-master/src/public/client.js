@@ -5,13 +5,6 @@ $(document).ready(function() {
     var projectId = localStorage.getItem('projectId');
     var taskId = localStorage.getItem('taskId');
     
-    // Resaltar el proyecto y la tarea si están guardados en localStorage
-    if (projectId !== null) {
-        $("#proyectf" + projectId).addClass('highlight');
-    }
-    if (taskId !== null) {
-        $("#taskf" + taskId).addClass('highlight');
-    }
 
     $("[id^='proyectf']").click(function() {
         var projectId = parseInt(this.id.replace('proyectf', ''));
@@ -19,12 +12,9 @@ $(document).ready(function() {
 
         // Resaltar el proyecto seleccionado y quitar el resaltado de los demás
         $("[id^='proyectf']").removeClass('highlight');
-        $(this).addClass('highlight');
 
         // Resaltar la primera tarea del proyecto seleccionado
-        $("[id^='taskf']").removeClass('highlight');
         if ($("#taskf0").length) {
-            $("#taskf0").addClass('highlight');
             localStorage.setItem('taskId', 0);  // Selecciona automáticamente la primera tarea
         } else {
             localStorage.removeItem('taskId');  // Si no hay tareas, elimina el taskId
@@ -43,8 +33,6 @@ $(document).ready(function() {
         localStorage.setItem('taskId', taskId);  // Guarda en localStorage
 
         // Resaltar la tarea seleccionada y quitar el resaltado de las demás
-        $("[id^='taskf']").removeClass('highlight');
-        $(this).addClass('highlight');
 
         var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId + '&usuario1=' + user_id1;
         window.location.href = newUrl2;
@@ -55,58 +43,7 @@ $(document).ready(function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const projectButtons = document.querySelectorAll('.brown-buttonforproyectsname');
-    const taskButtonsContainer = document.querySelector('.tableForTasks');
-    let taskButtons = document.querySelectorAll('.brown-buttonforTasks');
-    let selectedProjectIndex = localStorage.getItem('projectId') || 0;
-    let selectedTaskIndex = localStorage.getItem('taskId') || 0;
 
-    function highlightButton(buttons, index) {
-      buttons.forEach((button, i) => {
-        if (i == index) {
-          button.classList.add('highlight');
-        } else {
-          button.classList.remove('highlight');
-        }
-      });
-    }
-
-    function loadTasksForProject(projectIndex) {
-      // Aquí se supone que recargas las tareas para el proyecto seleccionado
-      // Por simplicidad, estamos seleccionando el primer botón de tarea existente
-      taskButtons = document.querySelectorAll('.brown-buttonforTasks');
-      if (taskButtons.length > 0) {
-        if (selectedTaskIndex !== null) {
-          highlightButton(taskButtons, selectedTaskIndex);
-        } else {
-          highlightButton(taskButtons, 0);
-          localStorage.setItem('taskId', 0); // Asegura que solo se seleccione la primera tarea
-        }
-      }
-    }
-
-    projectButtons.forEach((button, projectIndex) => {
-      button.addEventListener('click', function() {
-        selectedProjectIndex = projectIndex;
-        localStorage.setItem('projectId', selectedProjectIndex);
-        localStorage.removeItem('taskId'); // Remover taskId al cambiar de proyecto
-        highlightButton(projectButtons, projectIndex);
-        loadTasksForProject(projectIndex);
-      });
-    });
-
-    taskButtons.forEach((button, taskIndex) => {
-      button.addEventListener('click', function() {
-        highlightButton(taskButtons, taskIndex);
-        localStorage.setItem('taskId', taskIndex);
-      });
-    });
-
-    // Inicialización
-    highlightButton(projectButtons, selectedProjectIndex);
-    loadTasksForProject(selectedProjectIndex);
-});
 
 
 // SIDEBAR TOGGLE ############################################
