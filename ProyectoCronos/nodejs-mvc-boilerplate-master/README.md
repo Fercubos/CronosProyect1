@@ -1,129 +1,53 @@
-# Node.js MVC Template
+# Cronos
 
-<img src="https://images.unsplash.com/photo-1600051831735-9e0b949949b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" width="400px" height="auto" />
+Cronos es una plataforma web que automatiza la creación y gestión de proyectos, transformando ideas complejas en tareas manejables y organizadas. Esta herramienta utiliza tecnologías como JavaScript, EJS, CSS, Node.js, Express, y PostgreSQL, aprovechando las APIs de Notion y OpenAI para optimizar la planificación y ejecución de proyectos.
 
-<span>Photo by <a href="https://unsplash.com/@jefferyho?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jeffery Ho</a> on <a href="https://unsplash.com/s/photos/architecture-green?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+## Características Principales
 
-> A boilerplate of NodeJS with MVC architecture using sequelizeORM.
+- **Automatización de Proyectos:** Ingrese un prompt descriptivo y Cronos generará automáticamente un conjunto de tareas detalladas, facilitando la gestión de proyectos complejos.
+- **Gestión Visual:** Visualiza tus proyectos en un calendario interactivo, lo que facilita el seguimiento de las fechas de entrega y el progreso general.
+- **Integración con Notion:** Duplica tus proyectos directamente en Notion para una gestión más fluida y un acceso más amplio a herramientas de productividad.
+- **Almacenamiento Seguro:** Cada proyecto y tarea se guarda en una base de datos relacionada a tu usuario, permitiendo un acceso fácil y seguro a tu información.
 
-## Table of contents
-* [General info](#general-info)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Structure](#structure)
-* [Setup](#setup)
-* [Features](#features)
-* [Contact](#contact)
+## Beneficios de Cronos
 
-## General info
+Cronos simplifica la gestión de proyectos dividiendo tareas complejas en partes más pequeñas y manejables. Esta segmentación ayuda a mejorar la eficiencia, facilitando la supervisión y la ejecución de cada paso del proyecto.
 
-The main purpose of the project was to create a NodeJS template with a MVC Design Pattern.
+## Requisitos del Sistema
 
-## Screenshots
+- Node.js
+- Express
+- PostgreSQL (Opción de usar Docker para manejar la base de datos)
+- Recomendado: Entorno de desarrollo como Visual Studio Code
 
-<div style="display: flex; justify-content: space-between; align-self: center;">
-  <img src="./doc/desktop-1.png" width="900px" />
-  <img src="./doc/desktop-2.png" width="180px" />
-  <img src="./doc/desktop-3.png" width="180px" />
-  <img src="./doc/desktop-4.png" width="180px" />
-  <img src="./doc/desktop-5.png" width="180px" />
-</div>
+## Instalación
 
-## Technologies
+1. Clona el repositorio en tu sistema.
+2. Instala las dependencias necesarias ejecutando `npm install`.
+3. Inicia los servidores con `node server.js` y `node Front.js`.
+4. Para la base de datos, usa Docker ejecutando el Dockerfile proporcionado.
 
-* NodeJS - >= 13.0
-* Express Framework - >= ^4.17.1
-* ORM: Sequelize - >= ^6.6.2
-* BD: MySql >= 8.0.21
-* Template engine: EJS >= ^3.1.5
-* Front-end framework: MaterializeCss - ^1.0.0-rc.2
+## Uso
 
-## Setup
+Accede a Cronos navegando a `localhost:3000` en tu navegador, regístrate y comienza a crear y gestionar tus proyectos de forma inmediata.
 
-Describe how to install / setup your local environement / add link to demo version.
+### Ejemplo de Uso
 
-## Structure
+Simplemente sigue los pasos de instalación y utiliza la interfaz web para comenzar a desglosar tus proyectos en tareas.
 
-```
-├── bin
-│   └── www
-│
-├── dist
-│
-├── public
-│   ├── css
-│   │   └── style.css
-│   ├── img
-│   │   └── favicon.ico
-│   └── scrits
-│       └── script.js
-│
-├── src
-│   ├── config
-│   │   ├── auth.js
-│   │   └── passport.js
-│   │
-│   ├── controllers
-│   │   └── UserController.js
-│   │
-│   ├── database
-│   │   ├── config
-│   │   │   └── database.js
-│   │   ├── migrations
-│   │   └── seeders
-│   │
-│   ├── models
-│   │   ├── index.js
-│   │   └── User.js
-│   │
-│   ├── routes
-│   │   └── index.js
-│   │
-│   ├── views
-│   │   ├── err
-│   │   │   └── index.js
-│   │   ├── layout
-│   │   │   ├── _partials
-│   │   │   │   ├── _footer.js
-│   │   │   │   ├── _head.js
-│   │   │   │   └── _header.js
-│   │   │   └── index.js
-│   │   └── page
-│   │       ├── about.js
-│   │       ├── auth.js
-│   │       ├── contact.js
-│   │       ├── index.js
-│   │       ├── login.js
-│   │       └── register.js
-│   │
-│   └── app.js
-│
-├── test
-│   ├── sum.js
-│   └──  sum.test.js
-│
-├── .editorConfig
-├── .eslintrc.json
-├── .sequelizerc
-├── jest.config.json
-├── LICENSE
-├── package.json
-└── README.md
-```
+## Contribuciones
 
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
+¿Interesado en contribuir? ¡Las contribuciones son bienvenidas! Para contribuir, realiza un pull request describiendo los cambios o nuevas funcionalidades que propones.
 
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+## Licencia
 
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+Este proyecto está licenciado bajo la Cronos License, cuya copia puedes encontrar en el archivo `LICENSE` del repositorio.
 
-## Contact
-Created by [CofferHub](https://github.com/CofferHub) - feel free to contact us!
+## Contacto
+
+Si tienes preguntas o problemas con Cronos, puedes contactarme directamente en mi correo disponible en mi perfil de GitHub o en mi sitio web [www.aaronhernandez.me](http://www.aaronhernandez.me).
+
+## Créditos y Agradecimientos
+
+Agradecimientos especiales a Fernando Cuevas Arroyo por su participación activa en el desarrollo del sistema de login y su apoyo continuo en el proyecto.
+
