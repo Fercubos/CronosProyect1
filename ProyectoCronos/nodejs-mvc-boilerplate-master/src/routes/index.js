@@ -7,6 +7,13 @@ import { pool } from '../database/config/database.js'; // Asegúrate de que la e
 const router = express.Router();
 var user = "alejandro1";
 // Ruta principal de la aplicación AAronRespondeporElla
+
+router.get("/license", function (req, res) {
+	//ruta principal
+	res.render("page/license.ejs");
+});
+
+
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
 	response.render("index3.ejs", {
