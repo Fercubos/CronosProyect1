@@ -36,20 +36,25 @@
     <link rel="stylesheet" href="/css/style1.css" />
     <link rel="stylesheet" href="/style.css" />
 
-          <% if (calendar === "active"){ %>
-          <% console.log(userIds23) %>
-    <script>
-      const dataArray = unescape('<%- JSON.stringify(calendarCronos) %>');
-      const userIds = unescape('<%- JSON.stringify(userIds23) %>');
-      window.user_id1 = "<%= user_id1 %>";
-    </script>
-    <% }else{ %>
-    <script>
-        var projectId = projectId;
-        var taskId = taskId;
-      window.user_id1 = "<%= user_id1 %>";
-    </script>
-    <% } %>
+    <% if (calendar === "active") { %>
+      <script>
+        const dataArray = <%- JSON.stringify(calendarCronos) %>;
+        const userIds = <%- JSON.stringify(userIds23) %>;
+        const projects = <%- JSON.stringify(ProyectsName) %>;
+        try {
+            var data1 = JSON.parse(dataArray); // This might be unnecessary if dataArray is already a JavaScript object
+        } catch(e) {
+            console.error('Error parsing data:', e);
+        }
+        window.user_id1 = "<%= user_id1 %>";
+      </script>
+  <% } else { %>
+      <script>
+          var projectId = projectId; // This seems incorrect as it's assigning the variable to itself
+          var taskId = taskId;       // Same issue as above
+          window.user_id1 = "<%= user_id1 %>";
+      </script>
+  <% } %>
 
 
     <!-- import the webpage's client-side javascript file -->

@@ -43,11 +43,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 // SIDEBAR TOGGLE ############################################
 
-function convertToEvents(calendarCronos, userId) {
+function convertToEvents(calendarCronos, userId, projectId = null) {
+
   if (!Array.isArray(calendarCronos)) {
       throw new TypeError('calendarCronos debe ser un arreglo');
   }
-
   const projectTaskCount = {};
 
   // Ordenar pasos por proyecto_id para garantizar que se procesan secuencialmente por proyecto
@@ -73,11 +73,14 @@ function convertToEvents(calendarCronos, userId) {
       const projectIdIndex = projectTaskCount[userId].projectIds[step.proyecto_id];
       const taskIdIndex = projectTaskCount[userId].taskIdCounter[step.proyecto_id];
 
+
+      
       return {
           title: step.descripcion,
           start: new Date(step.fecha_de_los_pasos).toISOString(),
-          end: new Date(step.fecha_de_los_pasos).toISOString(),
+          end:new Date(new Date(step.fecha_de_los_pasos).getTime() + 86400000).toISOString(),
           url: `/Proyects?projectId=${projectIdIndex}&taskId=${taskIdIndex}&usuario1=${userId}`
+          
       };
   });
 }
@@ -92,10 +95,8 @@ function convertToEvents(calendarCronos, userId) {
     //var dataArray2 = dataArray
     var dataArray1 = JSON.parse(dataArray);
     //console.log(dataArray2);
-    console.log(dataArray1);  // Esto debería mostrar tu array
 // Pasar los datos de calendarCronos al JavaScript
     console.log("dead");
-    console.log(userIds);
     var userIds1 = JSON.parse(userIds);
     const events = convertToEvents(dataArray1, userIds1);
 
@@ -116,6 +117,7 @@ if(mm<10) {
 }
 today = yyyy + '-' + mm + '-' + dd;
 console.log(today);
+
 
 
 // necesitamos hacerlo un poco a la izq el calendario
@@ -139,4 +141,12 @@ const calendar4 = new FullCalendar.Calendar(calendarEl3, {
 
   calendar4.render();
 
+});
+
+const dropdown = document.getElementById('projectDropdown');
+dropdown.addEventListener('change', function() {
+    const selectedProjectId = this.value;
+    console.log('Project ID:', selectedProjectId);
+    // Redireccionar al usuario a la página del calendario con el proyecto seleccionado
+    //window.location.href = `/Calendar?Pid=${encodeURIComponent(selectedProjectId)}`;
 });

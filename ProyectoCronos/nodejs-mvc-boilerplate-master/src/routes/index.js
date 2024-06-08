@@ -38,9 +38,24 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 	  });
 	  // Convertir la respuesta a JSON
 	  var calendarData = await calendarCronos.json();
+	  var cardat = (JSON.parse(calendarData.steps));
+
+		// Using a Map to filter out unique projects by their name
+		const uniqueProjects = new Map();
+		cardat.forEach(cardat => {
+			if (!uniqueProjects.has(cardat.proyecto_nombre)) {
+				uniqueProjects.set(cardat.proyecto_nombre, cardat);
+			}
+		});
+
+		// Convert Map values to an array
+		const uniqueProjectList = Array.from(uniqueProjects.values());
+		
+	  console.log(cardat);
+	  console.log("uniqueProjects: ")
+	  console.log(uniqueProjectList);
+	  console.log("fetching calendar data:");
 	  
-	  console.log("fetching");
-	  console.log(calendarData.userId);
 	  response.render("index3.ejs", {
 		usuario1: request.user.name,
 		calendar: "active",
@@ -48,7 +63,10 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		user_id1: request.user.id,
 		proyects: "desactive",
 		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON
+		ProyectsName: uniqueProjectList,
 	  });
+
+
 	} catch (error) {
 	  console.error("Error fetching calendar data:", error);
 	  response.status(500).render("index3.ejs", {
@@ -77,7 +95,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		},
 		body: JSON.stringify({ NameUser }),
 	});
-	console.log("fetching");
+	console.log("fetching proyectos");
 	
 	proyectosCronos = await proyectosCronos.json();
 
@@ -102,6 +120,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			projectId: projectId,
 			
 		});
+
+
 	} else {
 		console.log("NOMBRE: " + proyectosCronos.proyectos[0].nombre);
 

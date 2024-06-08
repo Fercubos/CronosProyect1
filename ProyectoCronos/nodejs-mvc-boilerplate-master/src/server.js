@@ -104,9 +104,9 @@ async function getUserIdByName(name) {
   }
 
 
-async function getUserSteps(userId) {
+  async function getUserSteps(userId) {
     const query = `
-        SELECT t.tarea_id, p.proyecto_id, t.fecha_de_los_pasos, ps.descripcion
+        SELECT t.tarea_id, p.proyecto_id, p.nombre as proyecto_nombre, t.fecha_de_los_pasos, ps.descripcion
         FROM pasos ps
         JOIN tareas t ON ps.tarea_id = t.tarea_id
         JOIN proyectos p ON t.proyecto_id = p.proyecto_id
@@ -114,8 +114,9 @@ async function getUserSteps(userId) {
         ORDER BY t.fecha_de_los_pasos, ps.paso_id;
     `;
     const result = await executeQuery(query, [userId]);
-    return result.rows;
+    return JSON.stringify(result.rows); // Convierte el resultado a JSON correctamente formateado
 }
+
 
 
 
