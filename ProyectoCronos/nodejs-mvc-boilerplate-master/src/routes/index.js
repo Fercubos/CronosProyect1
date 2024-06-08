@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
-import { pool } from '../database.js'; // Asegúrate de que la extensión del archivo sea correcta
+import { pool } from '../database/config/database.js'; // Asegúrate de que la extensión del archivo sea correcta
 
 
 const router = express.Router();
