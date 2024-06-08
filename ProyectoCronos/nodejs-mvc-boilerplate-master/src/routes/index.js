@@ -14,6 +14,7 @@ router.get("/license", function (req, res) {
 });
 
 
+
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
 	response.render("index3.ejs", {

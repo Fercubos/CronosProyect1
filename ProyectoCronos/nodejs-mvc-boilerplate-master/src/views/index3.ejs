@@ -71,7 +71,9 @@
               <div class="containerForLogoProyects">
                 <img src= "/notion.png" class="NotionImg" alt="Notion"/>
                 <p class="lettersNotion">Duplicar en Notion</p>
-              </div>
+              
+            </div>
+
             </a>
               <!-- <p style="margin-top: 1rem; font-size: 1rem;">Click aqui para que te lleve al Notion</p>
               <p style="margin-top: 1rem; font-size: 1rem;"> del selecionado</p> -->
@@ -128,7 +130,11 @@
         <% } %>
       <% } %>
       <% } %>
-      
+    
+        <%if (proyects === "active"){ %>
+        </div>
+        <% } %>
+
     <%- include('layout/_partials/_footer.ejs') %>
 
     
