@@ -1,4 +1,4 @@
 /home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master/postgres-cronos-image.tar
 
 
-interesante 2
+interesante 2sd
