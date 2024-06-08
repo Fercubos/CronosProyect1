@@ -1,5 +1,7 @@
 # Cronos
 
+**Visita [Cronos en AaronProjects.xyz](https://aaronprojects.xyz) para ver la plataforma en acción.**
+
 Cronos es una plataforma web que automatiza la creación y gestión de proyectos, transformando ideas complejas en tareas manejables y organizadas. Esta herramienta utiliza tecnologías como JavaScript, EJS, CSS, Node.js, Express, y PostgreSQL, aprovechando las APIs de Notion y OpenAI para optimizar la planificación y ejecución de proyectos.
 
 ## Características Principales
