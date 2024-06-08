@@ -78,7 +78,7 @@ function convertToEvents(calendarCronos, userId, projectId = null) {
       return {
           title: step.descripcion,
           start: new Date(step.fecha_de_los_pasos).toISOString(),
-          end:new Date(new Date(step.fecha_de_los_pasos).getTime() + 86400000).toISOString(),
+          end:   new Date(step.fecha_de_los_pasos).toISOString(),
           url: `/Proyects?projectId=${projectIdIndex}&taskId=${taskIdIndex}&usuario1=${userId}`
           
       };
