@@ -1,10 +1,29 @@
 import express from 'express';
 import { exec } from 'child_process';
 
+
 const app = express();
 const port = 4000;
 
 app.use(express.json());
+
+
+// pm2.connect(err => {
+//   if (err) {
+//     console.error(err);
+//     process.exit(2);
+//   }
+
+//   pm2.restart('all', (err, proc) => {
+//     if (err) {
+//       throw err;
+//     }
+
+//     console.log('Processes restarted!');
+//     pm2.disconnect(); // disconnects from PM2
+//   });
+// });
+
 
 app.post('/webhook', (req, res) => {
   console.log('Webhook received!');

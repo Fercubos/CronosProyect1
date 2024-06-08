@@ -1,5 +1,5 @@
 import { Strategy as LocalStrategy } from 'passport-local';
-import { pool } from '../database.js'; // Asegúrate de incluir la extensión del archivo
+import { pool } from '../database/config/database.js'; // Asegúrate de incluir la extensión del archivo
 import bcrypt from 'bcryptjs';
 
 

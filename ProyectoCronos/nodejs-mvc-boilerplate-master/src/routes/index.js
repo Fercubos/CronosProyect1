@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
-import { pool } from '../database.js'; // Asegúrate de que la extensión del archivo sea correcta
+import { pool } from '../database/config/database.js'; // Asegúrate de que la extensión del archivo sea correcta
 
 
 const router = express.Router();
@@ -9,7 +9,7 @@ var user = "alejandro1";
 // Ruta principal de la aplicación AAronRespondeporElla
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
-	response.render("layout/index3.ejs", {
+	response.render("index3.ejs", {
 		usuario1: request.user.name,
 		proyects: "desactive",
 		user_id1: request.user.id,
@@ -32,7 +32,7 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 	  // Convertir la respuesta a JSON
 	  var calendarData = await calendarCronos.json();
 	  console.log("fetching");
-	  response.render("layout/index3.ejs", {
+	  response.render("index3.ejs", {
 		usuario1: request.user.name,
 		calendar: "active",
 		user_id1: request.user.id,
@@ -41,7 +41,7 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 	  });
 	} catch (error) {
 	  console.error("Error fetching calendar data:", error);
-	  response.status(500).render("layout/index3.ejs", {
+	  response.status(500).render("index3.ejs", {
 		usuario1: request.user.name,
 		calendar: "desactive",
 		user_id1: request.user.id,
@@ -76,7 +76,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 	//si la respuesta es un res status 204 no hay proyectos
 	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
 		console.log("No hay proyectos registrados. en el if");
-		response.render("layout/index3.ejs", {
+		response.render("index3.ejs", {
 			proyects: "active",
 			usuario1: request.user.name,
 			user_id1: request.user.id,
@@ -122,7 +122,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		}
 		
 
-		response.render("layout/index3.ejs", {
+		response.render("index3.ejs", {
 			proyects: "active",
 			proyectosCronos: proyectosCronos,
 			usuario1: request.user.name,
