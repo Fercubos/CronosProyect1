@@ -36,13 +36,15 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		},
 		body: JSON.stringify({ NameUser }),
 	  });
-	  
 	  // Convertir la respuesta a JSON
 	  var calendarData = await calendarCronos.json();
+	  
 	  console.log("fetching");
+	  console.log(calendarData.userId);
 	  response.render("index3.ejs", {
 		usuario1: request.user.name,
 		calendar: "active",
+		userIds23: calendarData.userId,
 		user_id1: request.user.id,
 		proyects: "desactive",
 		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON

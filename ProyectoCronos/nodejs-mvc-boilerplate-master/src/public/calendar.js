@@ -1,3 +1,7 @@
+
+
+
+
 // SIDEBAR TOGGLE ############################################
 document.addEventListener("DOMContentLoaded", function(event) {
    
@@ -39,25 +43,50 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 // SIDEBAR TOGGLE ############################################
 
-function convertToEvents(calendarCronos) {
-    // Lanza un error si el argumento no es un array
-    if (!Array.isArray(calendarCronos)) {
+function convertToEvents(calendarCronos, userId) {
+  if (!Array.isArray(calendarCronos)) {
       throw new TypeError('calendarCronos debe ser un arreglo');
-    }
-  
-    // Transforma cada elemento del arreglo en un objeto adecuado para eventos
-    return calendarCronos.map(step => ({
-      title: step.descripcion,
-      start: new Date(step.fecha_de_los_pasos).toISOString(), // Convierte la fecha a formato ISO
-      end: (new Date(step.fecha_de_los_pasos).toISOString()) // Convierte la fecha a formato ISO
-    }));
   }
+
+  const projectTaskCount = {};
+
+  // Ordenar pasos por proyecto_id para garantizar que se procesan secuencialmente por proyecto
+  calendarCronos.sort((a, b) => a.proyecto_id - b.proyecto_id);
+
+  return calendarCronos.map(step => {
+      if (!projectTaskCount[userId]) {
+          projectTaskCount[userId] = { projectIdCounter: 0, taskIdCounter: {}, projectIds: {} };
+      }
+
+      // Verificar si el proyecto_id es nuevo
+      if (projectTaskCount[userId].projectIds[step.proyecto_id] === undefined) {
+          // Asignar el índice actual del proyecto a este proyecto_id
+          projectTaskCount[userId].projectIds[step.proyecto_id] = projectTaskCount[userId].projectIdCounter;
+          projectTaskCount[userId].taskIdCounter[step.proyecto_id] = 0; // Iniciar el contador de tareas para este proyecto
+          projectTaskCount[userId].projectIdCounter++;
+      } else {
+          // Incrementar el contador de tareas para proyectos existentes
+          projectTaskCount[userId].taskIdCounter[step.proyecto_id]++;
+      }
+
+      // Usar el índice de proyecto guardado para este proyecto_id
+      const projectIdIndex = projectTaskCount[userId].projectIds[step.proyecto_id];
+      const taskIdIndex = projectTaskCount[userId].taskIdCounter[step.proyecto_id];
+
+      return {
+          title: step.descripcion,
+          start: new Date(step.fecha_de_los_pasos).toISOString(),
+          end: new Date(step.fecha_de_los_pasos).toISOString(),
+          url: `/Proyects?projectId=${projectIdIndex}&taskId=${taskIdIndex}&usuario1=${userId}`
+      };
+  });
+}
+
+
+
   
 
 // Pasar los datos de calendarCronos al JavaScript
-
-
-
    document.addEventListener('DOMContentLoaded', function () {
     // Aquí puedes agregar más código que utilice dataArray
     //var dataArray2 = dataArray
@@ -66,9 +95,14 @@ function convertToEvents(calendarCronos) {
     console.log(dataArray1);  // Esto debería mostrar tu array
 // Pasar los datos de calendarCronos al JavaScript
     console.log("dead");
-    const events = convertToEvents(dataArray1);
+    console.log(userIds);
+    var userIds1 = JSON.parse(userIds);
+    const events = convertToEvents(dataArray1, userIds1);
 
 const calendarEl3 = document.getElementById("calendar23");
+
+
+
 //get today
 var today = new Date();
 var dd = today.getDate();
