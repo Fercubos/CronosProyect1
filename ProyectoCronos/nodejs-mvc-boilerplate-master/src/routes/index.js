@@ -17,6 +17,7 @@ router.get("/license", function (req, res) {
 
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
+	console.log(user);
 	response.render("index3.ejs", {
 		usuario1: request.user.name,
 		proyects: "desactive",
