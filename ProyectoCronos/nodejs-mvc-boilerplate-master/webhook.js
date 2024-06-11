@@ -5,7 +5,7 @@ import crypto from 'crypto';
 const app = express();
 const port = 4000;
 
-// Secret que configuraste en GitHub ds
+// Secret que configuraste en GitHub ds dead
 const SECRET = 'KillAllHumans';
 
 app.use(express.json());
