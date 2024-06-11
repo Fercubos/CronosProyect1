@@ -76,11 +76,11 @@ app.post("/getUserIdbyName", async function (req, res) {
 
 app.post("/calendar", async function (req, res) {
 	console.log("Calendario");
-	var NameUser = req.body.NameUser;
+	var NameUser = req.body.userId;
 	console.log(NameUser);
   
 	try {
-	  const userId = await getUserIdByName(NameUser);
+	  const userId = NameUser
 	  const steps = await getUserSteps(userId);
 	  console.log(steps);
 	  res.status(200).json({ message: "success!", steps: steps , userId: userId});

@@ -28,14 +28,16 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 
 router.get("/calendar", checkNotAuthenticated, async function (request, response) {
 	//ruta principal
-	var NameUser = request.user.name;
+	var userId = request.user.id;
+	console.log("calendarsd");
+	console.log(userId);
 	try {
 	  var calendarCronos = await fetch("http://localhost:4120/calendar", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
 		},
-		body: JSON.stringify({ NameUser }),
+		body: JSON.stringify({ userId }),
 	  });
 	  // Convertir la respuesta a JSON
 	  var calendarData = await calendarCronos.json();
