@@ -1,32 +1,32 @@
 import express from 'express';
 import { exec } from 'child_process';
-
+import crypto from 'crypto';
 
 const app = express();
 const port = 4000;
 
+// Secret que configuraste en GitHub
+const SECRET = 'KillAllHumans';
+
 app.use(express.json());
 
+// Middleware para verificar la firma del webhook
+function verifyGitHubSignature(req, res, next) {
+  const signature = req.headers['x-hub-signature-256'];
+  const hmac = crypto.createHmac('sha256', SECRET);
+  const digest = 'sha256=' + hmac.update(JSON.stringify(req.body)).digest('hex');
 
-// pm2.connect(err => {
-//   if (err) {
-//     console.error(err);
-//     process.exit(2);
-//   }
+  if (signature !== digest) {
+    console.error('Invalid signature.');
+    return res.status(403).send('Signature does not match');
+  }
 
-//   pm2.restart('all', (err, proc) => {
-//     if (err) {
-//       throw err;
-//     }
+  next();
+}
 
-//     console.log('Processes restarted!');
-//     pm2.disconnect(); // disconnects from PM2
-//   });
-// });
-
-
-app.post('/webhook', (req, res) => {
+app.post('/webhook', verifyGitHubSignature, (req, res) => {
   console.log('Webhook received!');
+
   exec('cd /home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master && git fetch --all && git reset --hard origin/master && npm install && pm2 restart all', (err, stdout, stderr) => {
     if (err) {
       console.error(`exec error: ${err}`);
