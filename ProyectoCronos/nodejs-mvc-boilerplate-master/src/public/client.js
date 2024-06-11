@@ -21,7 +21,7 @@ $(document).ready(function() {
         }
 
         // Construye una nueva URL con el projectId como parámetro de consulta
-        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&usuario1=' + user_id1; 
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId 
         // Redirige a la nueva URL
         window.location.href = newUrl;
     });
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         // Resaltar la tarea seleccionada y quitar el resaltado de las demás
 
-        var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId + '&usuario1=' + user_id1;
+        var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId 
         window.location.href = newUrl2;
     });
 });

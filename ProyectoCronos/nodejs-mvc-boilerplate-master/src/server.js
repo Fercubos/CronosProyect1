@@ -1,22 +1,22 @@
 dotenv.config();
-import engine from "ejs-mate";
-import morgan from "morgan";
-import passport from "passport";
-import session from "express-session";
-import flash from "connect-flash";
-import { error } from "console";
+//import engine from "ejs-mate";
+//import morgan from "morgan";
+//import passport from "passport";
+//import session from "express-session";
+//import flash from "connect-flash";
+//import { error } from "console";
 import express from "express";
 import cors from "cors";
 import fs from "fs/promises"; // Import fs/promises para manejar archivos de forma asíncrona
-import ejs from "ejs";
-import axios from "axios";
-import path from "path";
-import ejsLayouts from "express-ejs-layouts";
+//import ejs from "ejs";
+//import axios from "axios";
+//import path from "path";
+//import ejsLayouts from "express-ejs-layouts";
 import OpenAI from "openai";
 import pg from "pg";
 ///home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master/postgres-cronos-image.tar
 
-const port = process.env.PORT || 4120;
+const port = 4120;
 const app = express();
 const model1 = "gpt-3.5-turbo"; //modelo de openai a utilizar
 
@@ -39,7 +39,7 @@ const openai = new OpenAI({
 });
 
 //manejo de la respuesta del asistente
-let response = "";
+//let response = "";
 let time1 = DateTime.now().toFormat("dd-MM-yyyy");
 
 //funcion pre definida notion
@@ -123,6 +123,7 @@ async function getUserIdByName(name) {
 app.post("/giveProyects", async function (req, res) {
 	//ruta para obtener los proyectos
 	console.log("Entregando Proyectos");
+	console.log(req.body.NameUser); //aqui se recibe el user_id	
   var user_id1s = req.body.NameUser;
   console.log(user_id1s); //aqui se recibe el user_id
 	try {

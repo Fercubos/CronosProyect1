@@ -86,7 +86,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 	//ruta para los proyectos
 	console.log("Proyectos");
 	console.log(request.query);
-	const NameUser = request.query.usuario1; 
+	const NameUser = request.user.id; 
 	console.log(NameUser);
 	//anadimos nameUser para que se sepa cuales proyectos solicitamos
 	var proyectosCronos = await fetch("http://localhost:4120/giveProyects", {
