@@ -1,0 +1,54 @@
+<%- include('layout/_partials/_head.ejs') %>
+<head>
+    <title>Chatbot con Bootstrap</title>
+    <style>
+        #chatContainer { width: 100%; max-width: 600px; margin-top: 5rem;}
+        #messageArea { margin-top: 3rem; height: 400px; overflow-y: scroll; background-color: #f8f9fa; border: 1px solid #dee2e6; border-bottom: none; padding: 10px; }
+        #inputArea { display: flex; }
+        #inputArea input { margin-top: 3rem;flex-grow: 1; padding: 10px; border: 1px solid #dee2e6; border-right: none; }
+        #inputArea button {  margin-top: 3rem;width: 100px; }
+    </style>
+</head>
+<body>
+    <div>
+
+    <div id="chatContainer" class="shadow-lg rounded">
+        <div id="messageArea">
+            <!-- Los mensajes del chatbot aparecerán aquí -->
+            <p class="text-muted">El chatbot está listo para conversar!</p>
+        </div>
+        <div id="inputArea" class="bg-light p-2">
+            <input type="text" id="userInput" class="form-control" placeholder="Escribe un mensaje..." aria-label="Mensaje">
+            <button type="button" class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function sendMessage() {
+            var input = document.getElementById('userInput');
+            var message = input.value.trim();
+            if (message) {
+                var messageElement = document.createElement('p');
+                messageElement.textContent = 'Tú: ' + message;
+                document.getElementById('messageArea').appendChild(messageElement);
+                input.value = ''; // Limpiar el input después de enviar el mensaje
+
+                // Aquí puedes agregar la lógica para enviar el mensaje al backend y recibir la respuesta
+            }
+        }
+
+        // Permitir enviar mensajes con la tecla Enter
+        document.getElementById('userInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+                event.preventDefault(); // Prevenir el comportamiento por defecto de la tecla Enter
+            }
+        });
+    </script>
+</body>
+
+<%- include('layout/_partials/_footer.ejs') %>

@@ -14,6 +14,17 @@ router.get("/license", function (req, res) {
 });
 
 
+router.get("/chat",checkNotAuthenticated, function (req, res) {
+	//ruta principal'
+
+	res.render("chat.ejs", {
+		usuario1: req.user.name,
+		proyects: "desactive",
+		user_id1: req.user.id,
+		calendar: "desactive",
+		chat: "active",
+	});
+});
 
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
@@ -23,6 +34,7 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 		proyects: "desactive",
 		user_id1: request.user.id,
 		calendar: "desactive",
+		chat: "desactive",
 	});
 });
 
@@ -67,6 +79,7 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		proyects: "desactive",
 		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON
 		ProyectsName: uniqueProjectList,
+		chat: "desactive",
 	  });
 
 
@@ -78,6 +91,8 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		user_id1: request.user.id,
 		proyects: "desactive",
 		calendarCronos: "Error fetching calendar data.",
+		chat: "desactive",
+
 	  });
 	}
   });
@@ -121,6 +136,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			calendar: "desactive",
 			taskId: taskId,
 			projectId: projectId,
+			chat: "desactive",
+
 			
 		});
 
@@ -172,6 +189,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			calendar: "desactive",
 			taskId: taskId,
 			projectId: projectId,
+			chat: "desactive",
+
 			
 		});
 		}
