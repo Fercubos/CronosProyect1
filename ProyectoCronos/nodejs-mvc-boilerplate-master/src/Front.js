@@ -3,17 +3,10 @@ import session from "express-session";
 import flash from "express-flash"; //hize el cambio de connect-flash a express-flash
 import express from "express";
 import cors from "cors";
-import fs from "fs/promises"; // Import fs/promises para manejar archivos de forma asíncrona
-import ejs from "ejs";
-import axios from "axios";
-import fetch from "node-fetch";
 import path from "path";
 import engine from "ejs-mate";
 import morgan from "morgan";
-import jquery from "jquery";
 import indexRoutes from './routes/index.js';
-import { Strategy as LocalStrategy } from 'passport-local';
-import bcrypt from 'bcryptjs';
 
 
 
