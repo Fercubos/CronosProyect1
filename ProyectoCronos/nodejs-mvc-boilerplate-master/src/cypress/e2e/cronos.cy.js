@@ -1,9 +1,11 @@
 /// <reference types="cypress" />
 
+const Cronos_url = "localhost:3000"
+
 describe('sing in/up', () => {
     it('sign up', () => {
         // visita cronos
-        cy.visit('https://www.aaronprojects.xyz')
+        cy.visit(Cronos_url)
 
         // llena el formulario
         cy.get('input[name="name"]').type('cypress')
@@ -32,11 +34,11 @@ describe('other tests', () => {
         cy.get('.tableForProyects .titlesForTables').invoke('text').then((text) => {
             const proyectosNumber = parseInt(text.match(/\d+/)[0]);
             for(let i = 0; i < proyectosNumber; i++){
-                cy.visit(`https://www.aaronprojects.xyz/Proyects?projectId=${i}`)
+                cy.visit(Cronos_url + `/Proyects?projectId=${i}`)
                 cy.get('.tableForTasks .titlesForTables').invoke('text').then((text) => {
                     const proyectosNumber = parseInt(text.match(/\d+/)[0]);
                     for(let j = 0; j < proyectosNumber; j++){
-                        cy.visit(`https://www.aaronprojects.xyz/Proyects?projectId=${i}&taskId=${j}`)
+                        cy.visit(Cronos_url + `/Proyects?projectId=${i}&taskId=${j}`)
                     }
                 });
             }
