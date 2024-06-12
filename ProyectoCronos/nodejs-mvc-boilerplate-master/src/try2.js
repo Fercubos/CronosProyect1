@@ -10,6 +10,8 @@ import axios from "axios";  // Importa axios para realizar peticiones HTTP
 
 const port = 4102;
 const app = express();
+const url_of_ngrok = "https://0f46-2806-2f0-5021-fcaa-7cb2-34ac-9755-b738.ngrok-free.app";
+
 
 const pool = new pg.Pool({
 	user: "postgres",
@@ -66,7 +68,7 @@ app.post("/chat", async (req, res) => {
         }
 
         // Envío del mensaje al modelo externo
-        const response = await axios.post('https://8268-2806-2f0-5021-fcaa-51-cd42-1467-8818.ngrok-free.app/v1/chat/completions', {
+        const response = await axios.post(url_of_ngrok + '/v1/chat/completions', {
             model: "TheBloke/dolphin-2.7-mixtral-8x7b-GGUF",
             messages: [
                 { role: "system", content: "te voy a dar instrucciones, contestalas de manera correcta, y consisa en español gracias, tu nombre es CronosAI" },
