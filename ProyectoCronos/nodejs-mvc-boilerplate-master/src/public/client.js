@@ -29,7 +29,10 @@ $(document).ready(function() {
     $("[id^='taskf']").click(function() {
         var taskId = parseInt(this.id.replace('taskf', ''));
         var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
-
+		if (projectId === null) {
+			projectId = 0;
+		}
+		
         localStorage.setItem('taskId', taskId);  // Guarda en localStorage
 
         // Resaltar la tarea seleccionada y quitar el resaltado de las demás
