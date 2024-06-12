@@ -197,7 +197,7 @@ const appendBlocksResponse = function (apiResponse, el) {
 
 // client.js
 document.addEventListener("DOMContentLoaded", function () {});
-
+console.log(dbForm); // This should not be null
 dbForm.onsubmit = async function (event) {
 	//esta funcion creo que es la que sobre cargue con todo lo que hice
 	event.preventDefault();
