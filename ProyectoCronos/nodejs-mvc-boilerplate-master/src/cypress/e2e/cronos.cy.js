@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
 const Cronos_url = "www.aaronprojects.xyz"
+const usuario = "Aaron Hernandez"
+const email = "cypress@test.com"
+const password = "12345678"
 
 describe('sing in/up', () => {
     it('sign up', () => {
@@ -8,10 +11,10 @@ describe('sing in/up', () => {
         cy.visit(Cronos_url)
 
         // llena el formulario
-        cy.get('input[name="name"]').type('cypress')
-        cy.get('input[name="email"]').type('cypress@test.com')
-        cy.get('input[name="password"]').type('12345678')
-        cy.get('input[name="password2"]').type('12345678')
+        cy.get('input[name="name"]').type(usuario)
+        cy.get('input[name="email"]').type(email)
+        cy.get('input[name="password"]').type(password)
+        cy.get('input[name="password2"]').type(password)
         cy.contains('button', 'Signup').click()
         
         // si detecta que ya esta registrado ese email da click en log in
@@ -26,8 +29,8 @@ describe('sing in/up', () => {
     })
 
     it('sign in', () => {
-        cy.get('input[name="email"]').type('cypress2@test.com')
-        cy.get('input[name="password"]').type('12345678')
+        cy.get('input[name="email"]').type(email)
+        cy.get('input[name="password"]').type(password)
         cy.contains('button', 'Signin').click()
     })
 })
@@ -99,6 +102,16 @@ describe('other tests', () => {
     
 });
 
+
+// describe('chat bot', () => {
+//     it('chat bot', () => {
+//         cy.get('a[href="/chatMes"]').click({ force: true })
+//         cy.get('input[id="userInput"]').type('Hola')
+//         cy.contains('button', 'Enviar').click()
+//         //esperamos 10s antes de seguir con el siguiente test
+//         cy.wait(10000)
+//     })
+// })
 
 describe('log out', () => {
     it('log out', () => {
