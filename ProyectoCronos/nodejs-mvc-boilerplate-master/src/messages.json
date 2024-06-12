@@ -1,15 +1,15 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 08-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: generame un proyecto de 3 tareas para atar la corbata\nlo que no sepas imaginalo o generalo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es 11-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: hazme un proyecto de 2 tareas para multiplicar 3 veces 5lo que no sepas imaginalo o generalo!"
   },
   {
     "role": "user",
-    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: generame un proyecto de 3 tareas para atar la corbata\n"
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: hazme un proyecto de 2 tareas para multiplicar 3 veces 5"
   },
   {
     "role": "assistant",
-    "content": "Proyecto Corbata Bien Atada"
+    "content": "Proyecto: Multiplicación de 3 por 5"
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "3"
+    "content": "2"
   },
   {
     "role": "user",
@@ -25,15 +25,15 @@
   },
   {
     "role": "assistant",
-    "content": "Preparar la corbata"
+    "content": "Multiplicar 3 por 5."
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: generame un proyecto de 3 tareas para atar la corbata\n![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: hazme un proyecto de 2 tareas para multiplicar 3 veces 5![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Establecer el largo de la corbata: Colocar la corbata alrededor del cuello con la punta ancha hacia abajo y ajustarla para que la punta estrecha llegue hasta la altura del cinturón."
+    "content": "1. Escribir la operación matemática: \"3 x 5\".\n2. Multiplicar 3 por 5 siguiendo la regla básica de multiplicación: multiplicar el primer número por el segundo número y luego el resultado se obtiene al sumar los productos parciales. En este caso, sería: 3 x 5 = 15."
   },
   {
     "role": "user",
@@ -41,7 +41,7 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-08"
+    "content": "2024-06-11"
   },
   {
     "role": "user",
@@ -49,15 +49,15 @@
   },
   {
     "role": "assistant",
-    "content": "Ajustar corbata"
+    "content": "Resultado de la multiplicación."
   },
   {
     "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: generame un proyecto de 3 tareas para atar la corbata\n![object Promise]"
+    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 2 del proyecto: hazme un proyecto de 2 tareas para multiplicar 3 veces 5![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Ajustar el nudo: Tomar la punta ancha de la corbata y pasarla por encima de la punta estrecha. Luego, pasarla por debajo y luego a través del lazo que se ha formado alrededor del cuello. Ajustar el nudo deslizando suavemente hacia arriba hacia el cuello."
+    "content": "1. Escribir el resultado de la multiplicación obtenido en la tarea anterior: 15.\n2. Verificar que el resultado sea correcto y represente la multiplicación correcta de 3 por 5."
   },
   {
     "role": "user",
@@ -65,30 +65,6 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-09"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 3 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "Ajustes finales"
-  },
-  {
-    "role": "user",
-    "content": "Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero 3 del proyecto: generame un proyecto de 3 tareas para atar la corbata\n![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "1. Acomodar la corbata: Asegurarse de que la corbata esté correctamente ajustada y que el nudo esté centrado y alineado antes de salir. Asegurarse de que la punta estrecha no sea visible por debajo de la punta ancha. ¡Listo para lucir la corbata perfectamente atada!"
-  },
-  {
-    "role": "user",
-    "content": "Genera y dime la fecha de vencimiento de la tarea numero 3 del proyecto en formato AAAA-MM-DD![object Promise]"
-  },
-  {
-    "role": "assistant",
-    "content": "2024-06-10"
+    "content": "2024-06-11"
   }
 ]
