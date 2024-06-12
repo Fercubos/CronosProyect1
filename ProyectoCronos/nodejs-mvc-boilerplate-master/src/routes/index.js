@@ -265,9 +265,10 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 router.post("/databases", async (req, res) => {
 		//ruta para obtener las bases de datos de notion
 		console.log(req.body);
-		var response = JSON.stringify(req.body);
+		let userId3 = req.user.id;
+		let name = req.body.name;
 		console.log("heydwadwadwadwa");
-		console.log(response);
+		console.log(userId3);
 		
 		try {
 			var databases = await fetch("http://localhost:4120/databases", {
@@ -275,7 +276,8 @@ router.post("/databases", async (req, res) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: response,
+				body: JSON.stringify({ userId3, name }),
+				
 			});
 			databases = await databases.json();
 			res.json(databases);

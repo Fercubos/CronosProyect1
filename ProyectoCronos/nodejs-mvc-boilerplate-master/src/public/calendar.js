@@ -151,10 +151,4 @@ const calendar4 = new FullCalendar.Calendar(calendarEl3, {
 
 });
 
-const dropdown = document.getElementById('projectDropdown');
-dropdown.addEventListener('change', function() {
-    const selectedProjectId = this.value;
-    console.log('Project ID:', selectedProjectId);
-    // Redireccionar al usuario a la página del calendario con el proyecto seleccionado
-    //window.location.href = `/Calendar?Pid=${encodeURIComponent(selectedProjectId)}`;
-});
+
