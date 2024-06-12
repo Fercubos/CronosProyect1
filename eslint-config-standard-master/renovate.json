@@ -1,0 +1,9 @@
+{
+  "extends": ["github>standard/renovate-config:renovate.json5"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["peerDependencies", "engines"],
+      "enabled": false
+    }
+  ]
+}

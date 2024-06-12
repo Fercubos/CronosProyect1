@@ -77,14 +77,14 @@
       <div class="l-navbar" id="nav-bar">
           <nav class="nav">
               <div> <a href="/" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name" style="font-family: 'Courier New', Courier, monospace;">Proyecto Cronos</span> </a>
-                  <div class="nav_list"> <a href="/" <%if (proyects == "desactive" && calendar === "desactive"){%> class="nav_link active" <% } else {%> class="nav_link" <% } %> > <i class='bx bx-grid-alt nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Ask to Cronos! </span> </a> 
+                  <div class="nav_list"> <a href="/" <%if (proyects == "desactive" && calendar === "desactive" && chat === "desactive"){%> class="nav_link active" <% } else {%> class="nav_link" <% } %> > <i class='bx bx-grid-alt nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Ask to Cronos! </span> </a> 
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span>   </a>-->
                    <!-- <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>  -->
                   <a href="/Proyects" <% if (proyects === "active" && calendar === "desactive"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>><i class='bx bx-folder nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Proyectos</span> </a> 
-                  <!-- <a href="/" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Status</span> </a>  -->
                   <a href="/calendar" <% if (proyects === "desactive" && calendar === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>> <i class='bx bx-calendar nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Calendar</span> </a>  
-                
+                  <a href="/chatMes" <% if (proyects === "desactive" && calendar === "desactive" && chat === "active"){ %> class="nav_link active" <% } else { %> class="nav_link" <% } %>> <i class='bx bx-chat nav_icon'></i> <span style="font-family: 'Courier New', Courier, monospace;" class="nav_name">Chat</span> </a>  
+                  
                 </div>
               </div> <a href="/logout" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">LogOut</span> </a>
-          </nav>
+            </nav>
       </div>

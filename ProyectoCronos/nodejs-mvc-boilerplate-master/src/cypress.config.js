@@ -10,4 +10,3 @@ export default defineConfig({
     testIsolation: false,
     experimentalMemoryManagement: true
   }
-});
