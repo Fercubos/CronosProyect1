@@ -1,8 +1,8 @@
-import express from 'express';
+import express, { json } from 'express';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
 import { pool } from '../database/config/database.js'; // Asegúrate de que la extensión del archivo sea correcta
-
+import axios from 'axios';
 
 const router = express.Router();
 var user = "alejandro1";
@@ -14,17 +14,78 @@ router.get("/license", function (req, res) {
 });
 
 
-router.get("/chat",checkNotAuthenticated, function (req, res) {
-	//ruta principal'
+router.get("/chatMes", checkNotAuthenticated, async function (req, res) {
+    console.log("chatget");
+	let userId = req.user.id;
+	console.log(userId);
+	//userId = "300";
+    try {
+        // Solicitar los mensajes al servidor que los administra
+        const response = await fetch("http://localhost:4102/chatMessages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+			body: JSON.stringify({ userId })
+        });
 
-	res.render("chat.ejs", {
-		usuario1: req.user.name,
-		proyects: "desactive",
-		user_id1: req.user.id,
-		calendar: "desactive",
-		chat: "active",
-	});
+
+        const msg43 = await response.json(); // Obtiene los mensajes como JSON
+		console.log("Mensajes recibidos:");
+
+
+        // Renderizar la vista EJS pasando los mensajes obtenidos
+		res.render("chat", {
+			usuario1: req.user.name,
+			proyects: "desactive",
+			user_id1: req.user.id,
+			calendar: "desactive",
+			chat: "active",
+			messages1: msg43,
+		});
+
+	} catch (error) {
+        console.error("Error fetching chat:", error);
+        res.status(500).send("Error fetching chat");
+    }
 });
+
+
+
+
+router.post("/chat",checkNotAuthenticated, async (req, res) => {
+	//ruta principal
+	console.log("chatf2");
+	var userId = req.user.id;
+	console.log(userId);
+	var message = req.body.message;
+	console.log(req.body);
+	// Llamar a la función
+	var response = await sendMessageToChat(message, userId);
+
+	console.log("Respuesta del chat:", response);
+	res.send(response);
+});
+
+async function sendMessageToChat(message, userId) {
+    const url = 'http://localhost:4102/chat';
+    const data = {
+        userId: userId,  // Suponiendo que "300" es un ID válido en tu sistema
+        message: message
+    };
+
+    try {
+        const response = await axios.post(url, data);
+        console.log("Respuesta recibida:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error al enviar el mensaje:", error);
+        throw error;  // Reenvía el error para manejarlo más arriba si es necesario
+    }
+}
+
+
+
 
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
