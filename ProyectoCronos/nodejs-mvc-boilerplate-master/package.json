@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "lint": "eslint ./src/**/*.{js,jsx}"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.14",
@@ -18,6 +19,7 @@
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
@@ -39,6 +41,9 @@
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "globals": "^15.4.0",
     "nodemon": "^3.1.0"
   }
 }

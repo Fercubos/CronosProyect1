@@ -11,5 +11,6 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
+    "ignorePatterns": ["assets/"],  // Agregar esta línea para excluir la carpeta assets
     "rules": {}
 }

@@ -45,9 +45,6 @@ ADD COLUMN proyect_notion_url VARCHAR(255);
 
 
 
-
-
-
 SELECT 
     users.id AS user_id, 
     users.name AS user_name, 
@@ -74,3 +71,15 @@ LEFT JOIN
     tareas ON proyectos.proyecto_id = tareas.proyecto_id
 LEFT JOIN 
     pasos ON tareas.tarea_id = pasos.tarea_id;
+
+
+
+//integracion pendiente
+
+<h1>Select a Project</h1>
+<select id="projectDropdown">
+    <%console.log("ProyectsName")%>
+    <% ProyectsName.forEach(ProyectsName => { %>
+        <option style="font-size: 1rem; width: 1rem;" value="<%= ProyectsName.proyecto_id %>"><%= ProyectsName.proyecto_nombre %></option>
+    <% }) %>
+</select>

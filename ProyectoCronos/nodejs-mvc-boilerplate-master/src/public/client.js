@@ -5,13 +5,6 @@ $(document).ready(function() {
     var projectId = localStorage.getItem('projectId');
     var taskId = localStorage.getItem('taskId');
     
-    // Resaltar el proyecto y la tarea si están guardados en localStorage
-    if (projectId !== null) {
-        $("#proyectf" + projectId).addClass('highlight');
-    }
-    if (taskId !== null) {
-        $("#taskf" + taskId).addClass('highlight');
-    }
 
     $("[id^='proyectf']").click(function() {
         var projectId = parseInt(this.id.replace('proyectf', ''));
@@ -19,19 +12,16 @@ $(document).ready(function() {
 
         // Resaltar el proyecto seleccionado y quitar el resaltado de los demás
         $("[id^='proyectf']").removeClass('highlight');
-        $(this).addClass('highlight');
 
         // Resaltar la primera tarea del proyecto seleccionado
-        $("[id^='taskf']").removeClass('highlight');
         if ($("#taskf0").length) {
-            $("#taskf0").addClass('highlight');
             localStorage.setItem('taskId', 0);  // Selecciona automáticamente la primera tarea
         } else {
             localStorage.removeItem('taskId');  // Si no hay tareas, elimina el taskId
         }
 
         // Construye una nueva URL con el projectId como parámetro de consulta
-        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&usuario1=' + user_id1; 
+        var newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId 
         // Redirige a la nueva URL
         window.location.href = newUrl;
     });
@@ -39,14 +29,15 @@ $(document).ready(function() {
     $("[id^='taskf']").click(function() {
         var taskId = parseInt(this.id.replace('taskf', ''));
         var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
-
+		if (projectId === null) {
+			projectId = 0;
+		}
+		
         localStorage.setItem('taskId', taskId);  // Guarda en localStorage
 
         // Resaltar la tarea seleccionada y quitar el resaltado de las demás
-        $("[id^='taskf']").removeClass('highlight');
-        $(this).addClass('highlight');
 
-        var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId + '&usuario1=' + user_id1;
+        var newUrl2 = window.location.protocol + "//" + window.location.host + window.location.pathname + '?projectId=' + projectId + '&taskId=' + taskId 
         window.location.href = newUrl2;
     });
 });
@@ -55,58 +46,7 @@ $(document).ready(function() {
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const projectButtons = document.querySelectorAll('.brown-buttonforproyectsname');
-    const taskButtonsContainer = document.querySelector('.tableForTasks');
-    let taskButtons = document.querySelectorAll('.brown-buttonforTasks');
-    let selectedProjectIndex = localStorage.getItem('projectId') || 0;
-    let selectedTaskIndex = localStorage.getItem('taskId');
 
-    function highlightButton(buttons, index) {
-      buttons.forEach((button, i) => {
-        if (i == index) {
-          button.classList.add('highlight');
-        } else {
-          button.classList.remove('highlight');
-        }
-      });
-    }
-
-    function loadTasksForProject(projectIndex) {
-      // Aquí se supone que recargas las tareas para el proyecto seleccionado
-      // Por simplicidad, estamos seleccionando el primer botón de tarea existente
-      taskButtons = document.querySelectorAll('.brown-buttonforTasks');
-      if (taskButtons.length > 0) {
-        if (selectedTaskIndex !== null) {
-          highlightButton(taskButtons, selectedTaskIndex);
-        } else {
-          highlightButton(taskButtons, 0);
-          localStorage.setItem('taskId', 0); // Asegura que solo se seleccione la primera tarea
-        }
-      }
-    }
-
-    projectButtons.forEach((button, projectIndex) => {
-      button.addEventListener('click', function() {
-        selectedProjectIndex = projectIndex;
-        localStorage.setItem('projectId', selectedProjectIndex);
-        localStorage.removeItem('taskId'); // Remover taskId al cambiar de proyecto
-        highlightButton(projectButtons, projectIndex);
-        loadTasksForProject(projectIndex);
-      });
-    });
-
-    taskButtons.forEach((button, taskIndex) => {
-      button.addEventListener('click', function() {
-        highlightButton(taskButtons, taskIndex);
-        localStorage.setItem('taskId', taskIndex);
-      });
-    });
-
-    // Inicialización
-    highlightButton(projectButtons, selectedProjectIndex);
-    loadTasksForProject(selectedProjectIndex);
-});
 
 
 // SIDEBAR TOGGLE ############################################
@@ -259,59 +199,59 @@ const appendBlocksResponse = function (apiResponse, el) {
 // }
 
 // client.js
-document.addEventListener("DOMContentLoaded", function () {});
+//dbform is null what can i do
 
-dbForm.onsubmit = async function (event) {
-	//esta funcion creo que es la que sobre cargue con todo lo que hice
-	event.preventDefault();
-	const name = event.target.dbName.value;
-	const body = JSON.stringify({ dbName });
-	const NameUser = user_id1;
-	console.log("que carajo?");
-	const newAnchorTag1 = document.createElement("a");
+// Attach submit event to each form
 
-	//cambiamos el color del type submit
-	$("#dbSubmit").css("background-color", "red");
-	//hacemos inservible el boton
-	$("#dbSubmit").prop("disabled", true);
-	//como hago que pase esto solo si el width de la pagina es mayor a 800px?
-	if (window.innerWidth > 1200 && !$(".upperPart").is(":hidden")) {
-		//escondemos el boton de esconder menu
-		$(".menuhide").hide();
-		//hacemos mas pequeño el menu de arriba
-		//$(".upperPart").toggleClass("minimize");
-		//subimos un poco la tabla de abajo cambiando el margen-top -4rem
-		//$("table").animate({"margin-top": "-10rem"});
-	}
 
-	newAnchorTag1.innerText = "CARGANDO!!!!";
-	//ponemos el mensaje de cargando con el estilo .loading-text
-	newAnchorTag1.classList.add("loading-text");
-	dbResponseEl.appendChild(newAnchorTag1);
+document.addEventListener('DOMContentLoaded', function() {
+    const dbForm = document.getElementById('databaseForm');
+    const dbResponseEl = document.getElementById('dbResponse');
 
-	const newDBResponse = await fetch("/databases", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({ name: name , NameUser: NameUser}),
-	});
-	const newDBData = await newDBResponse.json();
+    if (dbForm) {
+        dbForm.onsubmit = async function(event) {
+            event.preventDefault();
+            const dbName = event.target.dbName.value;
+            const body = JSON.stringify({ dbName });
+            const NameUser = 'user_id1';  // Asegúrate de definir 'user_id1' o cambiarlo por una variable válida.
+            console.log("que carajo?");
+            const newAnchorTag1 = document.createElement("a");
 
-	//projectDetails have this things inside:DatabaseName: [],NumberOfTasks: [],Steps: [],dateOfSteps: [],completionOfSteps: [],StepsInsideResume: []
+            // Cambiamos el color del botón submit
+            $("#dbSubmit").css("background-color", "red");
+            // Deshabilitamos el botón
+            $("#dbSubmit").prop("disabled", true);
 
-	console.log("this is the response of the api: ");
-	console.log(newDBResponse);
-	console.log(newDBData);
-	//console.log(newDBData.projectDetails.DatabaseName)
-	//mostramos el nombre de la tarea step 2
-	//recuerda Step con mayuscula
-	console.log(newDBData.projectDetails.Steps[1]);
+            newAnchorTag1.innerText = "CARGANDO!!!!";
+            newAnchorTag1.classList.add("loading-text");
+            dbResponseEl.appendChild(newAnchorTag1);
 
-	appendApiResponse(newDBData, dbResponseEl); //esto agregara la respuesta de la api a la interfaz de usuario usa como parametros la respuesta de la api y el elemento donde se va a agregar
-	appendApiResponseToCronosUI(newDBData.projectDetails);
-	dbResponseEl.removeChild(newAnchorTag1);
-};
+            const newDBResponse = await fetch("/databases", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ name: dbName, NameUser: NameUser }),
+            });
+            const newDBData = await newDBResponse.json();
+
+            console.log("this is the response of the api: ");
+            console.log(newDBResponse);
+            console.log(newDBData);
+
+            if (newDBData && newDBData.projectDetails && newDBData.projectDetails.Steps) {
+                console.log(newDBData.projectDetails.Steps[1]);
+            }
+
+            appendApiResponse(newDBData, dbResponseEl);
+			appendApiResponseToCronosUI(newDBData.projectDetails);
+            dbResponseEl.removeChild(newAnchorTag1);
+        };
+    } else {
+        console.error('Form not found!');
+    }
+});
+
 
 //hacer que mande un fetch a la front basura para que me de los proyectos con jquery en el boton de proyectos
 //este es el boton de tareas             <button class="brown-buttonforTasks" id ="task<%=i%>"> <%= proyectosCronos.proyectos[3].tareas[i].pasos[0].descripcion%></button>

@@ -1,22 +1,22 @@
 dotenv.config();
-import engine from "ejs-mate";
-import morgan from "morgan";
-import passport from "passport";
-import session from "express-session";
-import flash from "connect-flash";
-import { error } from "console";
+//import engine from "ejs-mate";
+//import morgan from "morgan";
+//import passport from "passport";
+//import session from "express-session";
+//import flash from "connect-flash";
+//import { error } from "console";
 import express from "express";
 import cors from "cors";
 import fs from "fs/promises"; // Import fs/promises para manejar archivos de forma asíncrona
-import ejs from "ejs";
-import axios from "axios";
-import path from "path";
-import ejsLayouts from "express-ejs-layouts";
+//import ejs from "ejs";
+//import axios from "axios";
+//import path from "path";
+//import ejsLayouts from "express-ejs-layouts";
 import OpenAI from "openai";
 import pg from "pg";
 ///home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master/postgres-cronos-image.tar
 
-const port = process.env.PORT || 4120;
+const port = 4120;
 const app = express();
 const model1 = "gpt-3.5-turbo"; //modelo de openai a utilizar
 
@@ -39,7 +39,7 @@ const openai = new OpenAI({
 });
 
 //manejo de la respuesta del asistente
-let response = "";
+//let response = "";
 let time1 = DateTime.now().toFormat("dd-MM-yyyy");
 
 //funcion pre definida notion
@@ -61,16 +61,29 @@ var projectDetails = {
 	StepsInsideResume: [],
 };
 
+app.post("/getUserIdbyName", async function (req, res) {
+	const NameUser = req.body.NameUser;
+	console.log(NameUser);
+	try {
+		const userId = await getUserIdByName(NameUser);
+		console.log(userId);
+		res.status(200).json({ message: "success!", userId: userId });
+	} catch (error) {
+		console.error(error);
+		res.status(500).json({ message: "Error retrieving user id." });
+	}
+});
+
 app.post("/calendar", async function (req, res) {
 	console.log("Calendario");
-	var NameUser = req.body.NameUser;
+	var NameUser = req.body.userId;
 	console.log(NameUser);
   
 	try {
-	  const userId = await getUserIdByName(NameUser);
+	  const userId = NameUser
 	  const steps = await getUserSteps(userId);
-	  console.log(steps);
-	  res.status(200).json({ message: "success!", steps: steps });
+	  //console.log(steps);
+	  res.status(200).json({ message: "success!", steps: steps , userId: userId});
 	} catch (error) {
 	  console.error(error);
 	  res.status(500).json({ message: "Error retrieving user steps." });
@@ -89,29 +102,33 @@ async function getUserIdByName(name) {
 	}
 	return result.rows[0].id;
   }
+
+
   async function getUserSteps(userId) {
-	const query = `
-	  SELECT t.fecha_de_los_pasos, ps.descripcion
-	  FROM pasos ps
-	  JOIN tareas t ON ps.tarea_id = t.tarea_id
-	  JOIN proyectos p ON t.proyecto_id = p.proyecto_id
-	  WHERE p.user_id = $1
-	  ORDER BY t.fecha_de_los_pasos, ps.paso_id;
-	`;
-	const result = await executeQuery(query, [userId]);
-	return result.rows;
-  }
-  
+    const query = `
+        SELECT t.tarea_id, p.proyecto_id, p.nombre as proyecto_nombre, t.fecha_de_los_pasos, ps.descripcion
+        FROM pasos ps
+        JOIN tareas t ON ps.tarea_id = t.tarea_id
+        JOIN proyectos p ON t.proyecto_id = p.proyecto_id
+        WHERE p.user_id = $1
+        ORDER BY t.fecha_de_los_pasos, ps.paso_id;
+    `;
+    const result = await executeQuery(query, [userId]);
+    return JSON.stringify(result.rows); // Convierte el resultado a JSON correctamente formateado
+}
+
+
 
 
 app.post("/giveProyects", async function (req, res) {
 	//ruta para obtener los proyectos
 	console.log("Entregando Proyectos");
+	console.log(req.body.NameUser); //aqui se recibe el user_id	
   var user_id1s = req.body.NameUser;
   console.log(user_id1s); //aqui se recibe el user_id
 	try {
 		const proyectos = await getProjectsDetails(user_id1s);
-		console.log(proyectos);
+		//console.log(proyectos);
 		if (proyectos[0] === "No hay proyectos registrados.") {
 			res.status(200).json({ proyects: "No hay proyectos registrados." });
 		} else {
@@ -204,8 +221,8 @@ app.post("/databases", async function (req, res) {
 	//const title = request.body.dbName;
 	//necesitamos añadir un proceso para pedir el pageId ###
 	const name = req.body.name;
-	var id_user1 = req.body.NameUser; // Aquí se recibe el user_id del request
-
+	var id_user1 = req.body.userId3; // Aquí se recibe el user_id del request
+	
 
 	console.log("este es el id del usuario: " + id_user1);
 	console.log(time1.toString());
@@ -216,18 +233,18 @@ app.post("/databases", async function (req, res) {
 		{
 			role: "system",
 			content:
-				"eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda el dia de hoy es " +
+				"eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda al igual que tienes capacidades de todas las profeciones el dia de hoy es " +
 				time1 +
 				" haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: " +
 				name +
-				"lo que no sepas imaginalo o generalo!",
+				"lo que no sepas imaginalo o generalo nunca digas lo siento no puedo!",
 		},
 	];
 	await writeMessages(messages);
 
 	//generamos la database con el nombre del proyecto ########################################
-	var prompts = "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto que te propongo acontinuacion: ";
-	const response1 = await DBsd(name, prompts);
+	var prompts = "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto tiene que ser menor a 255 caracteres, es el que te propongo acontinuacion si te digo numero de tareas IGNORAME ESO:";
+	const response1 = await DBsd1(name, prompts);
 	const responseFromDB = await dbGenerator(response1, pageId);
 	//console.log(ded.data.id); //this is the id of the database
 	var database_id = responseFromDB.data.id;
@@ -247,7 +264,7 @@ app.post("/databases", async function (req, res) {
 	projectDetails.Steps.push(response2);
 
 	//generamos los pasos de la primera tarea del proyecto ########################################
-	var response_T1 = await DBsd(readMessages(),"Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: " + name + "!");
+	var response_T1 = await DBsd(readMessages(),"Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: " + name + "llamada "+ response2 + "!");
 	projectDetails.StepsInsideResume.push(response_T1); //pasos de la tarea 1
 	var response_dueDate = await DBsd(
 		readMessages(),
@@ -271,14 +288,7 @@ app.post("/databases", async function (req, res) {
 			" sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer!";
 		var response2 = await DBsd(readMessages(), promptsPages); //nombre de la tarea i
 		projectDetails.Steps.push(response2); //metemos el nombre de la tarea i en el arreglo de tareas
-		var response_T1 = await DBsd(
-			readMessages(),
-			"Genera o imagina para que me digas los pasos a seguir para hacer la tarea numero " +
-				i +
-				" del proyecto: " +
-				name +
-				"!"
-		);
+		var response_T1 = await DBsd(readMessages(),"Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: " + name + "llamada "+ response2 + "!");
 		projectDetails.StepsInsideResume.push(response_T1); //metemos los pasos de la tarea i en el arreglo de pasos
 		var response_dueDate = await DBsd(
 			readMessages(),
@@ -310,7 +320,7 @@ app.post("/databases", async function (req, res) {
 
 	var sorts = await sorts1(database_id);
 	console.log("this is the data base");
-	console.log(responseFromDB);
+	//console.log(responseFromDB);
   console.log(responseFromDB.data.public_url);
   var proyect_Notion_url = responseFromDB.data.public_url;
 	//we need to add to responseFromDB a json for show the details of the project task and steps, and the insides of the project
@@ -387,7 +397,7 @@ async function sorts1(database_id1) {
 			},
 		],
 	});
-	console.log(response);
+	//console.log(response);
 	return response;
 }
 
@@ -399,10 +409,10 @@ async function cronosShow(
 	response_dueDate
 ) {
 	//necesitamos hacer que esta la muestre en la pagina web
-	console.log(response2);
-	console.log(response_T1);
-	console.log(response_dueDate);
-	console.log(database_id);
+	//console.log(response2);
+	//console.log(response_T1);
+	//console.log(response_dueDate);
+	//console.log(database_id);
 	return { message: "success!" };
 }
 
@@ -516,6 +526,31 @@ async function DBsd(response1, prompts) {
 	console.log(completion.choices[0].message.content);
 	return completion.choices[0].message.content;
 }
+
+async function DBsd1(response1, prompts) {
+	//funcion para generar el nombre de la base de datos a partir de la respuesta del usuario
+	let messages = await readMessages(); // Leer mensajes del archivo JSON
+	let userQuestion = response1 || messages;
+
+	//generate the response with the user question
+	messages.push({ role: "user", content: prompts + userQuestion }); // Agregar la nueva pregunta del usuario
+	const completion = await openai.chat.completions.create({
+		model: model1,
+		messages: messages,
+	});
+
+	messages.push({
+		role: "assistant",
+		content: completion.choices[0].message.content,
+	}); // Agregar la respuesta del asistente
+	//await writeMessages(messages); // Guardar los mensajes actualizados en el archivo JSON
+	await writeMessages(messages); // Guardar los mensajes actualizados en el archivo JSON
+
+	console.log(completion.choices[0].message);
+	console.log(completion.choices[0].message.content);
+	return completion.choices[0].message.content;
+}
+
 
 async function readMessages() {
 	const data = await fs.readFile("messages.json", "utf8");

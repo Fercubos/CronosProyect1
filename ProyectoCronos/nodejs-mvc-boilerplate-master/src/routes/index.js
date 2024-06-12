@@ -14,8 +14,10 @@ router.get("/license", function (req, res) {
 });
 
 
+
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
+	console.log(user);
 	response.render("index3.ejs", {
 		usuario1: request.user.name,
 		proyects: "desactive",
@@ -26,26 +28,48 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 
 router.get("/calendar", checkNotAuthenticated, async function (request, response) {
 	//ruta principal
-	var NameUser = request.user.name;
+	var userId = request.user.id;
+	console.log("calendarsd");
+	console.log(userId);
 	try {
 	  var calendarCronos = await fetch("http://localhost:4120/calendar", {
 		method: "POST",
 		headers: {
 		  "Content-Type": "application/json",
 		},
-		body: JSON.stringify({ NameUser }),
+		body: JSON.stringify({ userId }),
 	  });
-	  
 	  // Convertir la respuesta a JSON
 	  var calendarData = await calendarCronos.json();
-	  console.log("fetching");
+	  var cardat = (JSON.parse(calendarData.steps));
+
+		// Using a Map to filter out unique projects by their name
+		const uniqueProjects = new Map();
+		cardat.forEach(cardat => {
+			if (!uniqueProjects.has(cardat.proyecto_nombre)) {
+				uniqueProjects.set(cardat.proyecto_nombre, cardat);
+			}
+		});
+
+		// Convert Map values to an array
+		const uniqueProjectList = Array.from(uniqueProjects.values());
+		
+	  console.log(cardat);
+	  console.log("uniqueProjects: ")
+	  console.log(uniqueProjectList);
+	  console.log("fetching calendar data:");
+	  
 	  response.render("index3.ejs", {
 		usuario1: request.user.name,
 		calendar: "active",
+		userIds23: calendarData.userId,
 		user_id1: request.user.id,
 		proyects: "desactive",
 		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON
+		ProyectsName: uniqueProjectList,
 	  });
+
+
 	} catch (error) {
 	  console.error("Error fetching calendar data:", error);
 	  response.status(500).render("index3.ejs", {
@@ -64,7 +88,7 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 	//ruta para los proyectos
 	console.log("Proyectos");
 	console.log(request.query);
-	const NameUser = request.query.usuario1; 
+	const NameUser = request.user.id; 
 	console.log(NameUser);
 	//anadimos nameUser para que se sepa cuales proyectos solicitamos
 	var proyectosCronos = await fetch("http://localhost:4120/giveProyects", {
@@ -74,12 +98,13 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 		},
 		body: JSON.stringify({ NameUser }),
 	});
-	console.log("fetching");
+	console.log("fetching proyectos");
 	
 	proyectosCronos = await proyectosCronos.json();
 
 	console.log(proyectosCronos.proyects);
-
+	const projectId = request.query.projectId || 0; // Asegúrate de convertir a número si es necesario
+    const taskId = request.query.taskId || 0;
 	//si la respuesta es un res status 204 no hay proyectos
 	if (proyectosCronos.proyects == "No hay proyectos registrados.") {
 		console.log("No hay proyectos registrados. en el if");
@@ -94,7 +119,12 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			noExistenProyectos : "true",
 			notion_url : "",
 			calendar: "desactive",
+			taskId: taskId,
+			projectId: projectId,
+			
 		});
+
+
 	} else {
 		console.log("NOMBRE: " + proyectosCronos.proyectos[0].nombre);
 
@@ -140,6 +170,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			taskSelected : taskSelected,
 			notion_url : notion_url || "",
 			calendar: "desactive",
+			taskId: taskId,
+			projectId: projectId,
 			
 		});
 		}
@@ -153,9 +185,10 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 router.post("/databases", async (req, res) => {
 		//ruta para obtener las bases de datos de notion
 		console.log(req.body);
-		var response = JSON.stringify(req.body);
+		let userId3 = req.user.id;
+		let name = req.body.name;
 		console.log("heydwadwadwadwa");
-		console.log(response);
+		console.log(userId3);
 		
 		try {
 			var databases = await fetch("http://localhost:4120/databases", {
@@ -163,7 +196,8 @@ router.post("/databases", async (req, res) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: response,
+				body: JSON.stringify({ userId3, name }),
+				
 			});
 			databases = await databases.json();
 			res.json(databases);

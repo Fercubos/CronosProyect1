@@ -1,3 +1,7 @@
+
+
+
+
 // SIDEBAR TOGGLE ############################################
 document.addEventListener("DOMContentLoaded", function(event) {
    
@@ -39,36 +43,75 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 // SIDEBAR TOGGLE ############################################
 
-function convertToEvents(calendarCronos) {
-    // Lanza un error si el argumento no es un array
-    if (!Array.isArray(calendarCronos)) {
+function convertToEvents(calendarCronos, userId, projectId = null) {
+  if (!Array.isArray(calendarCronos)) {
       throw new TypeError('calendarCronos debe ser un arreglo');
-    }
-  
-    // Transforma cada elemento del arreglo en un objeto adecuado para eventos
-    return calendarCronos.map(step => ({
-      title: step.descripcion,
-      start: new Date(step.fecha_de_los_pasos).toISOString(), // Convierte la fecha a formato ISO
-      end: (new Date(step.fecha_de_los_pasos).toISOString()) // Convierte la fecha a formato ISO
-    }));
   }
+  const projectTaskCount = {};
+  const lastEventEndTime = {}; // Almacenar la última hora de finalización por fecha
+
+  // Ordenar pasos por proyecto_id y fecha_de_los_pasos para garantizar que se procesan secuencialmente por proyecto y fecha
+  calendarCronos.sort((a, b) => a.proyecto_id - b.proyecto_id || new Date(a.fecha_de_los_pasos) - new Date(b.fecha_de_los_pasos));
+
+  return calendarCronos.map(step => {
+      if (!projectTaskCount[userId]) {
+          projectTaskCount[userId] = { projectIdCounter: 0, taskIdCounter: {}, projectIds: {} };
+      }
+
+      // Verificar si el proyecto_id es nuevo
+      if (projectTaskCount[userId].projectIds[step.proyecto_id] === undefined) {
+          projectTaskCount[userId].projectIds[step.proyecto_id] = projectTaskCount[userId].projectIdCounter;
+          projectTaskCount[userId].taskIdCounter[step.proyecto_id] = 0; // Iniciar el contador de tareas para este proyecto
+          projectTaskCount[userId].projectIdCounter++;
+      } else {
+          projectTaskCount[userId].taskIdCounter[step.proyecto_id]++;
+      }
+
+      const projectIdIndex = projectTaskCount[userId].projectIds[step.proyecto_id];
+      const taskIdIndex = projectTaskCount[userId].taskIdCounter[step.proyecto_id];
+
+      // Formato de fecha sin tiempo para usar como clave en lastEventEndTime
+      const dateKey = new Date(step.fecha_de_los_pasos).toDateString();
+      if (!lastEventEndTime[dateKey]) {
+          // Establecer la hora inicial de los eventos de ese día a las 12 PM
+          const noon = new Date(step.fecha_de_los_pasos);
+          noon.setHours(12, 0, 0, 0); // Ajustar a las 12 PM
+          lastEventEndTime[dateKey] = noon;
+      } else {
+          // Asegurarse de que el nuevo evento comience una hora después del último evento de ese día
+          lastEventEndTime[dateKey] = new Date(lastEventEndTime[dateKey].getTime() + 60 * 60 * 1000);
+      }
+
+      return {
+          title: step.descripcion,
+          start: lastEventEndTime[dateKey].toISOString(),
+          end: new Date(lastEventEndTime[dateKey].getTime() + 60 * 60 * 1000).toISOString(),
+          url: `/Proyects?projectId=${projectIdIndex}&taskId=${taskIdIndex}&usuario1=${userId}`
+      };
+  });
+}
+
+
+
+
+
   
 
 // Pasar los datos de calendarCronos al JavaScript
-
-
-
    document.addEventListener('DOMContentLoaded', function () {
     // Aquí puedes agregar más código que utilice dataArray
     //var dataArray2 = dataArray
     var dataArray1 = JSON.parse(dataArray);
     //console.log(dataArray2);
-    console.log(dataArray1);  // Esto debería mostrar tu array
 // Pasar los datos de calendarCronos al JavaScript
     console.log("dead");
-    const events = convertToEvents(dataArray1);
+    var userIds1 = JSON.parse(userIds);
+    const events = convertToEvents(dataArray1, userIds1);
 
 const calendarEl3 = document.getElementById("calendar23");
+
+
+
 //get today
 var today = new Date();
 var dd = today.getDate();
@@ -82,6 +125,7 @@ if(mm<10) {
 }
 today = yyyy + '-' + mm + '-' + dd;
 console.log(today);
+
 
 
 // necesitamos hacerlo un poco a la izq el calendario
@@ -106,3 +150,5 @@ const calendar4 = new FullCalendar.Calendar(calendarEl3, {
   calendar4.render();
 
 });
+
+
