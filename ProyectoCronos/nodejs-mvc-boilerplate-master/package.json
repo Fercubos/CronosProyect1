@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
+    "start": "node ./src/server.js -w ./src/Front.js -w ./src/try2.js",
     "lint": "eslint ./src/**/*.{js,jsx}"
   },
   "dependencies": {

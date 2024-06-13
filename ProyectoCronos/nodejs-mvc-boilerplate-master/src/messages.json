@@ -1,15 +1,15 @@
 [
   {
     "role": "system",
-    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda al igual que tienes capacidades de todas las profeciones el dia de hoy es 12-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: Proyecto de dos tareas para acabar con el hambre mundiallo que no sepas imaginalo o generalo nunca digas lo siento no puedo!"
+    "content": "eres un asistente que planifica y acomoda eventos o gestiona proyectos en la agenda al igual que tienes capacidades de todas las profeciones el dia de hoy es 12-06-2024 haz todo para que dure 1 semana a no ser que se te indique lo contrario y da lo que se te solicite sobre el contexto para el siguiente proyecto: lo que no sepas imaginalo o generalo nunca digas lo siento no puedo!"
   },
   {
     "role": "user",
-    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto tiene que ser menor a 255 caracteres, es el que te propongo acontinuacion si te digo numero de tareas IGNORAME ESO:Proyecto de dos tareas para acabar con el hambre mundial"
+    "content": "Genera y dime unica y exclusivamente el titulo del proyecto resumido sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el titulo del proyecto tiene que ser menor a 255 caracteres, es el que te propongo acontinuacion si te digo numero de tareas IGNORAME ESO:[object Object]"
   },
   {
     "role": "assistant",
-    "content": "Erradicación del Hambre Global"
+    "content": "\"Desarrollo de Aplicación de Realidad Aumentada para Turismo\""
   },
   {
     "role": "user",
@@ -17,7 +17,7 @@
   },
   {
     "role": "assistant",
-    "content": "2"
+    "content": "12"
   },
   {
     "role": "user",
@@ -25,15 +25,15 @@
   },
   {
     "role": "assistant",
-    "content": "Investigación y análisis"
+    "content": "Investigación de mercado"
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: Proyecto de dos tareas para acabar con el hambre mundialllamada Investigación y análisis![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Investigación de mercado![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Establecer un equipo de investigación: Reclutar expertos en temas relacionados con la seguridad alimentaria, la pobreza, la agricultura sostenible y la nutrición.\n2. Definir objetivos de investigación: Determinar qué aspectos del hambre mundial se van a analizar, como la distribución desigual de alimentos, las causas subyacentes de la inseguridad alimentaria y las posibles soluciones.\n3. Recopilar datos: Reunir información relevante de fuentes confiables, como informes de organizaciones internacionales, estudios académicos y estadísticas gubernamentales.\n4. Analizar la información recolectada: Profundizar en los datos para identificar tendencias, patrones y factores clave relacionados con el hambre mundial.\n5. Elaborar un informe de investigación: Presentar los hallazgos de manera clara y concisa, resaltando las causas fundamentales y las posibles estrategias para abordar el problema del hambre a nivel mundial."
+    "content": "1. Definir los objetivos de la investigación.\n2. Establecer el público objetivo.\n3. Seleccionar las técnicas de investigación adecuadas (encuestas, entrevistas, focus groups, etc.).\n4. Recopilar y analizar datos relevantes sobre el mercado turístico actual.\n5. Identificar tendencias y oportunidades dentro del mercado.\n6. Elaborar un informe detallado con los resultados de la investigación.\n7. Presentar los hallazgos al equipo de desarrollo de la aplicación."
   },
   {
     "role": "user",
@@ -49,15 +49,15 @@
   },
   {
     "role": "assistant",
-    "content": "Desarrollo de estrategias"
+    "content": "Análisis de competidores"
   },
   {
     "role": "user",
-    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: Proyecto de dos tareas para acabar con el hambre mundialllamada Desarrollo de estrategias![object Promise]"
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Análisis de competidores![object Promise]"
   },
   {
     "role": "assistant",
-    "content": "1. Revisar el informe de investigación: Analizar detalladamente los hallazgos y recomendaciones obtenidas en la tarea de Investigación y análisis para identificar áreas de enfoque estratégico.\n2. Establecer objetivos claros: Definir metas específicas y medibles para abordar eficazmente el problema del hambre mundial a través de las estrategias desarrolladas.\n3. Formar un equipo multidisciplinario: Reclutar expertos en diferentes áreas, como agricultura, política, economía y nutrición, para aportar diversas perspectivas al diseño de las estrategias.\n4. Investigar buenas prácticas: Estudiar casos exitosos de programas y políticas implementadas en otras regiones para combatir la inseguridad alimentaria y mejorar la nutrición.\n5. Diseñar un plan de acción: Elaborar un documento detallado que incluya las medidas concretas a implementar, los recursos necesarios, los plazos y las responsabilidades de cada miembro del equipo.\n6. Establecer indicadores de seguimiento: Definir métricas clave para monitorear el progreso de las estrategias, identificar posibles ajustes y evaluar el impacto de las acciones realizadas."
+    "content": "1. Identificar a los competidores directos e indirectos en el mercado turístico.\n2. Analizar sus fortalezas, debilidades, oportunidades y amenazas.\n3. Estudiar la presencia en línea de los competidores (sitios web, redes sociales, aplicaciones).\n4. Comparar precios, servicios y estrategias de marketing de los competidores.\n5. Evaluar la reputación y la satisfacción del cliente de los competidores.\n6. Recopilar y organizar la información obtenida en un informe detallado.\n7. Proponer recomendaciones basadas en el análisis para mejorar la propuesta de la aplicación de realidad aumentada."
   },
   {
     "role": "user",
@@ -65,6 +65,246 @@
   },
   {
     "role": "assistant",
-    "content": "2024-06-26"
+    "content": "2024-06-21"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 3 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Diseño de interfaz de la aplicación"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Diseño de interfaz de la aplicación![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Realizar un briefing con el equipo para recopilar requisitos y preferencias de diseño.\n2. Crear un wireframe inicial para establecer la estructura general de la interfaz.\n3. Diseñar los elementos visuales como botones, menús, iconos y esquemas de colores.\n4. Probar la usabilidad del diseño con prototipos interactivos.\n5. Incorporar feedback del equipo y posibles usuarios para mejorar el diseño.\n6. Optimizar la interfaz para una experiencia de usuario intuitiva y atractiva.\n7. Preparar la documentación detallada del diseño para el equipo de desarrollo."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 3 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-06-25"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 4 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Presentación de prototipo interactivo"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Presentación de prototipo interactivo![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Preparar una demostración interactiva del prototipo de la aplicación de realidad aumentada.\n2. Enfatizar las características clave y la experiencia de usuario única que ofrece.\n3. Mostrar la funcionalidad de la aplicación a través de escenarios prácticos.\n4. Recopilar feedback en tiempo real durante la presentación.\n5. Responder a preguntas y dudas de los asistentes.\n6. Solicitar comentarios y sugerencias para mejorar el prototipo.\n7. Registrar las observaciones recibidas para su posterior análisis y ajustes."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 4 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-06-28"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 5 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Revisión de feedback"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Revisión de feedback![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Recopilar todos los comentarios y sugerencias recibidos durante las presentaciones y pruebas del prototipo.\n2. Identificar patrones y tendencias en el feedback proporcionado por diferentes grupos de interés.\n3. Clasificar las observaciones en categorías como mejoras de diseño, funcionalidades adicionales, correcciones, etc.\n4. Priorizar los cambios y actualizaciones sugeridos según su impacto en la experiencia de usuario.\n5. Realizar reuniones con el equipo para discutir y analizar a fondo el feedback recopilado.\n6. Establecer un plan de acción para implementar las mejoras necesarias en el prototipo.\n7. Comunicar los ajustes planeados a todos los miembros del equipo y definir responsabilidades."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 5 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-01"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 6 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Ajustes de diseño"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Ajustes de diseño![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Revisar detalladamente las recomendaciones de diseño derivadas del feedback del prototipo interactivo.\n2. Modificar la interfaz gráfica de la aplicación según las especificaciones y sugerencias recibidas.\n3. Asegurarse de que los ajustes mantengan la coherencia con la identidad visual y la usabilidad del proyecto.\n4. Realizar pruebas exhaustivas para verificar que los cambios implementados mejoren la experiencia del usuario.\n5. Obtener aprobación del equipo de diseño y del cliente para las modificaciones realizadas.\n6. Documentar los ajustes realizados y las razones que los respaldan.\n7. Preparar la versión final del diseño actualizado para su posterior implementación."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 6 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-03"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 7 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Pruebas de usabilidad"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Pruebas de usabilidad![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Seleccionar un grupo representativo de usuarios para llevar a cabo las pruebas de usabilidad.\n2. Establecer escenarios y tareas específicas para evaluar la interacción con la aplicación.\n3. Observar y registrar el comportamiento de los usuarios mientras utilizan la aplicación.\n4. Recopilar feedback directo de los participantes sobre la facilidad de uso, la navegación y la satisfacción general.\n5. Analizar los resultados obtenidos durante las pruebas y identificar áreas de mejora.\n6. Documentar los hallazgos y las recomendaciones derivadas de las pruebas de usabilidad.\n7. Implementar las mejoras necesarias en el diseño y la funcionalidad de la aplicación basadas en los resultados de las pruebas."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 7 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-05"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 8 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Presentación final del proyecto"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Presentación final del proyecto![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Preparar una presentación visual y detallada que muestre el proceso de desarrollo del proyecto.\n2. Destacar los logros, desafíos superados y puntos destacados del proyecto.\n3. Incluir demostraciones interactivas de la aplicación finalizada para ilustrar su funcionamiento.\n4. Resaltar las características innovadoras y ventajas competitivas de la aplicación de realidad aumentada.\n5. Presentar el impacto previsto del proyecto en el mercado turístico y las oportunidades futuras.\n6. Dar la oportunidad a los stakeholders de hacer preguntas y comentarios.\n7. Concluir con un resumen convincente que refuerce el valor y la viabilidad de la solución propuesta."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 8 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-08"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 9 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Revisión final y entrega"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Revisión final y entrega![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Realizar una revisión exhaustiva de todos los aspectos del proyecto, desde el diseño hasta la funcionalidad.\n2. Verificar que se hayan realizado todos los ajustes necesarios y se hayan implementado las mejoras sugeridas.\n3. Coordinar con el equipo de desarrollo para asegurar que la aplicación esté lista para la entrega.\n4. Diligenciar la documentación final y garantizar que todos los elementos requeridos estén incluidos.\n5. Programar la entrega del proyecto a los interesados principales, asegurándose de cumplir con los plazos acordados.\n6. Presentar el resultado final del proyecto de manera clara y organizada.\n7. Confirmar la aceptación por parte de los stakeholders y obtener retroalimentación final."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 9 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-10"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 10 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Presentación del informe final"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Presentación del informe final![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Compilar y organizar todos los datos relevantes, hallazgos y conclusiones del proyecto.\n2. Estructurar el informe final de manera clara y concisa, incluyendo introducción, metodología, resultados y recomendaciones.\n3. Diseñar gráficos, tablas y visualizaciones que faciliten la comprensión de la información.\n4. Revisar y asegurarse de que el informe cumpla con los estándares de calidad y estilo requeridos.\n5. Preparar una presentación visual que resuma los aspectos más destacados del informe.\n6. Practicar la presentación para asegurar una entrega efectiva.\n7. Entregar el informe final y realizar la presentación a los stakeholders y el equipo involucrado en el proyecto."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 10 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-12"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 11 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Cierre del proyecto"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Cierre del proyecto![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Evaluar el cumplimiento de los objetivos y entregables del proyecto.\n2. Documentar lecciones aprendidas durante el desarrollo y ejecución del proyecto.\n3. Reunir al equipo para agradecer y reconocer el trabajo colaborativo.\n4. Realizar una revisión final del presupuesto y la planificación del proyecto.\n5. Completar y archivar toda la documentación y registros del proyecto.\n6. Realizar una reunión de cierre con los stakeholders para compartir resultados y obtener feedback.\n7. Celebrar los logros alcanzados y el trabajo en equipo."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 11 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-14"
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime unica y exclusivamente el nombre de la tarea numero 12 sin otras cosas ni nada de contexto extra o preguntas, UNICAMENTE el nombre de la tarea para llevar a cabo ese proyecto y sin verbos como realizar o hacer![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "Evaluación del proyecto"
+  },
+  {
+    "role": "user",
+    "content": "Genera o imagina o investiga, pero hazlo! y dime los pasos a seguir para hacer la primer tarea del proyecto: llamada Evaluación del proyecto![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "1. Analizar los resultados obtenidos comparándolos con los objetivos iniciales del proyecto.\n2. Evaluar el desempeño del equipo, los procesos y la gestión del proyecto.\n3. Identificar los puntos fuertes y las áreas de mejora durante la ejecución del proyecto.\n4. Recopilar retroalimentación de los stakeholders y el equipo para obtener una perspectiva completa.\n5. Documentar las lecciones aprendidas y las recomendaciones para futuros proyectos.\n6. Elaborar un informe detallado de la evaluación del proyecto con conclusiones y acciones recomendadas.\n7. Presentar los hallazgos y las recomendaciones a los stakeholders relevantes."
+  },
+  {
+    "role": "user",
+    "content": "Genera y dime la fecha de vencimiento de la tarea numero 12 del proyecto en formato AAAA-MM-DD![object Promise]"
+  },
+  {
+    "role": "assistant",
+    "content": "2024-07-16"
   }
 ]
