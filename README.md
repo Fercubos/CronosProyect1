@@ -46,6 +46,10 @@ Simplemente sigue los pasos de instalación y utiliza la interfaz web para comen
 
 ¿Interesado en contribuir? ¡Las contribuciones son bienvenidas! Para contribuir, realiza un pull request describiendo los cambios o nuevas funcionalidades que propones.
 
+## Video de pruebas Cypress
+
+este es el video de pruebas con cypress [Link al video]([http://www.aaronhernandez.me](https://youtu.be/UCheOnIpXiM)).
+
 ## Licencia
 
 Este proyecto está licenciado bajo la Cronos License, cuya copia puedes encontrar en el archivo `LICENSE` del repositorio.
