@@ -48,7 +48,7 @@ Simplemente sigue los pasos de instalación y utiliza la interfaz web para comen
 
 ## Video de pruebas Cypress
 
-este es el video de pruebas con cypress [Link al video]([http://www.aaronhernandez.me](https://youtu.be/UCheOnIpXiM)).
+este es el video de pruebas con cypress [Link al video](https://youtu.be/UCheOnIpXiM)
 
 ## Licencia
 
