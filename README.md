@@ -41,10 +41,24 @@ Accede a Cronos navegando a `localhost:3000` en tu navegador, regístrate y comi
 ### Ejemplo de Uso
 
 Simplemente sigue los pasos de instalación y utiliza la interfaz web para comenzar a desglosar tus proyectos en tareas.
+**Visita [La presentacion de Cronos](https://www.aaronprojects.xyz/what_is_cronos) para ver la plataforma en acción.**
+
+## Diagra de la arquitectura de Cronos
+
+![Diagrama de cronos y chatbot](/doc/CronosDiagrama.jpeg)
+
+## Diagrama de la base de datos de Cronos
+
+base de datos de cronos
+![Diagrama Unicamente de Cronos](/doc/BaseDeDatosCronos.png)
 
 ## Contribuciones
 
 ¿Interesado en contribuir? ¡Las contribuciones son bienvenidas! Para contribuir, realiza un pull request describiendo los cambios o nuevas funcionalidades que propones.
+
+## Video de pruebas Cypress
+
+este es el video de pruebas con cypress [Link al video](https://youtu.be/UCheOnIpXiM)
 
 ## Licencia
 
