@@ -13,6 +13,11 @@ router.get("/license", function (req, res) {
 	res.render("page/license.ejs");
 });
 
+router.get("/what_is_cronos", function (req, res) {
+	//ruta principal
+	res.render("page/what_is_cronos.ejs");
+});
+
 
 router.get("/chatMes", checkNotAuthenticated, async function (req, res) {
     console.log("chatget");

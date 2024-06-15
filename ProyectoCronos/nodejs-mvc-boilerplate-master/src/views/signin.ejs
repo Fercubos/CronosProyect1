@@ -1,15 +1,15 @@
 <%- layout('layout/main') %>
 <div class="formulario">
-    <h1>Log in</h1>
+    <h1>Iniciar sesión</h1>
     <form action="/signin"  method="post">
         <div class="form">
             <div class="username">
-                <input type="email" id ="email" name="email"  placeholder="Your email" required>
-                <label >User name</label>
+                <input type="email" id ="email" name="email"  placeholder="Tu correo" required>
+                <label >Usuario </label>
             </div>
             <div class="password">
-                <input type="password" id = "password" name="password"  placeholder="Your Password" required >
-                <label >Password</label>
+                <input type="password" id = "password" name="password"  placeholder="Tu contraseña" required >
+                <label >contraseña</label>
             </div>
         </div>
         <div class="Ol">
@@ -22,11 +22,14 @@
         </div>
         <div class="Login">
             <button type="submit" >
-                Signin
+                Entrar
             </button>
         <div class="Registro">
             <div class="Registrarse">
-                Don't have account ? <a href="/signup">Signup</a>
+                No tienes cuenta? <a href="/signup">Registrarse</a>
+            </div>
+            <div class="Log">
+                No sabes que es Cronos? <a href="/what_is_cronos">¿Qué es Cronos?</a>
             </div>
         </div>
         </div>

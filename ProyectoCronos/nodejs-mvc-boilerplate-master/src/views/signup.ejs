@@ -1,34 +1,37 @@
 <%- layout('layout/main') %>
 <div class="formulario">
-    <h1>Register</h1>
+    <h1>Registro</h1>
     <form action="/signup" method="post">
         <div class="form">
             <div class="form-group">
-                <input type="text" name="name" placeholder="Full name" required>
-                <label>User name</label>
+                <input type="text" name="name" placeholder="Nombre completo" required>
+                <label>Nombre completo</label>
             </div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Your email" required>
-                <label>Your E-mail</label>
+                <input type="email" name="email" placeholder="Tu correo" required>
+                <label>Tu correo</label>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Your password (needs to be at least 8 characters)" required>
-                <label>Password</label>
+                <input type="password" name="password" placeholder="Su contraseña (debe tener al menos 8 caracteres)" required>
+                <label>contraseña</label>
             </div>
             <div class="form-group">
-                <input type="password" id="password2" name="password2" placeholder="Confirm Password (needs to be at least 8 characters)" required>
-                <label>Confirm Password</label>
+                <input type="password" id="password2" name="password2" placeholder="Confirmar contraseña (debe tener al menos 8 caracteres)" required>
+                <label>Confirmar contraseña</label>
             </div>
         </div>
         <!-- <div class="Ol">
             <a href="#">Olvido su contraseña</a>
         </div> -->
         <div class="Login">
-            <button type="submit">Signup</button>
+            <button type="submit">Registrarse</button>
         </div>
         <div class="Login">
             <div class="Log">
-                Do you have an account? <a href="/signin">Login</a>
+                Ya tienes cuenta? <a href="/signin">Iniciar sesión</a>
+            </div>
+            <div class="Log">
+                No sabes que es Cronos? <a href="/what_is_cronos">¿Qué es Cronos?</a>
             </div>
         </div>
     </form>
