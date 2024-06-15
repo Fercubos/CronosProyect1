@@ -2,7 +2,7 @@
 
 const Cronos_url = "localhost:3000"
 const usuario = "cypress"
-const email = "cypress@test.com"
+const email = "cypress2@test.com"
 const password = "12345678"
 
 describe('sing in/up', () => {

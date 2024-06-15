@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-const Cronos_url = "www.aaronprojects.xyz"
+const Cronos_url = "localhost:3000"
 const usuario = "Aaron Hernandez"
-const email = "cypress@test.com"
+const email = "cypress2@test.com"
 const password = "12345678"
 
 describe('sing in/up', () => {
