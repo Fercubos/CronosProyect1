@@ -1,0 +1,19 @@
+Si aún no tienes un certificado SSL, puedes generar uno utilizando Let's Encrypt:
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d aaronprojects.xyz -d www.aaronprojects.xyz
+
+Reinicia Nginx para aplicar los cambios:
+
+sudo systemctl restart nginx
+
+
+ls -l /etc/nginx/ssl/aaronprojects.xyz.crt
+ls -l /etc/nginx/ssl/aaronprojects.xyz.key
+
+sudo chmod 644 /etc/nginx/ssl/aaronprojects.xyz.crt
+sudo chmod 600 /etc/nginx/ssl/aaronprojects.xyz.key
+
+sudo systemctl restart nginx
+
+
