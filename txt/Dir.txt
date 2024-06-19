@@ -1,0 +1,10 @@
+/home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master/postgres-cronos-image.tar
+
+
+interesante 
+
+
+
+url http://localhost:3000/Proyects?projectId=0&taskId=1&usuario1=2
+
+copi http://localhost:3000/Proyects?projectId=0&taskId=1&usuario1=2

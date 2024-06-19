@@ -1,0 +1,95 @@
+ ssh -i AaronKey.pem ubuntu@18.188.65.157
+  ssh -i AaronKey.pem ubuntu@3.128.160.149
+
+ en la carpeta keys alan
+
+sudo apt update
+
+sudo apt install git
+// se lleva aprox 1 minuto y 0.10 Gb de espacio
+
+sudo apt install npm 
+// se lleva aprox 2 minutos y 1 Gb de espacio
+
+
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+ apt-get install nodejs -y
+
+npm install pm2@latest -g
+
+
+sudo apt install docker.io
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+docker run --name some-postgres -e POSTGRES_PASSWORD=3312 -d postgres
+
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+
+verificamos el docker-compose para levantar base de datos
+
+docker-compose up -d
+
+docker ps
+(esto nos dira el id que tinee que ser igual al del container 5432) 4ef1ab787248
+
+si no tienes el backup de la base de datos, puedes hacerlo con el siguiente comando 
+nano backup1.sql y pegas el contenido de la base de datos
+
+docker cp backup1.sql 4ef1ab787248:/backup1.sql
+docker cp backup1.sql <container_id>:/backup1.sql
+
+docker exec -u postgres 4ef1ab787248 psql Proyecto_Cronos1 -f /backup1.sql
+docker exec -u postgres <container_id> psql Proyecto_Cronos1 -f /backup1.sql
+
+verificamos que la base de datos este creada
+
+docker exec -it 4ef1ab787248 psql -U postgres -d Proyecto_Cronos1
+docker exec -it <container_id> psql -U postgres -d Proyecto_Cronos1
+
+antes de correrlo recuerda el .env añadirlo a la carpeta src del proyecto
+
+ahora toca configurar el nginx
+
+sudo apt install nginx
+
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+
+sudo nano /etc/nginx/sites-available/Proyecto_Cronos1
+sudo nano /etc/nginx/sites-available/default //usa el default de preferencia
+
+
+sudo cat /var/log/nginx/error.log
+sudo cat /var/log/nginx/error.log
+
+recuerda configurar el http para el firewall
+
+server {
+    listen 80;
+    server_name aaronprojects.xyz www.aaronprojects.xyz;  server_name 18.188.65.157;  # Usa tu dirección IP o nombre de dominio
+
+    location / {
+        proxy_pass http://localhost:3000;  # Redirige las solicitudes a Express
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d aaronprojects.xyz -d www.aaronprojects.xyz
+//segun eso se actualiza ngix en automatico xd?
+sudo certbot renew --dry-run
+
+
