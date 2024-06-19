@@ -1,7 +1,17 @@
+ create backup of docker compose 
+ docker exec -t <nombre_del_contenedor_db> pg_dump -U postgres -d ChatCronos > backup_ChatCronos.sql
+
+
+ docker exec -t f64c85dc15b51abdf821c5921501c12a4a6132afdb5dbc0ddf9da71d4e11bdfe pg_dump -U postgres -d ChatCronos > backup_ChatCronos.sql
+docker exec -t bedde846103a0283fa4ce814fc9e8f099cbf085753d0bbfbc86e157682743bc8 pg_dump -U postgres -d Proyecto_Cronos1 > backup_Proyecto_Cronos1.sql
+
+
+ 
  ssh -i AaronKey.pem ubuntu@18.188.65.157
+
   ssh -i AaronKey.pem ubuntu@3.128.160.149
 
- en la carpeta keys alan
+en la carpeta keys alan
 
 sudo apt update
 
@@ -13,6 +23,7 @@ sudo apt install npm
 
 
 curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+
 sudo apt-get install -y nodejs
 
  apt-get install nodejs -y
@@ -34,6 +45,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 verificamos el docker-compose para levantar base de datos
+para lo que sigue tenemos que estar en src?
 
 docker-compose up -d
 
@@ -46,6 +58,7 @@ nano backup1.sql y pegas el contenido de la base de datos
 docker cp backup1.sql 4ef1ab787248:/backup1.sql
 docker cp backup1.sql <container_id>:/backup1.sql
 
+
 docker exec -u postgres 4ef1ab787248 psql Proyecto_Cronos1 -f /backup1.sql
 docker exec -u postgres <container_id> psql Proyecto_Cronos1 -f /backup1.sql
 
@@ -54,7 +67,22 @@ verificamos que la base de datos este creada
 docker exec -it 4ef1ab787248 psql -U postgres -d Proyecto_Cronos1
 docker exec -it <container_id> psql -U postgres -d Proyecto_Cronos1
 
+
 antes de correrlo recuerda el .env añadirlo a la carpeta src del proyecto
+
+añadir el .env importante!!
+instalar las dependencias
+
+npm i
+//es raro, como que dura mas de lo esperado
+
+pm2 start Front.js --name Front
+
+pm2 start server.js --name Backend
+
+pm2 start Chatbot.js --name Chatbot
+
+
 
 ahora toca configurar el nginx
 
@@ -68,10 +96,16 @@ sudo nano /etc/nginx/sites-available/Proyecto_Cronos1
 sudo nano /etc/nginx/sites-available/default //usa el default de preferencia
 
 
+
 sudo cat /var/log/nginx/error.log
 sudo cat /var/log/nginx/error.log
 
 recuerda configurar el http para el firewall
+
+
+sudo systemctl restart nginx
+
+
 
 server {
     listen 80;
