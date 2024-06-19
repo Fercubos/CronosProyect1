@@ -2,13 +2,14 @@
 
 $(document).ready(function() {
     // Aplicar resaltado basado en localStorage al cargar la página
+	
     var projectId = localStorage.getItem('projectId');
     var taskId = localStorage.getItem('taskId');
     
 
     $("[id^='proyectf']").click(function() {
         var projectId = parseInt(this.id.replace('proyectf', ''));
-        localStorage.setItem('projectId', projectId);  // Guarda en localStorage
+		localStorage.setItem('projectId', projectId);  // Guarda en localStorage
 
         // Resaltar el proyecto seleccionado y quitar el resaltado de los demás
         $("[id^='proyectf']").removeClass('highlight');
@@ -28,9 +29,12 @@ $(document).ready(function() {
     
     $("[id^='taskf']").click(function() {
         var taskId = parseInt(this.id.replace('taskf', ''));
-        var projectId = localStorage.getItem('projectId');  // Recupera de localStorage
-		if (projectId === null) {
+		if (projectId == null) {
 			projectId = 0;
+		}
+
+		if (taskId == null) {
+			taskId = 0;
 		}
 		
         localStorage.setItem('taskId', taskId);  // Guarda en localStorage
@@ -119,7 +123,7 @@ $(".menuhide").click(function () {
 // Appends the API response to the UI
 const appendApiResponse = function (apiResponse, el) {
 	//esto significa que vamos a agregar la respuesta de la api a la interfaz de usuario
-	console.log(apiResponse);
+	//console.log(apiResponse);
 
 	// Add success message to UI
 	const newParagraphSuccessMsg = document.createElement("p");

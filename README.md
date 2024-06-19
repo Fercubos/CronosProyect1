@@ -49,18 +49,16 @@ Accede a Cronos navegando a `localhost:3000` en tu navegador, regístrate y comi
 ### Ejemplo de Uso
 
 Simplemente sigue los pasos de instalación y utiliza la interfaz web para comenzar a desglosar tus proyectos en tareas.
+**Visita [La presentacion de Cronos](https://www.aaronprojects.xyz/what_is_cronos) para ver la plataforma en acción.**
 
-## Diagra de la arquitectura de Chatbot y Cronos
+## Diagra de la arquitectura de Cronos
 
 ![Diagrama de cronos y chatbot](/doc/CronosDiagrama.jpeg)
 
-## Diagrama de la base de datos de Cronos y Chatbot
+## Diagrama de la base de datos de Cronos
 
 base de datos de cronos
 ![Diagrama Unicamente de Cronos](/doc/BaseDeDatosCronos.png)
-
-base de datos del chatbot
-![Diagrama de el Chatbot](/doc/ChatbotDiagrama.png)
 
 ## Contribuciones
 

@@ -1,0 +1,27 @@
+docker start postgres-cronos
+
+docker ps
+
+
+
+docker run -it -p 8000:80 ceaaf3f8b09b
+
+
+docker logs postgres-cronos
+
+
+docker run -it ceaaf3f8b09b
+
+
+docker ps -a
+
+
+
+# Detener el contenedor antiguo
+docker stop old_container
+
+# Iniciar un nuevo contenedor
+docker run -d --name new_container my_new_image
+
+docker run -d --name [NEW_CONTAINER_NAME] [IMAGE_NAME]
+

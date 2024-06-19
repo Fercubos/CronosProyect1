@@ -1,0 +1,43 @@
+          <% if (numP != "") { %>
+            <% try { %>
+              <% if (!proyectosCronos == "") { %>
+                <div class="tableContainer">
+                  <div class="tableForProyects">
+                    <h1 class="titlesForTables"> Proyectos <%= numP %> </h1>
+                    <% for (let i = 0; i < proyectosCronos.proyectos.length; i++) { %>
+                      <button class="brown-buttonforproyectsname <% if (i == projectId) { %>highlight<% } %>" id="proyectf<%= i %>">
+                        <%= proyectosCronos.proyectos[i].nombre %>
+                      </button>
+                    <% } %>
+                  </div>
+                  <div class="tableForTasks">
+                    <h1 class="titlesForTables" style="margin-left: 32%;"> Tareas <%= proyectosCronos.proyectos[proyectSelected].tareas.length %> </h1>
+                    <% for (let i = 0; i <= proyectosCronos.proyectos[proyectSelected].tareas.length - 1; i++) { %>
+                      <button class="brown-buttonforTasks <% if (i == taskId) { %>highlight<% } %>" id="taskf<%= i %>">
+                        <%= proyectosCronos.proyectos[proyectSelected].tareas[i].pasos[0].descripcion %>
+                      </button>
+                    <% } %>
+                  </div>
+                  <% var textoCompleto = proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].steps_inside_resume; %>
+                  <% if (textoCompleto) { %>
+                    <% let pasos = textoCompleto.split(/\s(?=\d+\.)/); %>
+                    <div class="tableForSteps">
+                      <h1 class="titlesForTables" style="margin-left: 3%; max-width: 100%; justify-content: center; margin-bottom: 1rem; font-size: 2rem;">
+                        <%= proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].descripcion %>
+                      </h1>
+                      <% for (let i = 0; i < pasos.length; i++) { %>
+                        <p class="brown-buttonforSteps" style="margin-top: -1rem;"><%= pasos[i] %></p>
+                      <% } %>
+                    </div>
+                  <% } %>
+                </div>
+              <% } %>
+            <% } catch (e) { %>
+              <div class="main1 main">
+                <p style="margin-top: 6rem; margin-left: -1rem;">Ha ocurrido un Error</p>
+                <p style="margin-top: 0rem; margin-left: -13rem;">
+                  Por favor vuelve a seleccionar un proyecto desde la barra lateral.
+                </p>
+              </div>
+            <% } %>
+          <% } %>
