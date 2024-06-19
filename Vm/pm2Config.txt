@@ -1,0 +1,15 @@
+pm2 logs
+
+pm2 start app.js --name my-api
+
+pm2 restart my-api
+
+pm2 stop my-api
+
+pm2 delete my-api
+
+pm2 list
+
+pm2 monit
+
+pm2 startup

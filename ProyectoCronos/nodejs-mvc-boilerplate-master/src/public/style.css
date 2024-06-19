@@ -262,7 +262,7 @@ border-radius: 10px;
   margin-top: 4rem;
 }
 .menuhide{
-  background-color: #fefaf2;  /* Color azul */
+  background-color: #a48249;  /* Color azul */
   color: white;              /* Texto blanco */
   border: none;              /* Sin bordes */
   padding: 10px 20px;        /* Espaciado interno */
@@ -272,6 +272,7 @@ border-radius: 10px;
   transition: background-color 0.3s, transform 0.3s;  /* Transición suave de color y transformación */
   margin-left: 4rem;
   margin-top: 1rem ;
+  margin-bottom: 1rem;
 }
 
 

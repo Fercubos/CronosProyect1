@@ -20,6 +20,12 @@ Cronos es una plataforma web que automatiza la creación y gestión de proyectos
 
 Cronos simplifica la gestión de proyectos dividiendo tareas complejas en partes más pequeñas y manejables. Esta segmentación ayuda a mejorar la eficiencia, facilitando la supervisión y la ejecución de cada paso del proyecto.
 
+## Video Demostrativo de Funcionalidad
+
+**Mira el video demostrativo de Cronos para ver cómo funciona en acción.** Este video te proporcionará una visión clara de la interfaz y las características operativas de Cronos.
+
+[Ver Video de Funcionalidad de Cronos](https://youtu.be/GleGaoD43pQ)
+
 ## Requisitos del Sistema
 
 - Node.js

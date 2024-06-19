@@ -94,6 +94,11 @@
         <% }else{ %>
         
           <% if (numP != "") { %>
+            <% try { %>
+
+            <% if (proyectSelected == "") { %>
+              <% proyectSelected = 0; %>
+            <% } %>
             <% if (!proyectosCronos == "") { %>
         <div class= "tableContainer">
         <div class="tableForProyects">
@@ -112,7 +117,6 @@
 
           <% var textoCompleto = proyectosCronos.proyectos[proyectSelected].tareas[taskSelected].pasos[0].steps_inside_resume; 
              let pasos = textoCompleto.split(/\s(?=\d+\.)/);
-             console.log(pasos);
              %>
         <div class="tableForSteps"> <!-- esto es pa los steps -->
           <!-- convertimos taskSelected a numero para que se vea bonito -->
@@ -126,10 +130,15 @@
         </div>
 
         <% } %>
-        <% } %>
-        <% } %>
-      <% } %>
-      <% } %>
+        <% } catch (error) { %>
+          <%console.log(error); %>
+          <div class="main1 main">
+            <h2 style="margin-top: -40rem; margin-left: -1rem;">Ha ocurrido un Error</h2>
+            <h2 style="margin-top: 0rem; margin-left: -0rem;">
+              Por favor vuelve a seleccionar un proyecto desde la barra lateral.
+            </h2>
+          </div>
+        <% }}}}} %>
     
         <%if (proyects === "active"){ %>
         </div>
