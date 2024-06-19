@@ -27,7 +27,7 @@ function verifyGitHubSignature(req, res, next) {
 app.post('/webhook', verifyGitHubSignature, (req, res) => {
   console.log('Webhook received!');
 
-  exec('cd /home/aypierre225/ProyectoCronos06/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master && git fetch --all && git reset --hard origin/master && npm install && pm2 restart all', (err, stdout, stderr) => {
+  exec('cd /home/ubuntu/ProyectoCronos1/CronosProyect1/ProyectoCronos/nodejs-mvc-boilerplate-master && git fetch --all && git reset --hard origin/master && npm install && pm2 restart all', (err, stdout, stderr) => {
     if (err) {
       console.error(`exec error: ${err}`);
       return res.sendStatus(500);
