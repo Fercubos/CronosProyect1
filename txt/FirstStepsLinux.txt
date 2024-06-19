@@ -6,7 +6,7 @@
 docker exec -t bedde846103a0283fa4ce814fc9e8f099cbf085753d0bbfbc86e157682743bc8 pg_dump -U postgres -d Proyecto_Cronos1 > backup_Proyecto_Cronos1.sql
 
 
- s
+ ssd
  ssh -i AaronKey.pem ubuntu@18.188.65.157
 
   ssh -i AaronKey.pem ubuntu@3.128.160.149
