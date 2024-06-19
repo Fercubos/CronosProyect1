@@ -101,7 +101,8 @@ sudo systemctl enable nginx
 sudo systemctl status nginx
 
 sudo nano /etc/nginx/sites-available/Proyecto_Cronos1
-sudo nano /etc/nginx/sites-available/default //usa el default de preferencia
+sudo nano /etc/nginx/sites-available/default 
+//usa el default de preferencia
 
 
 
@@ -135,3 +136,40 @@ sudo certbot --nginx -d aaronprojects.xyz -d www.aaronprojects.xyz
 sudo certbot renew --dry-run
 
 
+este parece funcionar correcto 
+  GNU nano 7.2                                                                           /etc/nginx/sites-available/default
+server {
+listen 80;
+server_name aaronprojects.xyz www.aaronprojects.xyz;
+location / {
+    return 301 https://$host$request_uri;
+}}
+server {
+listen 443 ssl;
+server_name aaronprojects.xyz www.aaronprojects.xyz;
+ssl_certificate /etc/letsencrypt/live/aaronprojects.xyz/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/aaronprojects.xyz/privkey.pem;
+
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_prefer_server_ciphers on;
+ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+ssl_session_timeout 1d;
+ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+ssl_session_tickets off;
+
+ssl_stapling on;
+ssl_stapling_verify on;
+
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+
+location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+}
+}
