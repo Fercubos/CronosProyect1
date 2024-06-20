@@ -65,18 +65,26 @@ router.post("/chat",checkNotAuthenticated, async (req, res) => {
 	console.log(userId);
 	var message = req.body.message;
 	console.log(req.body);
+    var chatbotId = req.body.chatbotId;
+	console.log(chatbotId);
 	// Llamar a la función
-	var response = await sendMessageToChat(message, userId);
+	try{
+	var response = await sendMessageToChat(message, userId, chatbotId);
+	}catch(e){
+		console.log("Error en el chat");
+		response = "Error en el chat";
+	}
+	// Enviar la respuesta al cliente
 
-	console.log("Respuesta del chat:", response);
 	res.send(response);
 });
 
-async function sendMessageToChat(message, userId) {
+async function sendMessageToChat(message, userId, chatbotId) {
     const url = 'http://localhost:4102/chat';
     const data = {
         userId: userId,  // Suponiendo que "300" es un ID válido en tu sistema
-        message: message
+        message: message,
+		chatbotId: chatbotId
     };
 
     try {

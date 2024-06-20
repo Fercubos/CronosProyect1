@@ -1,10 +1,17 @@
-//dotenv.config();
+dotenv.config();
 import express from "express";
 import cors from "cors";
 import fs from "fs/promises"; // Import fs/promises para manejar archivos de forma asíncrona
 import pg from "pg";
 import morgan from "morgan";
 import axios from "axios";  // Importa axios para realizar peticiones HTTP
+import OpenAI from "openai";
+import dotenv from "dotenv";
+
+
+
+// Configuración de OpenAI
+   
 
 
 
@@ -26,9 +33,12 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+const openai = new OpenAI({
+	apiKey: process.env.OPENAI_API_KEY
+  });
+
 app.post("/chatMessages", async (req, res) => {
     const { userId } = req.body; // id_cronos del usuario
-
     try {
         // Buscar el id interno del usuario usando id_cronos
         const userResult = await pool.query('SELECT id FROM users WHERE id_cronos = $1', [userId]);
@@ -49,10 +59,13 @@ app.post("/chatMessages", async (req, res) => {
 
 
 
+
 app.post("/chat", async (req, res) => {
-    const { userId, message } = req.body;
+    const { userId, message, chatbotId } = req.body;
     console.log("Mensaje recibido:", message);
     console.log("ID de usuario:", userId);
+    console.log("ID del chatbot:", chatbotId);
+        
 
     try {
         // Buscar el id interno del usuario usando id_cronos
@@ -67,7 +80,33 @@ app.post("/chat", async (req, res) => {
             internalUserId = userResult.rows[0].id;  // Utilizar el id existente
         }
 
-        // Envío del mensaje al modelo externo
+        // Envío del mensaje al modelo externo de openai
+        if (chatbotId === "1") {
+                const response = await openai.chat.completions.create({
+                    model: "gpt-3.5-turbo",
+                    messages: [{ role: "user", content: message }],
+                    max_tokens: 150
+                });
+                console.log("Respuesta del modelo:");
+                console.log(response.choices[0].message.content);
+                // res.json({ response: response.data.choices[0].message.content });
+
+                    // Guardar el mensaje enviado en la base de datos
+        await pool.query('INSERT INTO messages (user_id, message) VALUES ($1, $2)', [internalUserId, message]);
+
+        // Extraer la respuesta del asistente de la estructura de la respuesta
+        if (response.choices && response.choices.length > 0) {
+            const modelResponseContent = response.choices[0].message;  // Asumiendo que el contenido está directamente bajo 'message'
+            // Guardar la respuesta del modelo en la base de datos
+            await pool.query('INSERT INTO messages (user_id, message) VALUES ($1, $2)', [internalUserId, modelResponseContent]);
+        }
+    
+        console.log("Respuesta del modelo:");
+        console.log(response.choices[0].message)
+        res.json({ response: response.choices[0].message });
+
+        } else {
+
         const response = await axios.post(url_of_ngrok + '/v1/chat/completions', {
             model: "TheBloke/dolphin-2.7-mixtral-8x7b-GGUF",
             messages: [
@@ -82,7 +121,7 @@ app.post("/chat", async (req, res) => {
                 "Content-Type": "application/json"
             }
         });
-
+    
         // Guardar el mensaje enviado en la base de datos
         await pool.query('INSERT INTO messages (user_id, message) VALUES ($1, $2)', [internalUserId, message]);
 
@@ -92,9 +131,12 @@ app.post("/chat", async (req, res) => {
             // Guardar la respuesta del modelo en la base de datos
             await pool.query('INSERT INTO messages (user_id, message) VALUES ($1, $2)', [internalUserId, modelResponseContent]);
         }
+    
         console.log("Respuesta del modelo:");
         console.log(response.data.choices[0].message)
         res.json({ response: response.data.choices[0].message });
+    }
+
     } catch (error) {
         console.error("Error en la llamada a la API o en la base de datos:", error);
         res.status(500).json({ error: "Error al procesar la solicitud" });

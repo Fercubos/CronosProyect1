@@ -7,12 +7,19 @@
         #inputArea { display: flex; background-color: #f7f3eb;}
         #inputArea input { flex-grow: 1; padding: 10px; border: 1px solid #dee2e6; border-right: none; margin-top: 5rem; }
         #inputArea button {width: 100px; max-height: 3rem; margin-top: 4.3rem;}
+        #chatbotSelect {width: 100px; max-height: 3rem; margin-top: 4.3rem;}
         .dsd3 {display: flex; justify-content: center; align-items: center ;  background-color: #f7f3eb;}
     </style>
 </head>
 <body>
     <div>
         <div id="inputArea" class="bg-light dsd3 p-2">
+            <select id="chatbotSelect" class="form-control">
+                <option value="1">OpenAI</option>
+                <option value="2">Ollama</option>
+                <option value="3">Mixtral</option>
+                <!-- Añade más chatbots según sea necesario -->
+            </select>
             <input type="text" id="userInput" class="form-control" placeholder="Escribe un mensaje..." aria-label="Mensaje">
             <button type="button" class="btn btn-primary" onclick="sendMessage()">Enviar</button>
         </div>

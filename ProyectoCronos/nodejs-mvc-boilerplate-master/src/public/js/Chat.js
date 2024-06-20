@@ -1,6 +1,8 @@
 async function sendMessage() {
     var input = document.getElementById('userInput');
+    var chatbotSelector = document.getElementById('chatbotSelect'); 
     var message = input.value.trim();
+    var chatbotId = chatbotSelector.value;
     if (message) {
         // Mostrar el mensaje del usuario en la interfaz
         var userMessageElement = document.createElement('div');
@@ -15,7 +17,7 @@ async function sendMessage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ message })  // Asegúrate de incluir el userId correcto
+                body: JSON.stringify({ message, chatbotId})  // Asegúrate de incluir el userId correcto
             });
             console.log("Mensaje enviado:", message);
             console.log("Mensaje recibido:", chatResponse);
