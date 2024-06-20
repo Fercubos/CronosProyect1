@@ -61,19 +61,24 @@ docker cp backup1.sql <container_id>:/backup1.sql
 docker cp backup_Proyecto_Cronos1.sql 4ef1ab787248:/backup_Proyecto_Cronos1.sql
 docker cp backup_Proyecto_Cronos1.sql 9927b8343118:/backup_Proyecto_Cronos1.sql
 
+docker cp backup_ChatCronos.sql 66ac167a5aa5:/backup_ChatCronos.sql
+
+docker exec -it <nombre_o_id_del_contenedor> psql -U <usuario> -d <base_de_datos> -f /backup_ChatCronos.sql
+docker exec -it 66ac167a5aa5 psql -U postgres -d ChatCronos -f /backup_ChatCronos.sql
 
 
 
 docker exec -u postgres 4ef1ab787248 psql Proyecto_Cronos1 -f /backup1.sql
 docker exec -u postgres <container_id> psql Proyecto_Cronos1 -f /backup1.sql
 
-docker exec -u postgres 9927b8343118 psql Proyecto_Cronos1 -f /backup_Proyecto_Cronos1.sql
+docker exec -u postgres baf3f4a65279 psql ChatCronos -f /backup_ChatCronos.sql
 
 
 verificamos que la base de datos este creada
 
 docker exec -it 4ef1ab787248 psql -U postgres -d Proyecto_Cronos1
 docker exec -it <container_id> psql -U postgres -d Proyecto_Cronos1
+docker exec -it baf3f4a65279 psql -U postgres -d ChatCronos
 
 
 antes de correrlo recuerda el .env añadirlo a la carpeta src del proyecto

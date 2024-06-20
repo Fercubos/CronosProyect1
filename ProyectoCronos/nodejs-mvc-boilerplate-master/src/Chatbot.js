@@ -17,7 +17,7 @@ import dotenv from "dotenv";
 
 const port = 4102;
 const app = express();
-const url_of_ngrok = "https://0f46-2806-2f0-5021-fcaa-7cb2-34ac-9755-b738.ngrok-free.app";
+const url_of_ngrok = "https://b97a-2806-2f0-51c1-e3ce-b151-c7b1-3e78-c988.ngrok-free.app";
 
 
 const pool = new pg.Pool({
