@@ -106,7 +106,6 @@ app.post("/chat", async (req, res) => {
         res.json({ response: response.choices[0].message });
 
         } else {
-
         const response = await axios.post(url_of_ngrok + '/v1/chat/completions', {
             model: "TheBloke/dolphin-2.7-mixtral-8x7b-GGUF",
             messages: [
@@ -114,7 +113,7 @@ app.post("/chat", async (req, res) => {
                 { role: "user", content: message }
             ],
             temperature: 0.7,
-            max_tokens: 250,
+            max_tokens: 500,
             stream: false
         }, {
             headers: {
