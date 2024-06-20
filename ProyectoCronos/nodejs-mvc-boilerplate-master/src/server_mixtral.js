@@ -18,7 +18,7 @@ import axios from "axios";
 
 const port = 4120;
 const app = express();
-const url_of_ngrok = "https://0f46-2806-2f0-5021-fcaa-7cb2-34ac-9755-b738.ngrok-free.app"
+const url_of_ngrok = process.env.URL_OF_NGROK;
 
 const pool = new pg.Pool({
 	user: "postgres",
