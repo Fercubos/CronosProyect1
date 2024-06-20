@@ -114,7 +114,7 @@ app.post("/chat", async (req, res) => {
                 { role: "user", content: message }
             ],
             temperature: 0.7,
-            max_tokens: 500,
+            max_tokens: 250,
             stream: false
         }, {
             headers: {
