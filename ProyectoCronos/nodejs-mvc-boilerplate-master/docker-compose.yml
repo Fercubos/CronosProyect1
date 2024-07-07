@@ -1,0 +1,30 @@
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 3312
+      POSTGRES_DB: ChatCronos
+    ports:
+      - "4101:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  db1:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 3312
+      POSTGRES_USER: postgres
+      POSTGRES_DB: Proyecto_Cronos1
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data1:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  db_data1:
+

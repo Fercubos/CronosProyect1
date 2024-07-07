@@ -1,0 +1,85 @@
+CREATE TABLE users (
+id BIGSERIAL PRIMARY KEY NOT NULL, 
+name VARCHAR(200) NOT NULL,
+email VARCHAR(200) NOT NULL, 
+password VARCHAR(200) NOT NULL, 
+UNIQUE (email)
+);
+
+CREATE TABLE proyectos (
+    proyecto_id SERIAL PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE tareas (
+    tarea_id SERIAL PRIMARY KEY,
+    proyecto_id INT NOT NULL,
+    numero_de_tareas INT,
+    fecha_de_los_pasos DATE,
+    completitud BOOLEAN,
+    FOREIGN KEY (proyecto_id) REFERENCES proyectos(proyecto_id)
+);
+
+
+CREATE TABLE pasos (
+    paso_id SERIAL PRIMARY KEY,
+    tarea_id INT NOT NULL,
+    descripcion VARCHAR(1024),
+    steps_inside_resume TEXT,
+    FOREIGN KEY (tarea_id) REFERENCES tareas(tarea_id)
+);
+
+ALTER TABLE proyectos
+ADD COLUMN proyect_notion_url VARCHAR(255);
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT 
+    users.id AS user_id, 
+    users.name AS user_name, 
+    users.email AS user_email, 
+    users.password AS user_password,
+    proyectos.proyecto_id AS proyecto_id, 
+    proyectos.nombre AS proyecto_nombre, 
+    proyectos.user_id AS proyecto_user_id, 
+    proyectos.proyect_notion_url AS proyecto_notion_url,
+    tareas.tarea_id AS tarea_id, 
+    tareas.proyecto_id AS tarea_proyecto_id, 
+    tareas.numero_de_tareas AS tarea_numero_de_tareas, 
+    tareas.fecha_de_los_pasos AS tarea_fecha_de_los_pasos, 
+    tareas.completitud AS tarea_completitud,
+    pasos.paso_id AS paso_id, 
+    pasos.tarea_id AS paso_tarea_id, 
+    pasos.descripcion AS paso_descripcion, 
+    pasos.steps_inside_resume AS paso_steps_inside_resume
+FROM 
+    users
+LEFT JOIN 
+    proyectos ON users.id = proyectos.user_id
+LEFT JOIN 
+    tareas ON proyectos.proyecto_id = tareas.proyecto_id
+LEFT JOIN 
+    pasos ON tareas.tarea_id = pasos.tarea_id;
+
+
+
+//integracion pendiente
+
+<h1>Select a Project</h1>
+<select id="projectDropdown">
+    <%console.log("ProyectsName")%>
+    <% ProyectsName.forEach(ProyectsName => { %>
+        <option style="font-size: 1rem; width: 1rem;" value="<%= ProyectsName.proyecto_id %>"><%= ProyectsName.proyecto_nombre %></option>
+    <% }) %>
+</select>

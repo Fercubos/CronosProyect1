@@ -2,8 +2,20 @@
 
 
 interesante 
+https://8268-2806-2f0-5021-fcaa-51-cd42-1467-8818.ngrok-free.app/v1/chat/completions
+  -H "Content-Type: application/json" \
+  -d '{ 
+    "model": "TheBloke/dolphin-2.7-mixtral-8x7b-GGUF",
+    "messages": [ 
+      { "role": "system", "content": "Always answer in rhymes." },
+      { "role": "user", "content": "Introduce yourself." }
+    ], 
+    "temperature": 0.7, 
+    "max_tokens": -1,
+    "stream": false
+}'
 
-
+curl http://localhost:1234/v1/chat/completions \
 
 url http://localhost:3000/Proyects?projectId=0&taskId=1&usuario1=2
 

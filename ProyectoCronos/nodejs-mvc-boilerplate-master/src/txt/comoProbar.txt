@@ -1,0 +1,3 @@
+npx cypress open` to open the Cypress Test Runner.
+npx eslint
+npx run dev

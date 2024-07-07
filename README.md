@@ -14,6 +14,8 @@ Cronos es una plataforma web que automatiza la creación y gestión de proyectos
 ![Cronos Interface 3](/doc/Cronos2.png)
 - **Almacenamiento Seguro:** Cada proyecto y tarea se guarda en una base de datos relacionada a tu usuario, permitiendo un acceso fácil y seguro a tu información.
 ![Cronos Interface 4](/doc/Cronos1.png)
+- **Chatbot Para Preguntas Generales:** Cronos incluye un chatbot integrado, diseñado para responder preguntas generales y proporcionar asistencia en tiempo real. Esta hecho con ollama y corriendo en una computadora local con un puerto expuesto por ngrok
+![Cronos Interface 5](/doc/CronosChat.png)
 
 
 ## Beneficios de Cronos

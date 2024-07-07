@@ -1,8 +1,8 @@
-import express from 'express';
+import express, { json } from 'express';
 import passport from 'passport';
 import bcrypt from 'bcryptjs';
 import { pool } from '../database/config/database.js'; // Asegúrate de que la extensión del archivo sea correcta
-
+import axios from 'axios';
 
 const router = express.Router();
 var user = "alejandro1";
@@ -19,6 +19,86 @@ router.get("/what_is_cronos", function (req, res) {
 });
 
 
+router.get("/chatMes", checkNotAuthenticated, async function (req, res) {
+    console.log("chatget");
+	let userId = req.user.id;
+	console.log(userId);
+	//userId = "300";
+    try {
+        // Solicitar los mensajes al servidor que los administra
+        const response = await fetch("http://localhost:4102/chatMessages", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+			body: JSON.stringify({ userId })
+        });
+
+
+        const msg43 = await response.json(); // Obtiene los mensajes como JSON
+		console.log("Mensajes recibidos:");
+
+
+        // Renderizar la vista EJS pasando los mensajes obtenidos
+		res.render("chat", {
+			usuario1: req.user.name,
+			proyects: "desactive",
+			user_id1: req.user.id,
+			calendar: "desactive",
+			chat: "active",
+			messages1: msg43,
+		});
+
+	} catch (error) {
+        console.error("Error fetching chat:", error);
+        res.status(500).send("Error fetching chat");
+    }
+});
+
+
+
+
+router.post("/chat",checkNotAuthenticated, async (req, res) => {
+	//ruta principal
+	console.log("chatf2");
+	var userId = req.user.id;
+	console.log(userId);
+	var message = req.body.message;
+	console.log(req.body);
+    var chatbotId = req.body.chatbotId;
+	console.log(chatbotId);
+	// Llamar a la función
+	try{
+	var response = await sendMessageToChat(message, userId, chatbotId);
+	}catch(e){
+		console.log("Error en el chat");
+		response = "Error en el chat";
+	}
+	// Enviar la respuesta al cliente
+
+	res.send(response);
+});
+
+async function sendMessageToChat(message, userId, chatbotId) {
+    const url = 'http://localhost:4102/chat';
+    const data = {
+        userId: userId,  // Suponiendo que "300" es un ID válido en tu sistema
+        message: message,
+		chatbotId: chatbotId
+    };
+
+    try {
+        const response = await axios.post(url, data);
+        console.log("Respuesta recibida:", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Error al enviar el mensaje:", error);
+        throw error;  // Reenvía el error para manejarlo más arriba si es necesario
+    }
+}
+
+
+
 
 router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 	//ruta principal
@@ -28,6 +108,7 @@ router.get("/cronos1", checkNotAuthenticated ,function (request, response) {
 		proyects: "desactive",
 		user_id1: request.user.id,
 		calendar: "desactive",
+		chat: "desactive",
 	});
 });
 
@@ -72,6 +153,7 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		proyects: "desactive",
 		calendarCronos: calendarData.steps, // Asumiendo que 'steps' es la clave en la respuesta JSON
 		ProyectsName: uniqueProjectList,
+		chat: "desactive",
 	  });
 
 
@@ -83,6 +165,8 @@ router.get("/calendar", checkNotAuthenticated, async function (request, response
 		user_id1: request.user.id,
 		proyects: "desactive",
 		calendarCronos: "Error fetching calendar data.",
+		chat: "desactive",
+
 	  });
 	}
   });
@@ -126,6 +210,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			calendar: "desactive",
 			taskId: taskId,
 			projectId: projectId,
+			chat: "desactive",
+
 			
 		});
 
@@ -177,6 +263,8 @@ router.get("/Proyects", checkNotAuthenticated , async function (request, respons
 			calendar: "desactive",
 			taskId: taskId,
 			projectId: projectId,
+			chat: "desactive",
+
 			
 		});
 		}

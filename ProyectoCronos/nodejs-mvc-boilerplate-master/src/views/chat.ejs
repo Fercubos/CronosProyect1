@@ -1,0 +1,59 @@
+<%- include('layout/_partials/_head.ejs') %>
+<head>
+    <title>Chatbot con Bootstrap</title>
+    <style>
+        #chatContainer { width: 100%; max-width: 100%;  background-color: #f7f3eb;}
+        #messageArea {  min-height: 20rem; max-height: 40rem; overflow-y: scroll; background-color: #f7f3eb; border: 1px solid #f7f3eb; border-bottom: none; padding: 10px; }
+        #inputArea { display: flex; background-color: #f7f3eb;}
+        #inputArea input { flex-grow: 1; padding: 10px; border: 1px solid #dee2e6; border-right: none; margin-top: 5rem; }
+        #inputArea button {width: 100px; max-height: 3rem; margin-top: 4.3rem;}
+        #chatbotSelect {width: 100px; max-height: 3rem; margin-top: 4.3rem;}
+        .dsd3 {display: flex; justify-content: center; align-items: center ;  background-color: #f7f3eb;}
+    </style>
+</head>
+<body>
+    <div>
+        <div id="inputArea" class="bg-light dsd3 p-2">
+            <select id="chatbotSelect" class="form-control">
+                <option value="1">OpenAI</option>
+                <option value="2">Ollama</option>
+                <option value="3">Mixtral</option>
+                <!-- Añade más chatbots según sea necesario -->
+            </select>
+            <input type="text" id="userInput" class="form-control" placeholder="Escribe un mensaje..." aria-label="Mensaje">
+            <button type="button" class="btn btn-primary" onclick="sendMessage()">Enviar</button>
+        </div>
+    <div id="chatContainer" class="shadow-lg rounded">
+        <div id="messageArea">
+            <!-- Los mensajes del chatbot aparecerán aquí -->
+            <p class="text-muted">El chatbot está listo para conversar!</p>
+            <% if (messages1 && messages1.messages && messages1.messages.length > 0) { %>
+                <% messages1.messages.forEach(function(message) { %>
+                    <div class="message">
+                        <% if (message.message.startsWith('{')) { %>
+                            <% const parsedMessage = JSON.parse(message.message); %>
+                            <p class="text-muted"><%= parsedMessage.role %></p>
+                            <p><%= parsedMessage.content %></p>
+                        <% } else { %>
+                            <p class="text-muted">User</p>
+                            <p><%= message.message %></p>
+                        <% } %>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No hay mensajes para mostrar.</p>
+            <% } %>
+            
+        </div>
+                
+
+    </div>
+    </div>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/Chat.js"></script>
+</body>
+
+<%- include('layout/_partials/_footer.ejs') %>

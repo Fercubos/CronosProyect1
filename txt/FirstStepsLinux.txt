@@ -1,0 +1,180 @@
+ create backup of docker compose 
+ docker exec -t <nombre_del_contenedor_db> pg_dump -U postgres -d ChatCronos > backup_ChatCronos.sql
+
+
+ docker exec -t f64c85dc15b51abdf821c5921501c12a4a6132afdb5dbc0ddf9da71d4e11bdfe pg_dump -U postgres -d ChatCronos > backup_ChatCronos.sql
+docker exec -t bedde846103a0283fa4ce814fc9e8f099cbf085753d0bbfbc86e157682743bc8 pg_dump -U postgres -d Proyecto_Cronos1 > backup_Proyecto_Cronos1.sql
+
+
+ ssd
+ ssh -i AaronKey.pem ubuntu@18.188.65.157
+
+  ssh -i AaronKey.pem ubuntu@3.128.160.149
+
+en la carpeta keys alan
+
+sudo apt update
+
+sudo apt install git
+// se lleva aprox 1 minuto y 0.10 Gb de espacio
+
+sudo apt install npm 
+// se lleva aprox 2 minutos y 1 Gb de espacio
+
+
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+
+sudo apt-get install -y nodejs
+
+ apt-get install nodejs -y
+
+npm install pm2@latest -g
+
+
+sudo apt install docker.io
+
+sudo systemctl start docker
+
+sudo systemctl enable docker
+
+docker run --name some-postgres -e POSTGRES_PASSWORD=3312 -d postgres
+
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+
+verificamos el docker-compose para levantar base de datos
+para lo que sigue tenemos que estar en src?
+
+docker-compose up -d
+
+docker ps
+(esto nos dira el id que tinee que ser igual al del container 5432) 4ef1ab787248
+
+si no tienes el backup de la base de datos, puedes hacerlo con el siguiente comando 
+nano backup1.sql y pegas el contenido de la base de datos
+
+docker cp backup1.sql 4ef1ab787248:/backup1.sql
+docker cp backup1.sql <container_id>:/backup1.sql
+
+docker cp backup_Proyecto_Cronos1.sql 4ef1ab787248:/backup_Proyecto_Cronos1.sql
+docker cp backup_Proyecto_Cronos1.sql 9927b8343118:/backup_Proyecto_Cronos1.sql
+
+docker cp backup_ChatCronos.sql 66ac167a5aa5:/backup_ChatCronos.sql
+
+docker exec -it <nombre_o_id_del_contenedor> psql -U <usuario> -d <base_de_datos> -f /backup_ChatCronos.sql
+docker exec -it 66ac167a5aa5 psql -U postgres -d ChatCronos -f /backup_ChatCronos.sql
+
+
+
+docker exec -u postgres 4ef1ab787248 psql Proyecto_Cronos1 -f /backup1.sql
+docker exec -u postgres <container_id> psql Proyecto_Cronos1 -f /backup1.sql
+
+docker exec -u postgres baf3f4a65279 psql ChatCronos -f /backup_ChatCronos.sql
+
+
+verificamos que la base de datos este creada
+
+docker exec -it 4ef1ab787248 psql -U postgres -d Proyecto_Cronos1
+docker exec -it <container_id> psql -U postgres -d Proyecto_Cronos1
+docker exec -it baf3f4a65279 psql -U postgres -d ChatCronos
+
+
+antes de correrlo recuerda el .env añadirlo a la carpeta src del proyecto
+
+añadir el .env importante!!
+instalar las dependencias
+
+npm i
+//es raro, como que dura mas de lo esperado
+
+pm2 start Front.js --name Front
+
+pm2 start server.js --name Backend
+
+pm2 start Chatbot.js --name Chatbot
+
+
+
+ahora toca configurar el nginx
+
+sudo apt install nginx
+
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo systemctl status nginx
+
+sudo nano /etc/nginx/sites-available/Proyecto_Cronos1
+sudo nano /etc/nginx/sites-available/default 
+//usa el default de preferencia
+
+
+
+sudo cat /var/log/nginx/error.log
+sudo cat /var/log/nginx/error.log
+
+recuerda configurar el http para el firewall
+
+
+sudo systemctl restart nginx
+
+
+
+server {
+    listen 80;
+    server_name aaronprojects.xyz www.aaronprojects.xyz;  server_name 18.188.65.157;  # Usa tu dirección IP o nombre de dominio
+
+    location / {
+        proxy_pass http://localhost:3000;  # Redirige las solicitudes a Express
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d aaronprojects.xyz -d www.aaronprojects.xyz
+//segun eso se actualiza ngix en automatico xd?
+sudo certbot renew --dry-run
+
+
+este parece funcionar correcto 
+  GNU nano 7.2                                                                           /etc/nginx/sites-available/default
+server {
+listen 80;
+server_name aaronprojects.xyz www.aaronprojects.xyz;
+location / {
+    return 301 https://$host$request_uri;
+}}
+server {
+listen 443 ssl;
+server_name aaronprojects.xyz www.aaronprojects.xyz;
+ssl_certificate /etc/letsencrypt/live/aaronprojects.xyz/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/aaronprojects.xyz/privkey.pem;
+
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_prefer_server_ciphers on;
+ssl_ciphers ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384;
+ssl_session_timeout 1d;
+ssl_session_cache shared:MozSSL:10m;  # about 40000 sessions
+ssl_session_tickets off;
+
+ssl_stapling on;
+ssl_stapling_verify on;
+
+add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+
+location / {
+    proxy_pass http://localhost:3000;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;
+}
+}

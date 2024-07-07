@@ -83,3 +83,19 @@ LEFT JOIN
         <option style="font-size: 1rem; width: 1rem;" value="<%= ProyectsName.proyecto_id %>"><%= ProyectsName.proyecto_nombre %></option>
     <% }) %>
 </select>
+
+
+
+
+
+CREATE TABLE users (
+id BIGSERIAL PRIMARY KEY NOT NULL,
+id_cronos VARCHAR(200) NOT NULL,
+)
+
+CREATE TABLE messages (
+    message_id SERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    message TEXT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

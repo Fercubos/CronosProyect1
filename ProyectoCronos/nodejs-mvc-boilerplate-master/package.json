@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
+    "start": "node ./src/server.js -w ./src/Front.js -w ./src/try2.js",
     "lint": "eslint ./src/**/*.{js,jsx}"
   },
   "dependencies": {
@@ -45,6 +46,7 @@
     "@eslint/js": "^9.4.0",
     "eslint": "^9.4.0",
     "globals": "^15.4.0",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "cypress": "^13.11.0"
   }
 }
