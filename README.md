@@ -1,82 +1,90 @@
+## Tecnologías utilizadas
+
+| Tecnología | Versión |
+|---|---|
+| Node.js (ES Modules) | 18+ |
+| Express | 4.19 |
+| EJS / ejs-mate | 3.1 / 4.0 |
+| PostgreSQL (vía Docker) | imagen oficial `postgres` |
+| API de Notion (`@notionhq/client`) | 2.2 |
+| API de OpenAI (`openai`, modelo `gpt-3.5-turbo`) | 4.42 |
+| Ollama + Mixtral (chatbot local, expuesto con ngrok) | dolphin-2.7-mixtral-8x7b |
+| FullCalendar | 6.1 |
+| Bootstrap | 5.3 |
+| Passport (local + Google OAuth2) | 0.7 |
+| Cypress (pruebas E2E) | 13.11 |
+
+**Última actualización del sistema:** 7 de julio de 2024
+
+---
+
 # Cronos
 
-**Visita [Cronos en AaronProjects.xyz](https://aaronprojects.xyz) para ver la plataforma en acción.**
+### De una idea a un plan de trabajo en segundos.
 
-Cronos es una plataforma web que automatiza la creación y gestión de proyectos, transformando ideas complejas en tareas manejables y organizadas. Esta herramienta utiliza tecnologías como JavaScript, EJS, CSS, Node.js, Express, y PostgreSQL, aprovechando las APIs de Notion y OpenAI para optimizar la planificación y ejecución de proyectos.
+**[Pruébalo en AaronProjects.xyz](https://aaronprojects.xyz)**
 
-## Características Principales
+¿Tienes un proyecto enorme y no sabes por dónde empezar? Cronos convierte una simple descripción en un plan completo: tareas, pasos y fechas, listo para seguir en un calendario y para llevarlo a Notion con un clic. Deja de organizar y empieza a hacer.
 
-- **Automatización de Proyectos:** Ingrese un prompt descriptivo y Cronos generará automáticamente un conjunto de tareas detalladas, facilitando la gestión de proyectos complejos.
+## ¿Qué puedes hacer con Cronos?
+
+- **Del prompt al plan:** describe tu idea y Cronos, con IA, genera automáticamente tareas detalladas y ordenadas.
 ![Cronos Interface 1](/doc/Cronos4.png)
-- **Gestión Visual:** Visualiza tus proyectos en un calendario interactivo, lo que facilita el seguimiento de las fechas de entrega y el progreso general.
+- **Ve tu progreso de un vistazo:** un calendario interactivo muestra fechas de entrega y avance de cada proyecto.
 ![Cronos Interface 2](/doc/Cronos3.png)
-- **Integración con Notion:** Duplica tus proyectos directamente en Notion para una gestión más fluida y un acceso más amplio a herramientas de productividad.
+- **Llévalo a Notion:** duplica tus proyectos en Notion y sigue trabajando en la herramienta que ya usas.
 ![Cronos Interface 3](/doc/Cronos2.png)
-- **Almacenamiento Seguro:** Cada proyecto y tarea se guarda en una base de datos relacionada a tu usuario, permitiendo un acceso fácil y seguro a tu información.
+- **Tu información, segura:** cada proyecto y tarea queda guardado en tu cuenta, listo cuando lo necesites.
 ![Cronos Interface 4](/doc/Cronos1.png)
-- **Chatbot Para Preguntas Generales:** Cronos incluye un chatbot integrado, diseñado para responder preguntas generales y proporcionar asistencia en tiempo real. Esta hecho con ollama y corriendo en una computadora local con un puerto expuesto por ngrok
+- **Un asistente siempre a mano:** el chatbot integrado responde tus dudas en tiempo real. Funciona con OpenAI o con un modelo local (Ollama) expuesto mediante ngrok.
 ![Cronos Interface 5](/doc/CronosChat.png)
 
+## Por qué Cronos
 
-## Beneficios de Cronos
+Los proyectos grandes se abandonan porque abruman. Cronos los divide en partes pequeñas y manejables, para que siempre sepas cuál es el siguiente paso. Menos tiempo planeando, más tiempo avanzando.
 
-Cronos simplifica la gestión de proyectos dividiendo tareas complejas en partes más pequeñas y manejables. Esta segmentación ayuda a mejorar la eficiencia, facilitando la supervisión y la ejecución de cada paso del proyecto.
+## Míralo en acción
 
-## Video Demostrativo de Funcionalidad
+[Ver video de funcionalidad de Cronos](https://youtu.be/GleGaoD43pQ) · [Presentación de Cronos](https://www.aaronprojects.xyz/what_is_cronos)
 
-**Mira el video demostrativo de Cronos para ver cómo funciona en acción.** Este video te proporcionará una visión clara de la interfaz y las características operativas de Cronos.
+## Empieza en minutos
 
-[Ver Video de Funcionalidad de Cronos](https://youtu.be/GleGaoD43pQ)
+**Requisitos:** Node.js, PostgreSQL (o Docker) y tus claves de Notion y OpenAI.
 
-## Requisitos del Sistema
+1. Clona el repositorio.
+2. Entra a `ProyectoCronos/nodejs-mvc-boilerplate-master` e instala dependencias con `npm install`.
+3. Crea un archivo `.env` con `NOTION_KEY`, `NOTION_PAGE_ID` y `OPENAI_API_KEY` (y `URL_OF_NGROK` si usas el chatbot local).
+4. Levanta la base de datos con Docker (`docker-compose up`).
+5. Inicia los servidores con `node src/server.js` y `node src/Front.js`.
+6. Abre `localhost:3000`, regístrate y crea tu primer proyecto.
 
-- Node.js
-- Express
-- PostgreSQL (Opción de usar Docker para manejar la base de datos)
-- Recomendado: Entorno de desarrollo como Visual Studio Code
-
-## Instalación
-
-1. Clona el repositorio en tu sistema.
-2. Instala las dependencias necesarias ejecutando `npm install`.
-3. Inicia los servidores con `node server.js` y `node Front.js`.
-4. Para la base de datos, usa Docker ejecutando el Dockerfile proporcionado.
-
-## Uso
-
-Accede a Cronos navegando a `localhost:3000` en tu navegador, regístrate y comienza a crear y gestionar tus proyectos de forma inmediata.
-
-### Ejemplo de Uso
-
-Simplemente sigue los pasos de instalación y utiliza la interfaz web para comenzar a desglosar tus proyectos en tareas.
-**Visita [La presentacion de Cronos](https://www.aaronprojects.xyz/what_is_cronos) para ver la plataforma en acción.**
-
-## Diagra de la arquitectura de Cronos
+## Arquitectura
 
 ![Diagrama de cronos y chatbot](/doc/CronosDiagrama.jpeg)
 
-## Diagrama de la base de datos de Cronos
+## Base de datos
 
-base de datos de cronos
 ![Diagrama Unicamente de Cronos](/doc/BaseDeDatosCronos.png)
+
+## Calidad probada
+
+Cronos cuenta con pruebas end-to-end con Cypress: [ver video de pruebas](https://youtu.be/UCheOnIpXiM).
 
 ## Contribuciones
 
-¿Interesado en contribuir? ¡Las contribuciones son bienvenidas! Para contribuir, realiza un pull request describiendo los cambios o nuevas funcionalidades que propones.
-
-## Video de pruebas Cypress
-
-este es el video de pruebas con cypress [Link al video](https://youtu.be/UCheOnIpXiM)
+¿Quieres sumarte? Abre un pull request describiendo los cambios o nuevas funcionalidades que propones.
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Cronos License, cuya copia puedes encontrar en el archivo `LICENSE` del repositorio.
+Este proyecto está licenciado bajo la Cronos License; consulta el archivo `LICENSE`.
+
+## Créditos
+
+Cronos fue desarrollado por sus **desarrolladores principales, Aaron Hernández y Fernando Cuevas Arroyo**: Aaron dio forma a la plataforma, la integración con Notion y OpenAI y el chatbot; Fernando, al sistema de acceso y registro de usuarios. Gracias también a quienes aportaron ideas y pruebas en el camino.
 
 ## Contacto
 
-Si tienes preguntas o problemas con Cronos, puedes contactarme directamente en mi correo disponible en mi perfil de GitHub o en mi sitio web [www.aaronhernandez.me](http://www.aaronhernandez.me).
+¿Preguntas o ideas? Escríbenos:
 
-## Créditos y Agradecimientos
-
-Agradecimientos especiales a Fernando Cuevas Arroyo por su participación activa en el desarrollo del sistema de login y su apoyo continuo en el proyecto.
-
+- Aaron Hernández: correo en su perfil de GitHub o [www.aaronhernandez.me](http://www.aaronhernandez.me)
+- Fernando Cuevas Arroyo: [fernandoyiuuu@gmail.com](mailto:fernandoyiuuu@gmail.com)
